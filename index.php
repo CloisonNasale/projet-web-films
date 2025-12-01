@@ -9,7 +9,7 @@ $films = $query->fetchAll(PDO::FETCH_ASSOC);
 <table>
     <tr>
         <th>Titre</th>
-        <th>Année de sortie</th>
+        <th>Année de sortie test</th>
         <th>Genres</th>
         <th>Pays</th>
     </tr>

@@ -31,7 +31,7 @@ CREATE TABLE `films` (
   `idFilm` int NOT NULL,
   `titre` varchar(68) DEFAULT NULL,
   `annee` varchar(4) DEFAULT NULL,
-  `genres` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `genres` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
   `realisateur` varchar(30) DEFAULT NULL,
   `acteursPrincipaux` varchar(38) DEFAULT NULL,
   `pays` varchar(40) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `films` (
   `boxOffice` varchar(15) DEFAULT NULL,
   `IdIMDB` varchar(60) DEFAULT NULL,
   `affiche` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `films`

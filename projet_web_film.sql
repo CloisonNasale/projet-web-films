@@ -2,10 +2,10 @@
 -- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : db
--- Généré le : mer. 03 déc. 2025 à 10:29
--- Version du serveur : 8.4.7
--- Version de PHP : 8.3.26
+-- Hôte : localhost
+-- Généré le : mer. 10 déc. 2025 à 13:58
+-- Version du serveur : 10.11.14-MariaDB-0+deb12u2
+-- Version de PHP : 8.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,147 +24,1182 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `acteurs`
+--
+
+CREATE TABLE `acteurs` (
+  `id_Acteur` int(11) NOT NULL,
+  `nom_Acteur` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `acteurs`
+--
+
+INSERT INTO `acteurs` (`id_Acteur`, `nom_Acteur`) VALUES
+(119, 'Adolphe Menjou'),
+(63, 'Adrien Brody'),
+(4, 'Al Pacino'),
+(124, 'Alan Rickman'),
+(115, 'Alec Guinness'),
+(30, 'Alexandre Rodrigues'),
+(94, 'Andrew Garfield'),
+(88, 'Anne Bancroft'),
+(49, 'Anne Hathaway'),
+(35, 'Anthony Hopkins'),
+(96, 'Anthony Michael Hall'),
+(57, 'Arnold Schwarzenegger'),
+(89, 'Audrey Tautou'),
+(148, 'Barbara Stanwyck'),
+(132, 'Bengt Ekerot'),
+(134, 'Bibi Andersson'),
+(19, 'Brad Pitt'),
+(123, 'Bruce Willis'),
+(71, 'Carrie-Anne Moss'),
+(98, 'Cary Elwes'),
+(76, 'Cary Grant'),
+(97, 'Cathy Moriarty'),
+(51, 'Charlie Chaplin'),
+(141, 'Charlton Heston'),
+(47, 'Cho Yeo-jeong'),
+(125, 'Choi Min-sik'),
+(5, 'Christian Bale'),
+(56, 'Christopher Lloyd'),
+(60, 'Claudia Cardinale'),
+(85, 'Clint Eastwood'),
+(108, 'Daniel Day-Lewis'),
+(150, 'Diane Keaton'),
+(37, 'Donna Reed'),
+(87, 'Dustin Hoffman'),
+(103, 'Ed Harris'),
+(50, 'Edward Furlong'),
+(20, 'Edward Norton'),
+(86, 'Eli Wallach'),
+(10, 'Elijah Wood'),
+(142, 'Ellen Burstyn'),
+(95, 'Emilio Estevez'),
+(77, 'Eva Marie Saint'),
+(73, 'Faye Dunaway'),
+(147, 'Fred MacMurray'),
+(39, 'Gabriel Byrne'),
+(69, 'George C. Scott'),
+(136, 'Gloria Swanson'),
+(81, 'Grace Kelly'),
+(70, 'Guy Pearce'),
+(18, 'Harrison Ford'),
+(6, 'Heath Ledger'),
+(8, 'Henry Fonda'),
+(128, 'Herbert Grönemeyer'),
+(121, 'Hitoshi Takagi'),
+(139, 'Humphrey Bogart'),
+(14, 'Ian McKellen'),
+(91, 'Ivana Baquero'),
+(79, 'Jack Lemmon'),
+(26, 'Jack Nicholson'),
+(113, 'James Garner'),
+(36, 'James Stewart'),
+(120, 'Jane Darwell'),
+(107, 'Javier Bardem'),
+(40, 'Jean Reno'),
+(100, 'Jeff Bridges'),
+(54, 'Jeremy Irons'),
+(93, 'Jesse Eisenberg'),
+(102, 'Jim Carrey'),
+(138, 'Joan Fontaine'),
+(66, 'Joaquin Phoenix'),
+(34, 'Jodie Foster'),
+(101, 'John Goodman'),
+(74, 'Joseph Cotten'),
+(16, 'Joseph Gordon-Levitt'),
+(116, 'Judy Garland'),
+(127, 'Jürgen Prochnow'),
+(23, 'Keanu Reeves'),
+(38, 'Kevin Spacey'),
+(104, 'Kim Min-hee'),
+(78, 'Kim Novak'),
+(105, 'Kim Tae-ri'),
+(118, 'Kirk Douglas'),
+(129, 'Kurt Russell'),
+(24, 'Laurence Fishburne'),
+(137, 'Laurence Olivier'),
+(31, 'Leandro Firmino'),
+(9, 'Lee J. Cobb'),
+(15, 'Leonardo DiCaprio'),
+(12, 'Liam Neeson'),
+(143, 'Linda Blair'),
+(58, 'Linda Hamilton'),
+(27, 'Louise Fletcher'),
+(72, 'Machiko Kyō'),
+(82, 'Malcolm McDowell'),
+(151, 'Marilyn Monroe'),
+(17, 'Mark Hamill'),
+(3, 'Marlon Brando'),
+(67, 'Martin Sheen'),
+(140, 'Mary Astor'),
+(90, 'Mathieu Kassovitz'),
+(44, 'Matt Damon'),
+(53, 'Matthew Broderick'),
+(48, 'Matthew McConaughey'),
+(131, 'Max von Sydow'),
+(45, 'Michael Clarke Duncan'),
+(55, 'Michael J. Fox'),
+(43, 'Miyu Irino'),
+(2, 'Morgan Freeman'),
+(41, 'Natalie Portman'),
+(33, 'Nicoletta Braschi'),
+(122, 'Noriko Hidaka'),
+(146, 'Omar Sharif'),
+(75, 'Orson Welles'),
+(83, 'Patrick Magee'),
+(109, 'Paul Dano'),
+(110, 'Paul Newman'),
+(59, 'Paulette Goddard'),
+(145, 'Peter O\'Toole'),
+(68, 'Peter Sellers'),
+(13, 'Ralph Fiennes'),
+(117, 'Ray Bolger'),
+(25, 'Ray Liotta'),
+(7, 'Robert De Niro'),
+(111, 'Robert Redford'),
+(32, 'Roberto Benigni'),
+(22, 'Robin Wright'),
+(42, 'Rumi Hiiragi'),
+(65, 'Russell Crowe'),
+(84, 'Rutger Hauer'),
+(92, 'Sergi López'),
+(144, 'Shelley Duvall'),
+(135, 'Shinichi Himori'),
+(80, 'Shirley MacLaine'),
+(61, 'Sigourney Weaver'),
+(46, 'Song Kang-ho'),
+(112, 'Steve McQueen'),
+(29, 'Takashi Shimura'),
+(64, 'Thomas Kretschmann'),
+(1, 'Tim Robbins'),
+(21, 'Tom Hanks'),
+(62, 'Tom Skerritt'),
+(106, 'Tommy Lee Jones'),
+(152, 'Tony Curtis'),
+(28, 'Toshirō Mifune'),
+(99, 'Unknown'),
+(133, 'Victor Sjöström'),
+(11, 'Viggo Mortensen'),
+(52, 'Virginia Cherrill'),
+(130, 'Wilford Brimley'),
+(114, 'William Holden'),
+(149, 'Woody Allen'),
+(126, 'Yoo Ji-tae');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Commander`
+--
+
+CREATE TABLE `Commander` (
+  `id_Commande` int(11) NOT NULL,
+  `id_Film` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+CREATE TABLE `commandes` (
+  `id_Commande` int(11) NOT NULL,
+  `date_Commande` datetime NOT NULL DEFAULT current_timestamp(),
+  `id_Compte` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `compte`
+--
+
+CREATE TABLE `compte` (
+  `id_Compte` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `motdepasse` varchar(255) NOT NULL,
+  `telephone` varchar(20) DEFAULT NULL,
+  `pdp` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `favoris`
+--
+
+CREATE TABLE `favoris` (
+  `id_Film` int(11) NOT NULL,
+  `id_Compte` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `films`
 --
 
 CREATE TABLE `films` (
-  `idFilm` int NOT NULL,
+  `id_Film` int(11) NOT NULL,
   `titre` varchar(68) DEFAULT NULL,
   `annee` varchar(4) DEFAULT NULL,
-  `genres` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `realisateur` varchar(30) DEFAULT NULL,
-  `acteursPrincipaux` varchar(38) DEFAULT NULL,
-  `pays` varchar(40) DEFAULT NULL,
   `classementIMDB` varchar(11) DEFAULT NULL,
   `duree` varchar(14) DEFAULT NULL,
   `oscarGagne` varchar(10) DEFAULT NULL,
   `boxOffice` varchar(15) DEFAULT NULL,
   `IdIMDB` varchar(60) DEFAULT NULL,
-  `affiche` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `affiche` varchar(300) DEFAULT NULL,
+  `synopsis` text DEFAULT NULL,
+  `bande_annonce` varchar(255) DEFAULT NULL,
+  `id_prix` int(11) DEFAULT NULL,
+  `id_pays` int(11) DEFAULT NULL,
+  `id_realisateur` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `films`
 --
 
-INSERT INTO `films` (`idFilm`, `titre`, `annee`, `genres`, `realisateur`, `acteursPrincipaux`, `pays`, `classementIMDB`, `duree`, `oscarGagne`, `boxOffice`, `IdIMDB`, `affiche`) VALUES
-(1, 'The Shawshank Redemption', '1994', 'Drame', 'Frank Darabont', 'Tim Robbins|Morgan Freeman', 'États-Unis', '9.3', '142', '0', '58.0', 'tt0111161', 'https://image.tmdb.org/t/p/w200/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg'),
-(2, 'The Godfather', '1972', 'Crime|Drame', 'Francis Ford Coppola', 'Marlon Brando|Al Pacino', 'États-Unis', '9.2', '175', '3', '246.1', 'tt0068646', 'https://image.tmdb.org/t/p/w200/3bhkrj58Vtu7enYsRolD1fZdja1.jpg'),
-(3, 'The Dark Knight', '2008', 'Action|Crime|Drame', 'Christopher Nolan', 'Christian Bale|Heath Ledger', 'États-Unis|Royaume-Uni', '9.0', '152', '2', '1004.9', 'tt0468569', 'https://image.tmdb.org/t/p/w200/qJ2tW6WMUDux911r6m7haRef0WH.jpg'),
-(4, 'The Godfather: Part II', '1974', 'Crime|Drame', 'Francis Ford Coppola', 'Al Pacino|Robert De Niro', 'États-Unis', '9.0', '202', '6', '48.5', 'tt0071562', 'https://image.tmdb.org/t/p/w200/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg'),
-(5, '12 Angry Men', '1957', 'Crime|Drame', 'Sidney Lumet', 'Henry Fonda|Lee J. Cobb', 'États-Unis', '9.0', '96', '0', '1.0', 'tt0050083', 'https://image.tmdb.org/t/p/w200/ow3wq89wM8qd5X7hWKxiRfsFf9C.jpg'),
-(6, 'The Lord of the Rings: The Return of the King', '2003', 'Aventure|Drame|Fantaisie', 'Peter Jackson', 'Elijah Wood|Viggo Mortensen', 'Nouvelle Zélande|États-Unis|Royaume-Uni', '8.9', '201', '11', '1119.9', 'tt0167260', 'https://image.tmdb.org/t/p/w200/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg'),
-(7, 'Schindler\'s List', '1993', 'Biographie|Drame|Histoire', 'Steven Spielberg', 'Liam Neeson|Ralph Fiennes', 'États-Unis|Pologne', '8.9', '195', '7', '322.1', 'tt0108052', 'https://image.tmdb.org/t/p/w200/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg'),
-(8, 'The Lord of the Rings: The Fellowship of the Ring', '2001', 'Aventure|Drame|Fantaisie', 'Peter Jackson', 'Elijah Wood|Ian McKellen', 'Nouvelle Zélande|États-Unis|Royaume-Uni', '8.8', '178', '4', '871.5', 'tt0120737', 'https://image.tmdb.org/t/p/w200/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg'),
-(9, 'Inception', '2010', 'Action|Science Fiction|Thriller', 'Christopher Nolan', 'Leonardo DiCaprio|Joseph Gordon-Levitt', 'États-Unis|Royaume-Uni', '8.8', '148', '4', '836.8', 'tt1375666', 'https://image.tmdb.org/t/p/w200/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg'),
-(10, 'Star Wars: Episode V – The Empire Strikes Back', '1980', 'Action|Aventure|Science Fiction', 'Irvin Kershner', 'Mark Hamill|Harrison Ford', 'États-Unis', '8.7', '124', '0', '538.4', 'tt0080684', 'https://image.tmdb.org/t/p/w200/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg'),
-(11, 'The Lord of the Rings: The Two Towers', '2002', 'Aventure|Drame|Fantaisie', 'Peter Jackson', 'Elijah Wood|Ian McKellen', 'Nouvelle Zélande|États-Unis|Royaume-Uni', '8.7', '179', '2', '926.0', 'tt0167261', 'https://image.tmdb.org/t/p/w200/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg'),
-(12, 'Fight Club', '1999', 'Drame', 'David Fincher', 'Brad Pitt|Edward Norton', 'États-Unis|Allemagne', '8.8', '139', '0', '100.9', 'tt0137523', 'https://image.tmdb.org/t/p/w200/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg'),
-(13, 'Forrest Gump', '1994', 'Drame|Romance', 'Robert Zemeckis', 'Tom Hanks|Robin Wright', 'États-Unis', '8.8', '142', '6', '678.2', 'tt0109830', 'https://image.tmdb.org/t/p/w200/saHP97rTPS5eLmrLQEcANmKrsFl.jpg'),
-(14, 'The Matrix', '1999', 'Action|Science Fiction', 'Lana Wachowski|Lilly Wachowski', 'Keanu Reeves|Laurence Fishburne', 'États-Unis|Australie', '8.7', '136', '4', '466.3', 'tt0133093', 'https://image.tmdb.org/t/p/w200/p96dm7sCMn4VYAStA6siNz30G1r.jpg'),
-(15, 'Goodfellas', '1990', 'Biographie|Crime|Drame', 'Martin Scorsese', 'Ray Liotta|Robert De Niro', 'États-Unis', '8.7', '146', '1', '47.0', 'tt0099685', 'https://image.tmdb.org/t/p/w200/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg'),
-(16, 'One Flew Over the Cuckoo\'s Nest', '1975', 'Drame', 'Miloš Forman', 'Jack Nicholson|Louise Fletcher', 'États-Unis|Royaume-Uni', '8.7', '133', '5', '162.0', 'tt0073486', 'https://image.tmdb.org/t/p/w200/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg'),
-(17, 'Se7en', '1995', 'Crime|Drame|Mystère', 'David Fincher', 'Morgan Freeman|Brad Pitt', 'États-Unis', '8.6', '127', '0', '327.3', 'tt0114369', 'https://image.tmdb.org/t/p/w200/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg'),
-(18, 'Seven Samurai', '1954', 'Action|Drame', 'Akira Kurosawa', 'Toshirō Mifune|Takashi Shimura', 'Japon', '8.6', '207', '0', '0.0', 'tt0047478', 'https://image.tmdb.org/t/p/w200/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg'),
-(19, 'City of God', '2002', 'Crime|Drame', 'Fernando Meirelles|Kátia Lund', 'Alexandre Rodrigues|Leandro Firmino', 'Brésil', '8.6', '130', '0', '30.6', 'tt0317248', 'https://image.tmdb.org/t/p/w200/k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg'),
-(20, 'Life Is Beautiful', '1997', 'Comedie|Drame|Romance', 'Roberto Benigni', 'Roberto Benigni|Nicoletta Braschi', 'Italie', '8.6', '116', '3', '229.1', 'tt0118799', 'https://image.tmdb.org/t/p/w200/mfnkSeeVOBVheuyn2lo4tfmOPQb.jpg'),
-(21, 'The Silence of the Lambs', '1991', 'Crime|Drame|Thriller', 'Jonathan Demme', 'Jodie Foster|Anthony Hopkins', 'États-Unis', '8.6', '118', '5', '272.7', 'tt0102926', 'https://image.tmdb.org/t/p/w200/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg'),
-(22, 'It\'s a Wonderful Life', '1946', 'Drame|Fantaisie|Famille', 'Frank Capra', 'James Stewart|Donna Reed', 'États-Unis', '8.6', '130', '0', '3.3', 'tt0038650', 'https://image.tmdb.org/t/p/w200/mV3VcmMJN6Zwahj42dy9WwPUyRI.jpg'),
-(23, 'The Usual Suspects', '1995', 'Crime|Mystère|Thriller', 'Bryan Singer', 'Kevin Spacey|Gabriel Byrne', 'États-Unis|Allemagne', '8.5', '106', '2', '66.8', 'tt0114814', 'https://image.tmdb.org/t/p/w200/99X2SgyFunJFXGAYnDv3sb9pnUD.jpg'),
-(24, 'Léon: The Professional', '1994', 'Action|Crime|Drame', 'Luc Besson', 'Jean Reno|Natalie Portman', 'France|États-Unis', '8.5', '110', '0', '', 'tt0110413', 'https://image.tmdb.org/t/p/w200/bxB2q91nKYp8JNzqE7t7TWBVupB.jpg'),
-(25, 'Spirited Away', '2001', 'Animation|Aventure|Famille', 'Hayao Miyazaki', 'Rumi Hiiragi|Miyu Irino', 'Japon', '8.6', '125', '1', '355.5', 'tt0245429', 'https://image.tmdb.org/t/p/w200/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg'),
-(26, 'Saving Private Ryan', '1998', 'Drame|Histoire|Guerre', 'Steven Spielberg', 'Tom Hanks|Matt Damon', 'États-Unis', '8.6', '169', '5', '481.8', 'tt0120815', 'https://image.tmdb.org/t/p/w200/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg'),
-(27, 'The Green Mile', '1999', 'Crime|Drame|Fantaisie', 'Frank Darabont', 'Tom Hanks|Michael Clarke Duncan', 'États-Unis', '8.6', '189', '0', '286.8', 'tt0120689', 'https://image.tmdb.org/t/p/w200/o0lO84GI7qrG6XFvtsPOSV7CTNa.jpg'),
-(28, 'Parasite', '2019', 'Comedie|Drame|Thriller', 'Bong Joon Ho', 'Song Kang-ho|Cho Yeo-jeong', 'Corée du sud', '8.6', '132', '4', '258.8', 'tt6751668', 'https://image.tmdb.org/t/p/w200/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg'),
-(29, 'Interstellar', '2014', 'Aventure|Drame|Science Fiction', 'Christopher Nolan', 'Matthew McConaughey|Anne Hathaway', 'États-Unis|Royaume-Uni', '8.6', '169', '1', '677.5', 'tt0816692', 'https://image.tmdb.org/t/p/w200/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg'),
-(30, 'American History X', '1998', 'Crime|Drame', 'Tony Kaye', 'Edward Norton|Edward Furlong', 'États-Unis', '8.5', '119', '0', '23.9', 'tt0120586', 'https://image.tmdb.org/t/p/w200/x2drgoXYZ8484lqyDj7L1CEVR4T.jpg'),
-(31, 'City Lights', '1931', 'Comedie|Drame|Romance', 'Charlie Chaplin', 'Charlie Chaplin|Virginia Cherrill', 'États-Unis', '8.5', '87', '0', '4.3', 'tt0021749', 'https://image.tmdb.org/t/p/w200/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg'),
-(32, 'The Lion King', '1994', 'Animation|Aventure|Drame', 'Roger Allers|Rob Minkoff', 'Matthew Broderick|Jeremy Irons', 'États-Unis', '8.5', '88', '2', '968.5', 'tt0110357', 'https://image.tmdb.org/t/p/w200/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg'),
-(33, 'Back to the Future', '1985', 'Aventure|Comedie|Science Fiction', 'Robert Zemeckis', 'Michael J. Fox|Christopher Lloyd', 'États-Unis', '8.5', '116', '1', '388.8', 'tt0088763', 'https://image.tmdb.org/t/p/w200/vN5B5WgYscRGcQpVhHl6p9DDTP0.jpg'),
-(34, 'Terminator 2: Judgment Day', '1991', 'Action|Science Fiction', 'James Cameron', 'Arnold Schwarzenegger|Linda Hamilton', 'États-Unis', '8.5', '137', '4', '520.9', 'tt0103064', 'https://image.tmdb.org/t/p/w200/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg'),
-(35, 'Modern Times', '1936', 'Comedie|Drame', 'Charlie Chaplin', 'Charlie Chaplin|Paulette Goddard', 'États-Unis', '8.5', '87', '0', '1.5', 'tt0027977', 'https://image.tmdb.org/t/p/w200/eqLVa5YQg5FmmDi3vbm46KgcPDq.jpg'),
-(36, 'Once Upon a Time in the West', '1968', 'Western', 'Sergio Leone', 'Henry Fonda|Claudia Cardinale', 'Italie|États-Unis', '8.5', '165', '0', '5.3', 'tt0064116', 'https://image.tmdb.org/t/p/w200/qbYgqOczabWNn2XKwgMtVrntD6P.jpg'),
-(37, 'Alien', '1979', 'Horreur|Science Fiction', 'Ridley Scott', 'Sigourney Weaver|Tom Skerritt', 'Royaume-Uni|États-Unis', '8.4', '117', '1', '104.9', 'tt0078748', 'https://image.tmdb.org/t/p/w200/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg'),
-(38, 'The Pianist', '2002', 'Biographie|Drame|Musique', 'Roman Polanski', 'Adrien Brody|Thomas Kretschmann', 'France|Pologne|Allemagne', '8.5', '150', '3', '120.1', 'tt0253474', 'https://image.tmdb.org/t/p/w200/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg'),
-(39, 'The Departed', '2006', 'Crime|Drame|Thriller', 'Martin Scorsese', 'Leonardo DiCaprio|Matt Damon', 'États-Unis', '8.5', '151', '4', '291.5', 'tt0407887', 'https://image.tmdb.org/t/p/w200/nT97ifVT2J1yMQmeq20Qblg61T.jpg'),
-(40, 'Gladiator', '2000', 'Action|Aventure|Drame', 'Ridley Scott', 'Russell Crowe|Joaquin Phoenix', 'États-Unis|Royaume-Uni', '8.5', '155', '5', '465.5', 'tt0172495', 'https://image.tmdb.org/t/p/w200/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg'),
-(41, 'Apocalypse Now', '1979', 'Drame|Guerre|Aventure', 'Francis Ford Coppola', 'Martin Sheen|Marlon Brando', 'États-Unis', '8.4', '147', '2', '', 'tt0078788', 'https://image.tmdb.org/t/p/w200/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg'),
-(42, 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb', '1964', 'Comedie|Satire', 'Stanley Kubrick', 'Peter Sellers|George C. Scott', 'Royaume-Uni|États-Unis', '8.4', '95', '0', '', 'tt0057012', 'https://image.tmdb.org/t/p/w200/7SixLzxcqezkZEYU8pcHZgbkmjp.jpg'),
-(43, 'The Great Dictator', '1940', 'Comedie|Drame|Satire', 'Charlie Chaplin', 'Charlie Chaplin|Paulette Goddard', 'États-Unis', '8.4', '125', '0', '', 'tt0032553', 'https://image.tmdb.org/t/p/w200/1QpO9wo7JWecZ4NiBuu625FiY1j.jpg'),
-(44, 'Memento', '2000', 'Crime|Mystère|Thriller', 'Christopher Nolan', 'Guy Pearce|Carrie-Anne Moss', 'États-Unis', '8.4', '113', '0', '39.7', 'tt0209144', 'https://image.tmdb.org/t/p/w200/fKTPH2WvH8nHTXeBYBVhawtRqtR.jpg'),
-(45, 'Rashomon', '1950', 'Drame|Mystère|Crime', 'Akira Kurosawa', 'Toshirō Mifune|Machiko Kyō', 'Japon', '8.2', '88', '0', '', 'tt0042876', 'https://image.tmdb.org/t/p/w200/vL7Xw04nFMHwnvXRFCmYYAzMUvY.jpg'),
-(46, 'Chinatown', '1974', 'Crime|Drame|Mystère', 'Roman Polanski', 'Jack Nicholson|Faye Dunaway', 'États-Unis', '8.2', '131', '1', '29.2', 'tt0071315', 'https://image.tmdb.org/t/p/w200/kZRSP3FmOcq0xnBulqpUQngJUXY.jpg'),
-(47, 'The Third Man', '1949', 'Film-Noir|Mystère', 'Carol Reed', 'Joseph Cotten|Orson Welles', 'Royaume-Uni', '8.1', '104', '1', '', 'tt0041959', 'https://image.tmdb.org/t/p/w200/rO2Fq0AZZx9obs52KJdx4mRE8p5.jpg'),
-(48, 'North by Northwest', '1959', 'Action|Aventure|Mystère', 'Alfred Hitchcock', 'Cary Grant|Eva Marie Saint', 'États-Unis', '8.3', '136', '0', '', 'tt0053125', 'https://image.tmdb.org/t/p/w200/kNOFPQrel9YFCVzI0DF8FnCEpCw.jpg'),
-(49, 'Vertigo', '1958', 'Drame|Mystère|Romance', 'Alfred Hitchcock', 'James Stewart|Kim Novak', 'États-Unis', '8.3', '128', '0', '7.3', 'tt0052357', 'https://image.tmdb.org/t/p/w200/15uOEfqBNTVtDUT7hGBVCka0rZz.jpg'),
-(50, 'The Apartment', '1960', 'Comedie|Drame|Romance', 'Billy Wilder', 'Jack Lemmon|Shirley MacLaine', 'États-Unis', '8.3', '125', '5', '24.6', 'tt0053604', 'https://image.tmdb.org/t/p/w200/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg'),
-(51, 'Rear Window', '1954', 'Crime|Drame|Mystère', 'Alfred Hitchcock', 'James Stewart|Grace Kelly', 'États-Unis', '8.5', '111', '0', '37.9', 'tt0047396', 'https://image.tmdb.org/t/p/w200/ILVF0eJxHMddjxeQhswFtpMtqx.jpg'),
-(52, 'A Clockwork Orange', '1971', 'Crime|Drame|Science Fiction', 'Stanley Kubrick', 'Malcolm McDowell|Patrick Magee', 'Royaume-Uni|États-Unis', '8.3', '136', '4', '114.0', 'tt0066921', 'https://image.tmdb.org/t/p/w200/4sHeTAp65WrSSuc05nRBKddhBxO.jpg'),
-(53, 'Blade Runner', '1982', 'Science Fiction|Thriller', 'Ridley Scott', 'Harrison Ford|Rutger Hauer', 'États-Unis', '8.2', '117', '2', '32.9', 'tt0083658', 'https://image.tmdb.org/t/p/w200/63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg'),
-(54, 'Taxi Driver', '1976', 'Crime|Drame|Thriller', 'Martin Scorsese', 'Robert De Niro|Jodie Foster', 'États-Unis', '8.3', '114', '1', '28.3', 'tt0075314', 'https://image.tmdb.org/t/p/w200/ekstpH614fwDX8DUln1a2Opz0N8.jpg'),
-(55, 'The Good, the Bad and the Ugly', '1966', 'Western', 'Sergio Leone', 'Clint Eastwood|Eli Wallach', 'Italie|Espagne|Allemagne', '8.8', '161', '0', '25.1', 'tt0060196', 'https://image.tmdb.org/t/p/w200/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg'),
-(56, 'The Graduate', '1967', 'Comedie|Drame|Romance', 'Mike Nichols', 'Dustin Hoffman|Anne Bancroft', 'États-Unis', '8.0', '106', '1', '104.9', 'tt0061722', 'https://image.tmdb.org/t/p/w200/z1Z1tZMR66RxcNeHbwoEhYeqOlP.jpg'),
-(57, 'Heat', '1995', 'Crime|Drame|Thriller', 'Michael Mann', 'Al Pacino|Robert De Niro', 'États-Unis', '8.2', '170', '0', '187.4', 'tt0113277', 'https://image.tmdb.org/t/p/w200/umSVjVdbVwtx5ryCA2QXL44Durm.jpg'),
-(58, 'Amélie', '2001', 'Comedie|Romance|Fantaisie', 'Jean-Pierre Jeunet', 'Audrey Tautou|Mathieu Kassovitz', 'France|Allemagne', '8.3', '122', '0', '174.2', 'tt0211915', 'https://image.tmdb.org/t/p/w200/vZ9NhNbQQ3yhtiC5sbhpy5KTXns.jpg'),
-(59, 'Pan\'s Labyrinth', '2006', 'Drame|Fantaisie|Guerre', 'Guillermo del Toro', 'Ivana Baquero|Sergi López', 'Espagne|Mexique', '8.2', '118', '3', '83.3', 'tt0457430', 'https://image.tmdb.org/t/p/w200/z7xXihu5wHuSMWymq5VAulPVuvg.jpg'),
-(60, 'The Social Network', '2010', 'Biographie|Drame', 'David Fincher', 'Jesse Eisenberg|Andrew Garfield', 'États-Unis', '7.7', '120', '3', '224.9', 'tt1285016', 'https://image.tmdb.org/t/p/w200/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg'),
-(61, 'The Breakfast Club', '1985', 'Comedie|Drame', 'John Hughes', 'Emilio Estevez|Anthony Michael Hall', 'États-Unis', '7.8', '97', '0', '51.5', 'tt0088847', 'https://image.tmdb.org/t/p/w200/wM9ErA8UVdcce5P4oefQinN8VVV.jpg'),
-(62, 'Raging Bull', '1980', 'Biographie|Drame|Sport', 'Martin Scorsese', 'Robert De Niro|Cathy Moriarty', 'États-Unis', '8.2', '129', '2', '23.4', 'tt0081398', 'https://image.tmdb.org/t/p/w200/1WV7WlTS8LI1L5NkCgjWT9GSW3O.jpg'),
-(63, 'The Princess Bride', '1987', 'Aventure|Famille|Fantaisie', 'Rob Reiner', 'Cary Elwes|Robin Wright', 'États-Unis', '8.1', '98', '0', '30.9', 'tt0093779', 'https://image.tmdb.org/t/p/w200/2FC9L9MrjBoGHYjYZjdWQdopVYb.jpg'),
-(64, 'Babylon', '1980', 'Drame', 'Unknown', 'Unknown', 'États-Unis', '', '', '0', '', 'tt0080406', 'https://image.tmdb.org/t/p/w200/sbh5cwdoZ5TPE4JDO0Z7HGLa4IX.jpg'),
-(65, 'The Big Lebowski', '1998', 'Comedie|Crime', 'Joel Coen|Ethan Coen', 'Jeff Bridges|John Goodman', 'États-Unis', '8.1', '117', '0', '46.7', 'tt0118715', 'https://image.tmdb.org/t/p/w200/9mprbw31MGdd66LR0AQKoDMoFRv.jpg'),
-(66, 'The Truman Show', '1998', 'Comedie|Drame|Science Fiction', 'Peter Weir', 'Jim Carrey|Ed Harris', 'États-Unis', '8.1', '103', '0', '264.1', 'tt0120382', 'https://image.tmdb.org/t/p/w200/vuza0WqY239yBXOadKlGwJsZJFE.jpg'),
-(67, 'The Handmaiden', '2016', 'Drame|Mystère|Romance', 'Park Chan-wook', 'Kim Min-hee|Kim Tae-ri', 'Corée du sud', '8.1', '145', '0', '38.3', 'tt4016934', 'https://image.tmdb.org/t/p/w200/dLlH4aNHdnmf62umnInL8xPlPzw.jpg'),
-(68, 'No Country for Old Men', '2007', 'Crime|Drame|Thriller', 'Joel Coen|Ethan Coen', 'Tommy Lee Jones|Javier Bardem', 'États-Unis', '8.1', '122', '4', '171.6', 'tt0477348', 'https://image.tmdb.org/t/p/w200/6d5XOczc226jECq0LIX0siKtgHR.jpg'),
-(69, 'There Will Be Blood', '2007', 'Drame', 'Paul Thomas Anderson', 'Daniel Day-Lewis|Paul Dano', 'États-Unis', '8.1', '158', '2', '76.2', 'tt0469494', 'https://image.tmdb.org/t/p/w200/fa0RDkAlCec0STeMNAhPaF89q6U.jpg'),
-(70, 'The Sting', '1973', 'Crime|Drame|Comedie', 'George Roy Hill', 'Paul Newman|Robert Redford', 'États-Unis', '8.3', '129', '7', '159.3', 'tt0070735', 'https://image.tmdb.org/t/p/w200/4VdQopZb0lx13Me3yxE5rUXMGCI.jpg'),
-(71, 'The Third Man', '1949', 'Film-Noir|Mystère', 'Carol Reed', 'Joseph Cotten|Orson Welles', 'Royaume-Uni', '8.0', '104', '1', '', 'tt0041959', 'https://image.tmdb.org/t/p/w600_and_h900_face/k0R968gZjXUTroDKa9nRdTjAXJW.jpg'),
-(72, 'The Great Escape', '1963', 'Aventure|Drame|Histoire', 'John Sturges', 'Steve McQueen|James Garner', 'Royaume-Uni|États-Unis', '8.2', '172', '0', '11.7', 'tt0057115', 'https://image.tmdb.org/t/p/w200/gBH4H8UMFxl139HaLz6lRuvsel8.jpg'),
-(73, 'The Bridge on the River Kwai', '1957', 'Aventure|Drame|Guerre', 'David Lean', 'William Holden|Alec Guinness', 'Royaume-Uni|États-Unis', '8.1', '161', '7', '30.6', 'tt0050212', 'https://image.tmdb.org/t/p/w200/7paXMt2e3Tr5dLmEZOGgFEn2Vo7.jpg'),
-(74, 'The Wizard of Oz', '1939', 'Aventure|Famille|Fantaisie', 'Victor Fleming', 'Judy Garland|Ray Bolger', 'États-Unis', '8.0', '101', '2', '400.0', 'tt0032138', 'https://image.tmdb.org/t/p/w200/pfAZFD7I2hxW9HCChTuAzsdE6UX.jpg'),
-(76, 'Paths of Glory', '1957', 'Drame|Guerre', 'Stanley Kubrick', 'Kirk Douglas|Adolphe Menjou', 'États-Unis', '8.4', '88', '0', '', 'tt0050825', 'https://image.tmdb.org/t/p/w200/hGg1UCQSHlXfv2HI9bDHT2OQBam.jpg'),
-(77, 'The Grapes of Wrath', '1940', 'Drame', 'John Ford', 'Henry Fonda|Jane Darwell', 'États-Unis', '8.1', '129', '2', '3.6', 'tt0032551', 'https://image.tmdb.org/t/p/w200/eUcxMVBIA0Jg8l1RGUqycrc3eIQ.jpg'),
-(78, 'My Neighbor Totoro', '1988', 'Animation|Famille|Fantaisie', 'Hayao Miyazaki', 'Hitoshi Takagi|Noriko Hidaka', 'Japon', '8.2', '86', '0', '45.2', 'tt0096283', 'https://image.tmdb.org/t/p/w200/rtGDOeG9LzoerkDGZF9dnVeLppL.jpg'),
-(80, 'Die Hard', '1988', 'Action|Thriller', 'John McTiernan', 'Bruce Willis|Alan Rickman', 'États-Unis', '8.2', '132', '0', '140.8', 'tt0095016', 'https://image.tmdb.org/t/p/w200/aJCpHDC6RoGz7d1Fzayl019xnxX.jpg'),
-(81, 'Oldboy', '2003', 'Action|Drame|Mystère', 'Park Chan-wook', 'Choi Min-sik|Yoo Ji-tae', 'Corée du sud', '8.4', '120', '0', '17.0', 'tt0364569', 'https://image.tmdb.org/t/p/w200/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg'),
-(82, 'Das Boot', '1981', 'Aventure|Drame|Thriller', 'Wolfgang Petersen', 'Jürgen Prochnow|Herbert Grönemeyer', 'Allemagne', '8.3', '149', '0', '11.7', 'tt0082096', 'https://image.tmdb.org/t/p/w200/u8FhQPncOAkwcei2OI9orPWhV6K.jpg'),
-(83, 'The Thing', '1982', 'Horreur|Science Fiction|Thriller', 'John Carpenter', 'Kurt Russell|Wilford Brimley', 'États-Unis', '8.1', '109', '0', '19.6', 'tt0084787', 'https://image.tmdb.org/t/p/w200/tzGY49kseSE9QAKk47uuDGwnSCu.jpg'),
-(84, 'The Seventh Seal', '1957', 'Drame|Fantaisie', 'Ingmar Bergman', 'Max von Sydow|Bengt Ekerot', 'Suède', '8.2', '96', '0', '', 'tt0050976', 'https://image.tmdb.org/t/p/w200/wcZ21zrOsy0b52AfAF50XpTiv75.jpg'),
-(85, 'Wild Strawberries', '1957', 'Drame', 'Ingmar Bergman', 'Victor Sjöström|Bibi Andersson', 'Suède', '8.0', '91', '0', '', 'tt0050986', 'https://image.tmdb.org/t/p/w200/iyTD2QnySNMPUPE3IedZQipSWfz.jpg'),
-(86, 'Ikiru', '1952', 'Drame', 'Akira Kurosawa', 'Takashi Shimura|Shinichi Himori', 'Japon', '8.1', '143', '0', '', 'tt0044741', 'https://image.tmdb.org/t/p/w200/dgNTS4EQDDVfkzJI5msKuHu2Ei3.jpg'),
-(87, 'On the Waterfront', '1954', 'Crime|Drame', 'Elia Kazan', 'Marlon Brando|Eva Marie Saint', 'États-Unis', '8.1', '108', '8', '9.6', 'tt0047296', 'https://image.tmdb.org/t/p/w200/fKjLZy9W8VxMOp5OoyWojmLVCQw.jpg'),
-(88, 'Sunset Boulevard', '1950', 'Drame|Film-Noir', 'Billy Wilder', 'Gloria Swanson|William Holden', 'États-Unis', '8.4', '110', '3', '5.3', 'tt0043014', 'https://image.tmdb.org/t/p/w200/oOZIN0sbRNLKQC4RRCQnmAx1PlV.jpg'),
-(89, 'Rebecca', '1940', 'Drame|Mystère|Romance', 'Alfred Hitchcock', 'Laurence Olivier|Joan Fontaine', 'Royaume-Uni|États-Unis', '8.1', '130', '2', '6.0', 'tt0032976', 'https://image.tmdb.org/t/p/w200/1qz3qUOHnVy7dL7M7G8jSErxE4b.jpg'),
-(90, 'The Maltese Falcon', '1941', 'Crime|Film-Noir|Mystère', 'John Huston', 'Humphrey Bogart|Mary Astor', 'États-Unis', '8.0', '101', '0', '1.8', 'tt0033870', 'https://image.tmdb.org/t/p/w200/bf4o6Uzw5wqLjdKwRuiDrN1xyvl.jpg'),
-(91, 'Touch of Evil', '1958', 'Crime|Drame|Film-Noir', 'Orson Welles', 'Charlton Heston|Orson Welles', 'États-Unis', '8.0', '95', '0', '', 'tt0052311', 'https://image.tmdb.org/t/p/w200/1pvRgmfBaoMczIJBOi9gCOZ4FMC.jpg'),
-(93, 'The Exorcist', '1973', 'Horreur', 'William Friedkin', 'Ellen Burstyn|Linda Blair', 'États-Unis', '8.0', '122', '2', '441.3', 'tt0070047', 'https://image.tmdb.org/t/p/w200/5x0CeVHJI8tcDx8tUUwYHQSNILq.jpg'),
-(94, 'The Shining', '1980', 'Horreur|Drame|Mystère', 'Stanley Kubrick', 'Jack Nicholson|Shelley Duvall', 'Royaume-Uni|États-Unis', '8.4', '146', '0', '47.3', 'tt0081505', 'https://image.tmdb.org/t/p/w200/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg'),
-(95, 'Citizen Kane', '1941', 'Drame|Mystère', 'Orson Welles', 'Orson Welles|Joseph Cotten', 'États-Unis', '8.3', '119', '1', '1.6', 'tt0033467', 'https://image.tmdb.org/t/p/w200/sav0jxhqiH0bPr2vZFU0Kjt2nZL.jpg'),
-(96, 'Lawrence of Arabia', '1962', 'Aventure|Biographie|Drame', 'David Lean', 'Peter O\'Toole|Omar Sharif', 'Royaume-Uni', '8.3', '222', '7', '70.0', 'tt0056172', 'https://image.tmdb.org/t/p/w200/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg'),
-(97, 'The Bridge on the River Kwai', '1957', 'Aventure|Drame|Guerre', 'David Lean', 'William Holden|Alec Guinness', 'Royaume-Uni|États-Unis', '8.1', '161', '7', '30.6', 'tt0050212', 'https://image.tmdb.org/t/p/w200/7paXMt2e3Tr5dLmEZOGgFEn2Vo7.jpg'),
-(98, 'Double Indemnity', '1944', 'Crime|Drame|Film-Noir', 'Billy Wilder', 'Fred MacMurray|Barbara Stanwyck', 'États-Unis', '8.0', '107', '0', '5.7', 'tt0036775', 'https://image.tmdb.org/t/p/w200/rVNYZZgfhwqVMMWlBmxOfWqnwCj.jpg'),
-(99, 'Annie Hall', '1977', 'Comedie|Romance', 'Woody Allen', 'Woody Allen|Diane Keaton', 'États-Unis', '8.0', '93', '4', '38.3', 'tt0075686', 'https://image.tmdb.org/t/p/w200/gBo4G0p8iVS998aYvXS656jbsH2.jpg'),
-(100, 'Some Like It Hot', '1959', 'Comedie|Romance', 'Billy Wilder', 'Marilyn Monroe|Tony Curtis', 'États-Unis', '8.2', '121', '1', '25.0', 'tt0053291', 'https://image.tmdb.org/t/p/w200/hVIKyTK13AvOGv7ICmJjK44DTzp.jpg');
+INSERT INTO `films` (`id_Film`, `titre`, `annee`, `classementIMDB`, `duree`, `oscarGagne`, `boxOffice`, `IdIMDB`, `affiche`, `synopsis`, `bande_annonce`, `id_prix`, `id_pays`, `id_realisateur`) VALUES
+(1, 'Les Évadés', '1994', '9.3', '142', '0', '58.0', 'tt0111161', 'https://image.tmdb.org/t/p/w200/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg', 'En 1947, Andy Dufresne, un jeune banquier, est condamné à la prison à vie pour le meurtre de sa femme et de son amant. Ayant beau clamer son innocence, il est emprisonné à Shawshank, le pénitencier le plus sévère de l\'État du Maine. Il y fait la rencontre de Red, un noir désabusé, détenu depuis vingt ans. Commence alors une grande histoire d\'amitié entre les deux hommes…', 'https://www.youtube.com/watch?v=UIzBz2hYnwc', 3, 1, 1),
+(2, 'Le Parrain', '1972', '9.2', '175', '3', '246.1', 'tt0068646', 'https://image.tmdb.org/t/p/w200/3bhkrj58Vtu7enYsRolD1fZdja1.jpg', 'La Seconde Guerre mondiale vient de s\'achever. À New York, le « parrain » Don Corleone, l\'un des chefs respectés de la mafia, se sent vieillir. Il refuse de s\'adapter à son temps et de se lancer, comme ses pairs, dans le trafic de drogue. Une frilosité qui entrave la bonne marche des affaires des autres « familles » et qui lui vaut d\'être la cible d\'un attentat. Don Corleone survit à ses blessures, mais reste très diminué. Mike, son plus jeune fils, qui jusque-là se tenait à l\'écart des affaires de son père, devient le plus dévoué de ses héritiers. Plus efficace que ses frères, Sonny et Fredo, il venge son père et organise l\'élimination de ses adversaires…', 'https://www.youtube.com/watch?v=bmtuIhesQWA', 1, 1, 2),
+(3, 'The Dark Knight : Le Chevalier noir', '2008', '9.0', '152', '2', '1004.9', 'tt0468569', 'https://image.tmdb.org/t/p/w200/qJ2tW6WMUDux911r6m7haRef0WH.jpg', 'Batman aborde une phase décisive de sa guerre contre le crime à Gotham City. Avec l\'aide du lieutenant de police Jim Gordon et du nouveau procureur Harvey Dent, il entreprend de démanteler les dernières organisations criminelles qui infestent les rues de la ville. L\'association s\'avère efficace, mais le trio se heurte bientôt à un nouveau génie du crime qui répand la terreur et le chaos dans Gotham : le Joker. On ne sait pas d\'où il vient ni qui il est. Ce criminel possède une intelligence redoutable doublé d\'un humour sordide et n\'hésite pas à s\'attaquer à la pègre locale dans le seul but de semer le chaos.', 'https://www.youtube.com/watch?v=XGqgxGBn7Qw', 4, 1, 3),
+(4, 'Le Parrain, 2e partie', '1974', '9.0', '202', '6', '48.5', 'tt0071562', 'https://image.tmdb.org/t/p/w200/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg', 'Depuis la mort de Don Vito Corleone, son fils Michael règne sur la famille. Amené à négocier avec la mafia juive, il perd alors le soutien d\'un de ses lieutenants, Frankie Pentageli. Échappant de justesse à un attentat, Michael tente de retrouver le coupable, soupçonnant Hyman Roth, le chef de la mafia juive. Vito Corleone, immigrant italien, arrive à New York au début du siècle ; très vite, il devient un des caïds du quartier, utilisant la violence comme moyen de régler toutes les affaires. Seul au départ, il bâtit peu à peu un véritable empire, origine de la fortune de la famille des Corleone.', 'https://www.youtube.com/watch?v=OA1ij0alE0w', 1, 1, 2),
+(5, '12 Hommes en colère', '1957', '9.0', '96', '0', '1.0', 'tt0050083', 'https://image.tmdb.org/t/p/w200/ow3wq89wM8qd5X7hWKxiRfsFf9C.jpg', 'Un jeune homme d\'origine modeste est accusé du meurtre de son père et risque la peine de mort. Le jury composé de douze hommes se retire pour délibérer et procède immédiatement à un vote : onze votent coupable, or la décision doit être prise à l\'unanimité. Le juré qui a voté non-coupable, sommé de se justifier, explique qu\'il a un doute et que la vie d\'un homme mérite quelques heures de discussion. Il s\'emploie alors à les convaincre un par un.', NULL, 1, 1, 4),
+(6, 'Le Seigneur des anneaux : Le Retour du roi', '2003', '8.9', '201', '11', '1119.9', 'tt0167260', 'https://image.tmdb.org/t/p/w200/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg', 'La bataille pour la Terre du Milieu a commencé. Frodon et Sam, guidés par Gollum, poursuivent leur mission à travers les terres du Mordor pour détruire l\'Anneau Unique. Tandis que le pouvoir de Sauron grandit, Aragorn, l\'héritier du trône du Gondor, rassemble l\'armée des Hommes contre les forces du Mal, afin de laisser une chance au porteur de l\'Anneau d\'accomplir sa quête…', 'https://www.youtube.com/watch?v=HQRTu6kgvmU', 4, 2, 5),
+(7, 'La Liste de Schindler', '1993', '8.9', '195', '7', '322.1', 'tt0108052', 'https://image.tmdb.org/t/p/w200/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg', 'Évocation des années de guerre d’Oskar Schindler, fils d’industriel d’origine autrichienne rentré à Cracovie en 1939 avec les troupes allemandes. Il va, tout au long de la guerre, protéger des juifs en les faisant travailler dans sa fabrique et en 1944 sauver 800 hommes et 300 femmes du camp d’extermination d’Auschwitz‐Birkenau.', 'https://www.youtube.com/watch?v=XIXfYHwA-BI', 3, 1, 6),
+(8, 'Le Seigneur des anneaux : La Communauté de l\'anneau', '2001', '8.8', '178', '4', '871.5', 'tt0120737', 'https://image.tmdb.org/t/p/w200/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg', 'Le jeune hobbit Frodon Sacquet hérite d\'un anneau. Il s\'agit de l\'Anneau Unique, instrument de pouvoir absolu qui permettrait à Sauron, de régner sur la Terre du Milieu et de réduire en esclavage ses peuples… À moins que Frodon et ses fidèles compagnons ne parviennent à emporter l\'Anneau jusqu\'en Mordor, lieu où il a été forgé, et à le détruire pour toujours…', 'https://www.youtube.com/watch?v=uEMJ_yr4x0w', 4, 2, 5),
+(9, 'Inception', '2010', '8.8', '148', '4', '836.8', 'tt1375666', 'https://image.tmdb.org/t/p/w200/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg', 'Dom Cobb est un voleur expérimenté, le meilleur dans l\'art dangereux de l\'extraction, voler les secrets les plus intimes enfouis au plus profond du subconscient durant une phase de rêve, lorsque l\'esprit est le plus vulnérable. Les capacités de Cobb ont fait des envieux dans le monde tourmenté de l\'espionnage industriel alors qu\'il devient fugitif en perdant tout ce qu\'il a un jour aimé. Une chance de se racheter lui est alors offerte. Une ultime mission grâce à laquelle il pourrait retrouver sa vie passée mais uniquement s\'il parvient à accomplir l\'impossible inception.', 'https://www.youtube.com/watch?v=9aijfXkbkXg', 4, 1, 3),
+(10, 'L\'Empire contre-attaque', '1980', '8.7', '124', '0', '538.4', 'tt0080684', 'https://image.tmdb.org/t/p/w200/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg', 'Malgré la destruction de l’Étoile Noire, l\'Empire maintient son emprise sur la galaxie, et poursuit sans relâche sa lutte contre l\'Alliance rebelle. Basés sur la planète glacée de Hoth, les rebelles essuient un assaut des troupes impériales. Parvenus à s\'échapper, la princesse Leia, Han Solo, Chewbacca et C-3P0 se dirigent vers Bespin, la cité des nuages gouvernée par Lando Calrissian, ancien compagnon de Han. Suivant les instructions d\'Obi-Wan Kenobi, Luke Skywalker se rend quant à lui vers le système de Dagobah, planète marécageuse où il doit recevoir l\'enseignement du dernier maître Jedi, Yoda. Apprenant l\'arrestation de ses compagnons par les stormtroopers de Dark Vador après la trahison de Lando, Luke décide d\'interrompre son entraînement pour porter secours à ses amis et affronter le sombre seigneur Sith...', 'https://www.youtube.com/watch?v=mdrcnZNXmTM', 1, 1, 7),
+(11, 'Le Seigneur des anneaux : Les Deux Tours', '2002', '8.7', '179', '2', '926.0', 'tt0167261', 'https://image.tmdb.org/t/p/w200/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg', 'La Communauté est dissoute, mais la quête pour détruire l\'Anneau Unique se poursuit. Accompagné par son fidèle Sam et guidé par l\'étrange Gollum, Frodon cherche un moyen d\'entrer en Mordor. Alors que l\'armée de Saroumane se met en marche, les autres compagnons de la Communauté se préparent à la bataille. La Guerre de l\'Anneau a commencé !', 'https://www.youtube.com/watch?v=wqMsK0KyZi8', 4, 2, 5),
+(12, 'Fight Club', '1999', '8.8', '139', '0', '100.9', 'tt0137523', 'https://image.tmdb.org/t/p/w200/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg', 'Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux‐repas pour une personne comme beaucoup d’autres personnes seules qui connaissent la misère humaine, morale et sexuelle. C’est pourquoi il va devenir membre du Fight club, un lieu clandestin où il va pouvoir retrouver sa virilité, l’échange et la communication. Ce club est dirigé par Tyler Durden, une sorte d’anarchiste entre gourou et philosophe qui prêche l’amour de son prochain.', 'https://www.youtube.com/watch?v=tZpXdiB_pg0', 3, 1, 8),
+(13, 'Forrest Gump', '1994', '8.8', '142', '6', '678.2', 'tt0109830', 'https://image.tmdb.org/t/p/w200/saHP97rTPS5eLmrLQEcANmKrsFl.jpg', 'À Savannah, État de Géorgie, Forrest Gump, assis sur un banc public, livre à qui veut l’entendre, l’étrange récit de sa vie mouvementée sur trois décennies. Il naît dans un bourg de l’Alabama, affecté d’un quotient intellectuel inférieur à la moyenne et d’une paralysie partielle des jambes. Souvent raillé à l’école, le jeune Forrest se lie d’amitié avec Jenny. Propulsé de l\'état d\'handicapé physique à celui de vedette du football, de héros du Vietnam au roi de la crevette, des honneurs de la Maison Blanche au bonheur d\'une histoire d\'amour, Forrest est le symbole d\'une époque, un candide dans une Amérique qui a perdu son innocence.', 'https://www.youtube.com/watch?v=GRe3ZsXAZE4', 3, 1, 9),
+(14, 'Matrix', '1999', '8.7', '136', '4', '466.3', 'tt0133093', 'https://image.tmdb.org/t/p/w200/p96dm7sCMn4VYAStA6siNz30G1r.jpg', 'Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l\'un des pirates les plus recherchés du cyber‐espace. À cheval entre deux mondes, Neo est assailli par d\'étranges songes et des messages cryptés provenant d\'un certain Morpheus. Celui‐ci l\'exhorte à aller au‐delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu\'est‐ce que la Matrice ? Nul ne le sait, et aucun homme n\'est encore parvenu à en percer les défenses. Mais Morpheus est persuadé que Neo est l\'Élu, le libérateur mythique de l\'humanité annoncé selon la prophétie. Ensemble, ils se lancent dans une lutte sans retour contre la Matrice et ses terribles agents…', 'https://www.youtube.com/watch?v=8xx91zoASLY', 3, 1, 10),
+(15, 'Les Affranchis', '1990', '8.7', '146', '1', '47.0', 'tt0099685', 'https://image.tmdb.org/t/p/w200/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg', 'Brooklyn, dans les années 50. Depuis l\'enfance, le jeune Henry Hill rêve de devenir gangster. À 16 ans, il se met en selle auprès de Paul Cicero, un caïd local, et commet ses premiers délits. Arrêté et interrogé, il refuse de parler et gagne ainsi le respect du milieu. À sa sortie de prison, il fait la connaissance de James Conway et de Tommy DeVito, deux truands d\'une extrême violence, et se lance avec eux dans des trafics de grande envergure. Karen, une jeune bourgeoise qu\'il courtise et finit par épouser, ne devine sa profession qu\'après être passée devant l\'officier d\'état-civil. Grisé par le succès, Henry multiplie les coups les plus audacieux…', 'https://www.youtube.com/watch?v=xLF-OuPZU04', 2, 1, 11),
+(16, 'Vol au-dessus d\'un nid de coucou', '1975', '8.7', '133', '5', '162.0', 'tt0073486', 'https://image.tmdb.org/t/p/w200/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg', 'Randle P. McMurphy se fait interner pour échapper à la prison. Il va être touché par la détresse et la solitude des patients. Très rapidement, il comprend que l’infirmière en chef, Mlle Ratched, a imposé des règles strictes et entend bien les faire respecter. Il décide alors de révolutionner ce petit monde, plutôt au départ par jeu.', 'https://www.youtube.com/watch?v=LQEYisXqdg8', 1, 1, 12),
+(17, 'Seven', '1995', '8.6', '127', '0', '327.3', 'tt0114369', 'https://image.tmdb.org/t/p/w200/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg', 'À New York, un criminel anonyme a décidé de commettre 7 meurtres basés sur les 7 pêchés capitaux énoncés dans la Bible : gourmandise, avarice, paresse, orgueil, luxure, envie et colère. Vieux flic blasé à 7 jours de la retraite, l\'inspecteur Somerset mène l\'enquête tout en formant son remplaçant, l\'ambitieux inspecteur David Mills…', 'https://www.youtube.com/watch?v=X4SAjaHFeDw', 3, 1, 8),
+(18, 'Les Sept Samouraïs', '1954', '8.6', '207', '0', '0.0', 'tt0047478', 'https://image.tmdb.org/t/p/w200/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg', 'Au XVIe siècle, au Japon, des paysans décident d\'embaucher des samouraïs pour protéger leur village, et en trouvent sept. Ces hommes organisent la défense du village contre quarante brigands.', 'https://www.youtube.com/watch?v=KJmVK4EUbgU', 1, 3, 13),
+(19, 'La Cité de Dieu', '2002', '8.6', '130', '0', '30.6', 'tt0317248', 'https://image.tmdb.org/t/p/w200/k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg', 'Dans une favela qui a vu le jour à Rio de Janeiro dans les années soixante, Fusée est un gamin noir, pauvre, trop fragile pour devenir hors-la-loi, mais assez malin pour ne pas se contenter d\'un travail sous payé. Il grandit dans un environnement violent, mais tente de voir la réalité autrement, avec l\'œil d\'un artiste. Il rêve de devenir photographe professionnel. Petit Dé, un enfant de onze ans, emménage dans la Cité. Il souhaite pour sa part devenir le plus grand criminel de Rio et commence son apprentissage en rendant de menus services à la pègre locale. Il admire Tignasse et son gang, qui arraisonnent les camions et cambriolent à tout va. Tignasse donne à Petit Dé l\'occasion de commettre un meurtre, le premier d\'une longue série…', 'https://www.youtube.com/watch?v=AVQx4cfyiE4', 4, 4, 14),
+(20, 'La vie est belle', '1997', '8.6', '116', '3', '229.1', 'tt0118799', 'https://image.tmdb.org/t/p/w200/mfnkSeeVOBVheuyn2lo4tfmOPQb.jpg', 'En 1938, Guido, jeune homme plein de gaieté, rêve d\'ouvrir une librairie, malgré les tracasseries de l\'administration fasciste. Il tombe amoureux de Dora, institutrice étouffée par le conformisme familial et l\'enlève le jour de ses fiançailles avec un bureaucrate du régime. Cinq ans plus tard, Guido et Dora ont un fils : Giosue. Mais les lois raciales sont entrées en vigueur et Guido est juif. Il est alors déporté avec son fils. Par amour pour eux, Dora monte de son plein gré dans le train qui les emmène aux camps de la mort où Guido va tout faire pour éviter l\'horreur à son fils…', 'https://www.youtube.com/watch?v=hpFw2adhiHs', 3, 5, 15),
+(21, 'Le Silence des agneaux', '1991', '8.6', '118', '5', '272.7', 'tt0102926', 'https://image.tmdb.org/t/p/w200/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg', 'Un psychopathe connu sous le nom de Buffalo Bill sème la terreur dans le Middle West en kidnappant et en assassinant de jeunes femmes. Clarice Starling, une jeune stagiaire du FBI, est chargée d’interroger l’ex‐psychiatre Hannibal Lecter. Psychopathe redoutablement intelligent et porté sur le cannibalisme, Lecter est capable de lui fournir des informations concernant Buffalo Bill ainsi que son portrait psychologique. Mais il n’accepte de l’aider qu’en échange d’informations sur la vie privée de la jeune femme. Entre eux s’établit un lien de fascination et de répulsion.', 'https://www.youtube.com/watch?v=mWEt6upb8f0', 3, 1, 16),
+(22, 'La vie est belle', '1946', '8.6', '130', '0', '3.3', 'tt0038650', 'https://image.tmdb.org/t/p/w200/mV3VcmMJN6Zwahj42dy9WwPUyRI.jpg', 'Bedford Falls, petite ville de l\'État de New York, la veille de Noël. De chaque foyer s\'élève une prière. Les paroles murmurées avec ferveur concernent toutes le même homme – George Bailey –, qu\'elles proviennent de la bouche de son épouse, de ses enfants, de ses amis et collègues… et de manière générale de tous ceux qui tiennent à lui. Les prières vont être exaucées et Clarence, un ange sans ailes est envoyé au secours de George afin de gagner ses ailes. Avec lui, nous revivons les années écoulées dans la vie de George. Ayant renoncé à son rêve d\'enfant de devenir explorateur, pour reprendre la banque de son père, il a toujours consacré son énergie et son argent à l\'amélioration des conditions de vie des habitants de la ville, en luttant contre le désir de puissance d\'un homme d\'affaires sans scrupules.', NULL, 1, 1, 17),
+(23, 'Usual Suspects', '1995', '8.5', '106', '2', '66.8', 'tt0114814', 'https://image.tmdb.org/t/p/w200/99X2SgyFunJFXGAYnDv3sb9pnUD.jpg', 'Suspect numéro 1 dans une étrange affaire de hold-up, Verbal Kint est soumis à un interrogatoire par des agents fédéraux. Très vite, il dévoile aux policiers que le véritable cerveau de cette affaire n\'est autre que le redoutable criminel Keyser Soze, un être machiavélique possédant une intelligence hors du commun. Peu à peu, le suspect va dresser un portrait effrayant de ce criminel que personne n\'a jamais vu…', 'https://www.youtube.com/watch?v=3aKG_n3Jy4w', 3, 1, 18),
+(24, 'Léon', '1994', '8.5', '110', '0', '', 'tt0110413', 'https://image.tmdb.org/t/p/w200/bxB2q91nKYp8JNzqE7t7TWBVupB.jpg', 'Léon est un tueur professionnel redoutable et insaisissable. Il vit seul à New York avec sa plante verte et ses habitudes jusqu\'au jour où une petite Mathilda de douze ans sonne à sa porte et fait irruption dans sa vie.', 'https://www.youtube.com/watch?v=vSi5jdziv3I', 3, 6, 19),
+(25, 'Le Voyage de Chihiro', '2001', '8.6', '125', '1', '355.5', 'tt0245429', 'https://image.tmdb.org/t/p/w200/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg', 'Chihiro, 10 ans, a tout d’une petite fille capricieuse. Elle s’apprête à emménager avec ses parents dans une nouvelle demeure. Sur la route, la petite famille se retrouve face à un immense bâtiment rouge au centre duquel s’ouvre un long tunnel. De l’autre côté du passage se dresse une ville fantôme. Les parents découvrent dans un restaurant désert de nombreux mets succulents et ne tardent pas à se jeter dessus. Ils se retrouvent alors transformés en cochons. Prise de panique, Chihiro s’enfuit et se dématérialise progressivement. L’énigmatique Haku se charge de lui expliquer le fonctionnement de l’univers dans lequel elle vient de pénétrer. Pour sauver ses parents, la fillette va devoir faire face à la terrible sorcière Yubaba, qui arbore les traits d’une harpie méphistophélique.', 'https://www.youtube.com/watch?v=Tny3gaN7CIA', 4, 3, 20),
+(26, 'Il faut sauver le soldat Ryan', '1998', '8.6', '169', '5', '481.8', 'tt0120815', 'https://image.tmdb.org/t/p/w200/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg', 'Vue à travers le regard d’une escouade de soldats américains, l’histoire débute le jour du Débarquement au cours de la 2ème Guerre Mondiale, le long des plages de Normandie. Le capitaine John Miller a pour mission de retrouver le soldat James Ryan, dont les trois frères sont morts au combat et il s’expose ainsi à de nombreux risques. Confrontés à une situation périlleuse, les hommes discutent les ordres. Pourquoi huit hommes risqueraient-ils leur vie pour un seul homme ? Rattrapés par la brutalité de la guerre, chacun cherche sa propre réponse ainsi que la force de vaincre un futur incertain avec honneur, décence et courage.', 'https://www.youtube.com/watch?v=tMfsrRZxAHg', 3, 1, 6),
+(27, 'La Ligne verte', '1999', '8.6', '189', '0', '286.8', 'tt0120689', 'https://image.tmdb.org/t/p/w200/o0lO84GI7qrG6XFvtsPOSV7CTNa.jpg', 'Paul Edgecomb, pensionnaire centenaire d’une maison de retraite, est hanté par ses souvenirs. Gardien-chef du pénitencier de Cold Mountain en 1935, il était chargé de veiller au bon déroulement des exécutions des peines capitales, en s’efforçant d’adoucir les derniers moments des condamnés. Parmi eux, se trouvait un colosse du nom de John Coffey, accusé du viol et du meurtre de deux fillettes. Intrigué par cet homme candide et timide, aux dons magiques, Edgecomb va tisser avec lui des liens très forts.', 'https://www.youtube.com/watch?v=8mazN6qDxPk', 3, 1, 1),
+(28, 'Parasite', '2019', '8.6', '132', '4', '258.8', 'tt6751668', 'https://image.tmdb.org/t/p/w200/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg', 'Toute la famille de Ki-taek est au chômage. Elle s’intéresse particulièrement au train de vie de la richissime famille Park. Mais un incident se produit et les deux familles se retrouvent mêlées, sans le savoir, à une bien étrange histoire…', 'https://www.youtube.com/watch?v=_YD8WKEZaPo', 4, 7, 21),
+(29, 'Interstellar', '2014', '8.6', '169', '1', '677.5', 'tt0816692', 'https://image.tmdb.org/t/p/w200/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg', 'Dans un futur proche, face à une Terre exsangue, un groupe d’explorateurs utilise un vaisseau interstellaire pour franchir un trou de ver permettant de parcourir des distances jusque‐là infranchissables. Leur but : trouver un nouveau foyer pour l’humanité.', 'https://www.youtube.com/watch?v=kTGDxqUowq4', 4, 1, 3),
+(30, 'American History X', '1998', '8.5', '119', '0', '23.9', 'tt0120586', 'https://image.tmdb.org/t/p/w200/x2drgoXYZ8484lqyDj7L1CEVR4T.jpg', 'Derek, voulant venger la mort de son père, abattu par un dealer noir, a épousé les thèses racistes d’un groupuscule de militants d’extrême droite et s’est mis au service de son leader, brutal théoricien prônant la suprématie de la race blanche. Ces théories le mèneront à commettre un double meurtre entrainant son jeune frère, Danny, dans la spirale de la haine.', 'https://www.youtube.com/watch?v=GlOT1vpy9oM', 3, 1, 22),
+(31, 'Les Lumières de la ville', '1931', '8.5', '87', '0', '4.3', 'tt0021749', 'https://image.tmdb.org/t/p/w200/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg', 'Un vagabond s’éprend d’une belle et jeune vendeuse de fleurs aveugle qui vit avec sa mère, couverte de dettes. Suite à un quiproquo, la fleuriste s’imagine le misérable, qui vient de lui acheter une fleur, en milliardaire…', NULL, 1, 1, 23),
+(32, 'Le Roi lion', '1994', '8.5', '88', '2', '968.5', 'tt0110357', 'https://image.tmdb.org/t/p/w200/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg', 'Disney présente l\'histoire de Simba, un fougueux lionceau qui « voudrait déjà être roi ». Éloigné par son sombre et ambitieux oncle Scar, Simba profite de la vie avec ses drôles de compagnons Timon et Pumbaa, oubliant son rang et ses responsabilités. Mais son destin l\'appelle à rentrer auprès des siens et à reprendre sa place dans le Grand Cercle de la Vie.', 'https://www.youtube.com/watch?v=mOXKWZGjODE', 3, 1, 24),
+(33, 'Retour vers le futur', '1985', '8.5', '116', '1', '388.8', 'tt0088763', 'https://image.tmdb.org/t/p/w200/vN5B5WgYscRGcQpVhHl6p9DDTP0.jpg', 'En 1985, Marty, un adolescent comme les autres, mène une existence morne et ennuyeuse. Heureusement, il est épris de la jolie Jennifer et entretient une profonde amitié avec Doc, un savant fou qui prétend avoir inventé une machine à explorer le temps. Un jour, Doc invite Marty à l\'essayer…', 'https://www.youtube.com/watch?v=EQlZL05Bdio', 2, 1, 9),
+(34, 'Terminator 2 : Le Jugement dernier', '1991', '8.5', '137', '4', '520.9', 'tt0103064', 'https://image.tmdb.org/t/p/w200/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg', 'En 2029, après leur échec pour éliminer Sarah Connor, les robots de Skynet programment un nouveau Terminator, le T‐1000, pour retourner dans le passé et éliminer son fils John Connor, futur leader de la résistance humaine. Ce dernier programme un autre cyborg, le T‐800, et l’envoie également en 1995, pour le protéger. Une seule question déterminera le sort de l’humanité : laquelle des deux machines trouvera John la première ?', 'https://www.youtube.com/watch?v=yWF2_TCgsas', 3, 1, 25),
+(35, 'Les Temps Modernes', '1936', '8.5', '87', '0', '1.5', 'tt0027977', 'https://image.tmdb.org/t/p/w200/eqLVa5YQg5FmmDi3vbm46KgcPDq.jpg', 'Charlot est ouvrier dans une gigantesque usine. Il resserre quotidiennement des boulons. Mais les machines, le travail à la chaîne le rendent malade, il abandonne son poste, recueille une orpheline et vit d\'expédients. Le vagabond et la jeune fille vont s\'allier pour affronter ensemble les difficultés de la vie…', 'https://www.youtube.com/watch?v=gWsU67J-qUc', 1, 1, 23),
+(36, 'Il était une fois dans l\'Ouest', '1968', '8.5', '165', '0', '5.3', 'tt0064116', 'https://image.tmdb.org/t/p/w200/qbYgqOczabWNn2XKwgMtVrntD6P.jpg', 'Alors que les constructeurs de chemins de fer traversent sans relâche le désert de l\'Arizona en direction de la mer, Jill arrive dans la petite ville de Flagstone avec l\'intention de commencer une nouvelle vie.', 'https://www.youtube.com/watch?v=591ov1tj3EQ', 1, 5, 26),
+(37, 'Alien, le huitième passager', '1979', '8.4', '117', '1', '104.9', 'tt0078748', 'https://image.tmdb.org/t/p/w200/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg', 'En 2122, le Nostromo, vaisseau de commerce, fait route vers la Terre avec à son bord un équipage de sept personnes en hibernation et une cargaison de minerais. Il interrompt soudain sa course suite à la réception d’un mystérieux message provenant d’une planète inexplorée. Réveillé par l’ordinateur de bord, l’équipage se rend sur place et découvre les restes d’un gigantesque vaisseau extraterrestre dont le seul passager semble être mort dans d’étranges circonstances…', 'https://www.youtube.com/watch?v=j3CFj1R9HbQ', 1, 8, 27),
+(38, 'Le Pianiste', '2002', '8.5', '150', '3', '120.1', 'tt0253474', 'https://image.tmdb.org/t/p/w200/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg', 'Varsovie, au mois d’octobre 1939. Un jeune pianiste juif, Wladyslaw Szpilman, est enfermé dans le ghetto avec sa famille. Il assiste, impuissant, aux humiliations que subissent quotidiennement les siens. Grâce à une aide extérieure, il échappe de justesse à la déportation mais voit partir toute sa famille. Le jeune homme se cache alors dans les maisons vides et observe passivement les derniers habitants se révolter contre l’occupation allemande. Après avoir réussi à s’échapper miraculeusement, il se terre dans des quartiers détruits et tente de survivre, ce qui s’avère de plus en plus dur. C’est alors qu’il rencontre un nazi mélomane…', 'https://www.youtube.com/watch?v=QGMRmp6uYc8', 4, 6, 28),
+(39, 'Les Infiltrés', '2006', '8.5', '151', '4', '291.5', 'tt0407887', 'https://image.tmdb.org/t/p/w200/nT97ifVT2J1yMQmeq20Qblg61T.jpg', 'À Boston, une lutte sans merci oppose la police à la pègre irlandaise. Pour mettre fin au règne du parrain Frank Costello, la police infiltre son gang avec « un bleu » issu des bas quartiers, Billy Costigan. Tandis que Billy s’efforce de gagner la confiance du malfrat vieillissant, Colin Sullivan entre dans la police au sein de l’Unité des Enquêtes Spéciales, chargée d’éliminer Costello. Mais Colin fonctionne en « sous‑marin » et informe Costello des opérations qui se trament contre lui. Risquant à tout moment d’être démasqués, Billy et Colin sont contraints de mener une double vie qui leur fait perdre leurs repères et leur identité. Traquenards et contre‑offensives s’enchaînent jusqu’au jour où chaque camp réalise qu’il héberge une taupe. Une course contre la montre s’engage entre les deux hommes avec un seul objectif : découvrir l’identité de l’autre sous peine d’y laisser sa peau…', 'https://www.youtube.com/watch?v=KHumQ6EIrgE', 4, 1, 11),
+(40, 'Gladiator', '2000', '8.5', '155', '5', '465.5', 'tt0172495', 'https://image.tmdb.org/t/p/w200/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg', 'Le général romain Maximus est le plus fidèle soutien de l\'empereur Marc Aurèle, qu\'il a conduit de victoire en victoire avec une bravoure et un dévouement exemplaires. Jaloux du prestige de Maximus, et plus encore de l\'amour que lui voue l\'empereur, le fils de Marc Aurèle, Commode, s\'arroge brutalement le pouvoir, puis ordonne l\'arrestation du général et son exécution. Maximus échappe à ses assassins mais ne peut empêcher le massacre de sa famille. Capturé par un marchand d\'esclaves, il devient gladiateur et prépare sa vengeance.', 'https://www.youtube.com/watch?v=Nz5CnNHnpO8', 3, 1, 27),
+(41, 'Apocalypse Now', '1979', '8.4', '147', '2', '', 'tt0078788', 'https://image.tmdb.org/t/p/w200/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg', 'Cloîtré dans une chambre d\'hôtel de Saïgon, le jeune capitaine Willard, mal rasé et imbibé d\'alcool, est sorti de sa prostration par une convocation de l\'état-major américain. Le général Corman lui confie une mission qui doit rester secrète : éliminer le colonel Kurtz, un militaire aux méthodes quelque peu expéditives et qui sévit au-delà de la frontière cambodgienne.', 'https://www.youtube.com/watch?v=jlg-RwbJuHw', 1, 1, 2),
+(42, 'Docteur Folamour', '1964', '8.4', '95', '0', '', 'tt0057012', 'https://image.tmdb.org/t/p/w200/7SixLzxcqezkZEYU8pcHZgbkmjp.jpg', 'Le général Jack Ripper, convaincu que les Russes ont décidé d\'empoisonner l\'eau potable des États-Unis, lance sur l\'URSS une offensive de bombardiers B-52 en ayant pris soin d\'isoler la base aérienne de Burpelson du reste du monde. Pendant ce temps, Muffley, le Président des États-Unis, convoque l\'état-major militaire dans la salle d\'opérations du Pentagone et tente de rétablir la situation.', 'https://www.youtube.com/watch?v=UvAd_dwKRwk', 1, 8, 29),
+(43, 'Le Dictateur', '1940', '8.4', '125', '0', '', 'tt0032553', 'https://image.tmdb.org/t/p/w200/1QpO9wo7JWecZ4NiBuu625FiY1j.jpg', 'Dans le ghetto juif vit un petit barbier qui ressemble énormément à Adenoid Hynkel, le dictateur de Tomania qui a décidé l\'extermination du peuple juif. Au cours d\'une rafle, le barbier est arrêté en compagnie de Schultz, un farouche adversaire d\'Hynkel…', 'https://www.youtube.com/watch?v=i2YinwcgpaA', 1, 1, 23),
+(44, 'Memento', '2000', '8.4', '113', '0', '39.7', 'tt0209144', 'https://image.tmdb.org/t/p/w200/fKTPH2WvH8nHTXeBYBVhawtRqtR.jpg', 'Leonard Shelby ne porte que des costumes de grands couturiers et ne se déplace qu’au volant de sa Jaguar. En revanche, il habite dans des motels miteux et règle ses notes avec d’épaisses liasses de billets. Leonard n’a qu’une idée en tête: traquer l’homme qui a violé et assassiné sa femme afin de se venger. Sa recherche du meurtrier est rendue plus difficile par le fait qu’il souffre d’une forme rare et incurable d’amnésie. Bien qu’il puisse se souvenir de détails de son passé, il est incapable de savoir ce qu’il a fait dans le quart d’heure précédent, où il se trouve, où il va et pourquoi. Pour ne jamais perdre son objectif de vue, il a structuré sa vie à l’aide de fiches, de notes, de photos, de tatouages sur le corps. C’est ce qui l’aide à garder contact avec sa mission, à retenir les informations et à garder une trace, une notion de l’espace et du temps.', 'https://www.youtube.com/watch?v=40wsa8zqSR4', 3, 1, 3),
+(45, 'Rashōmon', '1950', '8.2', '88', '0', '', 'tt0042876', 'https://image.tmdb.org/t/p/w200/vL7Xw04nFMHwnvXRFCmYYAzMUvY.jpg', 'Kyoto, au XIe siècle. Sous le portique d\'un vieux temple en ruines, Rashômon, trois hommes s\'abritent de la pluie. Les guerres et les famines font rage. Pourtant un jeune moine et un vieux bûcheron sont plus terrifiés encore par le procès auquel ils viennent d\'assister. Ils sont si troublés qu\'ils vont obliger le troisième voyageur à écouter le récit de ce procès : celui d\'un célèbre bandit accusé d\'avoir violé une jeune femme et tué son mari, un samouraï. Le drame a eu lieu dans la forêt à l\'orée de laquelle est situé le portique de Rashômon. L\'histoire est simple : Qui a tué le mari ? Le bandit Tajomaru, la femme, un bûcheron qui passait ou le mari lui-même qui se serait suicidé ? Autant d\'hypothèses vraisemblables. Mais les dépositions des témoins devant le tribunal apportent à chaque fois une version différente du drame, et la vérité ne percera qu\'après de nouvelles révélations surprenantes...', NULL, 1, 3, 13),
+(46, 'Chinatown', '1974', '8.2', '131', '1', '29.2', 'tt0071315', 'https://image.tmdb.org/t/p/w200/kZRSP3FmOcq0xnBulqpUQngJUXY.jpg', 'Gittes, détective privé, reçoit la visite de Mme Mulwray, qui lui demande de filer son mari, ingénieur des eaux à Los Angeles. Celui‐ci est retrouvé mort, noyé. Gittes s’obstine dans son enquête, malgré les menaces de tueurs professionnels.', NULL, 1, 1, 28),
+(47, 'Le Troisième Homme', '1949', '8.1', '104', '1', '', 'tt0041959', 'https://image.tmdb.org/t/p/w200/rO2Fq0AZZx9obs52KJdx4mRE8p5.jpg', 'Au lendemain de la Seconde Guerre mondiale. Invité par son ami Harry Lime, le romancier américain Holly Martins se rend à Vienne, divisée en quatre zones d\'occupation. Tout juste arrivé, il apprend que Lime vient de perdre la vie dans un accident de la circulation et qu\'on l\'enterre ce jour même. L\'écrivain n\'est pas au bout de ses surprises. Au cimetière, il est abordé par le major Calloway, pour qui Lime n\'était qu\'un vulgaire trafiquant, une crapule. Choqué, Martins décide de mener une enquête sur le défunt. Il fait bientôt la connaissance du mystérieux baron Kurtz, l\'un des deux témoins de l\'accident, l\'autre étant un Roumain du nom de Popescu… Palme d\'Or 1949.', NULL, 1, 8, 30),
+(48, 'La Mort aux trousses', '1959', '8.3', '136', '0', '', 'tt0053125', 'https://image.tmdb.org/t/p/w200/kNOFPQrel9YFCVzI0DF8FnCEpCw.jpg', 'Patron d’une société de publicité new-yorkaise, Roger Thornhill a un rendez-vous d\'affaires au Plaza Hotel. Mais il y est enlevé à la suite d\'un malentendu : ses ravisseurs le prennent pour un certain George Kaplan. Il se retrouve malgré lui dans la peau de ce Kaplan, un espion que tout désigne comme tel. Pris entre une mystérieuse organisation qui cherche à le supprimer et la police qui le poursuit, Tornhill est dans une situation bien inconfortable. Il fuit à travers les États-Unis, pourchassé par ses ravisseurs, et part à la recherche d\'une vérité à laquelle il devra faire face…', 'https://www.youtube.com/watch?v=bBZSbSxvcYM', 1, 1, 31),
+(49, 'Sueurs froides', '1958', '8.3', '128', '0', '7.3', 'tt0052357', 'https://image.tmdb.org/t/p/w200/15uOEfqBNTVtDUT7hGBVCka0rZz.jpg', 'John Ferguson, surnommé « Scottie », est pris de vertige tandis qu’il poursuit un malfaiteur avec un collègue policier. L’incident vaut la mort de ce dernier et la démission de Ferguson des services de police. Peu après, une ancienne connaissance de Scottie le contacte afin de lui demander de suivre sa femme, Madeleine Elster, qui semble hantée par l’esprit d’une morte, en l’occurrence sa grand-mère, qui se suicida après avoir sombré dans la folie. Scottie s\'éprend de la jeune femme et se trouve ballotté par des événements qu\'il ne peut contrôler.', NULL, 1, 1, 31),
+(50, 'La Garçonnière', '1960', '8.3', '125', '5', '24.6', 'tt0053604', 'https://image.tmdb.org/t/p/w200/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg', 'C.C. Baxter est employé à la Sauvegarde, grande compagnie d\'assurance. Dans l\'espoir d\'un avancement il prête souvent son appartement à ses supérieurs qui y emmènent leurs petites amies. Un jour le chef du personnel le convoque et lui apprend qu\'il sait tout et lui demande aussi sa clé. Baxter est enfin promu. Mais ce qu\'il ignorait c\'est que le chef du personnel emmenait dans son appartement la femme dont il était amoureux.', 'https://www.youtube.com/watch?v=qk9UMLzhq2g', 1, 1, 32),
+(51, 'Fenêtre sur cour', '1954', '8.5', '111', '0', '37.9', 'tt0047396', 'https://image.tmdb.org/t/p/w200/ILVF0eJxHMddjxeQhswFtpMtqx.jpg', 'À cause d\'une jambe cassée, le reporter-photographe L. B. Jefferies est contraint de rester chez lui dans un fauteuil roulant. Homme d\'action et amateur d\'aventures, il s\'aperçoit qu\'il peut tirer parti de son immobilité forcée en étudiant le comportement des habitants de l\'immeuble qu\'il occupe dans Greenwich Village. Et ses observations l\'amènent à la conviction que Lars Thorwald, son voisin d\'en face, a assassiné sa femme. Sa fiancée, Lisa Fremont, ne le prend tout d\'abord pas au sérieux, ironisant sur l\'excitation que lui procure sa surveillance, mais finit par se prendre au jeu.', 'https://www.youtube.com/watch?v=C28s0gXXyRA', 1, 1, 31),
+(52, 'Orange mécanique', '1971', '8.3', '136', '4', '114.0', 'tt0066921', 'https://image.tmdb.org/t/p/w200/4sHeTAp65WrSSuc05nRBKddhBxO.jpg', 'Au XXIe siècle, où règnent la violence et le sexe, Alex, jeune chef de bande, exerce avec sadisme une terreur aveugle. Après son emprisonnement, des psychanalystes l\'emploient comme cobaye dans des expériences destinées à juguler la criminalité…', 'https://www.youtube.com/watch?v=Tys3BFPmxIg', 1, 8, 29),
+(53, 'Blade Runner', '1982', '8.2', '117', '2', '32.9', 'tt0083658', 'https://image.tmdb.org/t/p/w200/63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg', '2019, Los Angeles. La Terre est surpeuplée et l’humanité est partie coloniser l’espace. Les nouveaux colons sont assistés de Replicants, androïdes que rien ne peut distinguer de l\'être humain. Conçus comme de nouveaux esclaves, certains parmi les plus évolués s’affranchissent de leurs chaînes et s’enfuient. Rick Deckard, un ancien Blade Runner, catégorie spéciale de policiers chargés de \"retirer\" ces replicants, accepte une nouvelle mission consistant à retrouver quatre de ces individus qui viennent de regagner la Terre après avoir volé une navette spatiale.', 'https://www.youtube.com/watch?v=FfRPKYwsFNg', 2, 1, 27),
+(54, 'Taxi Driver', '1976', '8.3', '114', '1', '28.3', 'tt0075314', 'https://image.tmdb.org/t/p/w200/ekstpH614fwDX8DUln1a2Opz0N8.jpg', 'Vétéran de la Guerre du Vietnam, Travis Bickle est chauffeur de taxi dans la ville de New York. Ses rencontres nocturnes et la violence quotidienne dont il est témoin lui font peu à peu perdre la tête. Il se charge bientôt de délivrer une prostituée mineure de ses souteneurs.', 'https://www.youtube.com/watch?v=XqrzXk38PrQ', 1, 1, 11),
+(55, 'Le Bon, la Brute et le Truand', '1966', '8.8', '161', '0', '25.1', 'tt0060196', 'https://image.tmdb.org/t/p/w200/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg', 'Pendant la guerre de Sécession, Tuco et Joe se lancent à la recherche d\'un coffre contenant 200 000 dollars en pièces d\'or volés à l\'armée sudiste. Ayant des indices complémentaires sur la cache, chacun a besoin de l\'autre. Mais un troisième homme entre dans la course : Sentenza, un tueur qui ne recule devant rien pour parvenir à ses fins.', 'https://www.youtube.com/watch?v=WA1hCZFOPqs', 1, 5, 26),
+(56, 'Le Lauréat', '1967', '8.0', '106', '1', '104.9', 'tt0061722', 'https://image.tmdb.org/t/p/w200/z1Z1tZMR66RxcNeHbwoEhYeqOlP.jpg', 'Benjamin Braddock vient d’achever ses études couvert de diplômes. Au cours d’une réception organisée par ses parents, il rencontre Mme Robinson, une amie de ces derniers. Elle séduit le jeune homme, lui faisant découvrir les plaisirs de l’amour. Les parents de Benjamin, qui ignorent tout de cette relation, incitent bientôt leur fils à sortir avec Elaine, la fille des Robinson. Réticent au début, il s’attache rapidement à l\'étudiante…', 'https://www.youtube.com/watch?v=NPEasP8jCzM', 1, 1, 33),
+(57, 'Heat', '1995', '8.2', '170', '0', '187.4', 'tt0113277', 'https://image.tmdb.org/t/p/w200/umSVjVdbVwtx5ryCA2QXL44Durm.jpg', 'Neil McCauley est un braqueur qui a de l\'expérience. Il veille, au cours de ses vols, à ne pas commettre d\'impairs. Ses complices n\'ont pas autant de scrupules ni de «conscience professionnelle». Lors d\'une opération pourtant bien planifiée, l\'un d\'entre eux tire sur deux vigiles. Ce double meurtre intéresse au plus au point le lieutenant Hanna, qui ne met guère de temps à identifier McCauley comme étant le cerveau de la bande. Les deux hommes apprennent à se connaître par dossier et surveillance interposée. A tel point qu\'il finissent par se rencontrer. Chacun jure alors de mettre l\'autre en échec. Un duel s\'engage, à la limite de la légalité.', 'https://www.youtube.com/watch?v=Xl7X4Pf3PTY', 3, 1, 34),
+(58, 'Le Fabuleux Destin d\'Amélie Poulain', '2001', '8.3', '122', '0', '174.2', 'tt0211915', 'https://image.tmdb.org/t/p/w200/vZ9NhNbQQ3yhtiC5sbhpy5KTXns.jpg', 'Amélie, une jeune serveuse dans un bar de Montmartre, passe son temps à observer les gens et à laisser son imagination divaguer. Elle s\'est fixée un but : faire le bien de ceux qui l\'entourent. Elle invente alors des stratagèmes pour intervenir incognito dans leur existence. Le chemin d\'Amélie est jalonné de rencontres: Georgette, la buraliste hypocondriaque, Lucien, le commis d\'épicerie, Madeleine Wallace, la concierge portée sur le porto et les chiens empaillés, ou encore Raymond Dufayel alias « l\'homme de verre », son voisin qui ne vit qu\'à travers une reproduction d\'un tableau de Renoir. Cette quête du bonheur amène Amélie à faire la connaissance de Nino Quincampoix, un étrange « prince charmant ». Celui-ci partage son temps entre un train fantôme et un sex-shop, et cherche à identifier un inconnu dont la photo réapparaît sans cesse dans plusieurs cabines de photomaton.', 'https://www.youtube.com/watch?v=_cZyjM_R6-E', 4, 6, 35),
+(59, 'Le Labyrinthe de Pan', '2006', '8.2', '118', '3', '83.3', 'tt0457430', 'https://image.tmdb.org/t/p/w200/z7xXihu5wHuSMWymq5VAulPVuvg.jpg', 'Espagne 1944. Ofelia s’installe avec sa mère dans une garnison dirigée par Vidal, son beau‐père, capitaine autoritaire de l’armée franquiste. À proximité de la grande maison familiale, la jeune fille découvre un étrange labyrinthe gardé par une créature nommée Pan. Le monstre lui révèle qu’elle n’est autre que la princesse d’un royaume enchanté. Afin de découvrir la vérité, Ofelia devra se soumettre à trois épreuves que rien ne l’a préparée à affronter…', 'https://www.youtube.com/watch?v=ZRDzfPFIsDE', 4, 9, 36),
+(60, 'The Social Network', '2010', '7.7', '120', '3', '224.9', 'tt1285016', 'https://image.tmdb.org/t/p/w200/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg', 'Un soir d\'hiver 2003, Mark Zuckerberg, étudiant à Harvard et expert en informatique, s\'installe devant son ordinateur et se met à travailler avec frénésie sur une nouvelle idée, autour du développement de programme et de blogs. Ce qui prend forme dans cette chambre ce soir-là deviendra très vite un réseau communautaire à échelle mondiale et une révolution dans la communication. Seulement six années et quelques 500 millions d\'amis plus tard, Mark Zuckerberg est devenu le plus jeune milliardaire de l\'histoire… Cependant, pour cet entrepreneur, la réussite amène à la fois des complications personnelles et légales.', 'https://www.youtube.com/watch?v=lplrFoP20XA', 4, 1, 8),
+(61, 'Breakfast Club', '1985', '7.8', '97', '0', '51.5', 'tt0088847', 'https://image.tmdb.org/t/p/w200/wM9ErA8UVdcce5P4oefQinN8VVV.jpg', 'Cinq lycéens aux personnalités totalement opposées se retrouvent en colle un samedi. Le professeur qui les surveille leur demande à chacun de faire une dissertation de 1 000 mots avec pour sujet : « Qui pensez‐vous être ? ». Au fur et à mesure que la journée passe, ils discutent, se déchirent et finissent par se trouver plus de points communs qu’ils ne pensaient.', 'https://www.youtube.com/watch?v=98Zr2rhdEZ8', 2, 1, 37),
+(62, 'Raging Bull', '1980', '8.2', '129', '2', '23.4', 'tt0081398', 'https://image.tmdb.org/t/p/w200/1WV7WlTS8LI1L5NkCgjWT9GSW3O.jpg', 'Raging Bull retrace les moments forts de la carrière flamboyante de Jack La Motta, champion de boxe poids moyen. Issu d\'un milieu modeste, il fut le héros de combats mythiques, notamment contre Robinson et Cerdan. Autodestructeur, paranoïaque, déchiré entre le désir du salut personnel et la damnation, il termine son existence, bouffi, en tant que gérant de boîte de nuit et amuseur. Quand l\'ascension et le déclin d\'une vie deviennent une épopée...', 'https://www.youtube.com/watch?v=yG2VCLZcN5A', 1, 1, 11),
+(63, 'Princess Bride', '1987', '8.1', '98', '0', '30.9', 'tt0093779', 'https://image.tmdb.org/t/p/w200/2FC9L9MrjBoGHYjYZjdWQdopVYb.jpg', 'Que peut bien faire un petit garçon cloué au lit par la grippe, condamné à écouter les conseils des grands et même de subir un grand-père rabat-joie, au lieu d\'aller faire les quatre cents coups avec ses copains ? Et voilà en plus que le papy se met en tête de lire à haute voix un conte de fée aux antipodes de Superman et de Rambo ! Au Moyen-Age, dans le pays imaginaire de Florin, la belle Bouton d\'Or se languit après le départ de son bien-aimé Westley, parti chercher fortune et qu\'elle croit mort. Cinq ans plus tard, elle accepte d\'épouser le prince Humperdinck pour qui elle n\'éprouve aucun amour. Mais peu avant son mariage, elle est enlevée par trois bandits et entraînée dans une aventure mouvementée au cours de laquelle elle retrouvera sa raison de vivre...', NULL, 2, 1, 38),
+(64, 'Babylon', '1980', '', '', '0', '', 'tt0080406', 'https://image.tmdb.org/t/p/w200/sbh5cwdoZ5TPE4JDO0Z7HGLa4IX.jpg', 'Blue est un jeune homme d\'origine jamaïcaine vivant à Brixton en 1980. Il traîne avec ses amis et prend la tête d\'un sound system de dub. Alors qu\'il perd son emploi, il doit affronter des problèmes familiaux et  ses amitiés sont mises à l\'épreuve par le racisme.', NULL, 1, 1, 39),
+(65, 'The Big Lebowski', '1998', '8.1', '117', '0', '46.7', 'tt0118715', 'https://image.tmdb.org/t/p/w200/9mprbw31MGdd66LR0AQKoDMoFRv.jpg', 'Un jour, deux malfrats viennent tabasser et rançonner Lebowski, dit \"le Duc\", un glandeur fini qui fume de l\'herbe illicite, boit de la vodka-lait et passe son temps au bowling. Agacé par ces intrus, qui ont uriné sur son tapis, il part en chasse accompagné par son pote Walter…', 'https://www.youtube.com/watch?v=LP0A1_KFcLQ', 3, 1, 40),
+(66, 'The Truman Show', '1998', '8.1', '103', '0', '264.1', 'tt0120382', 'https://image.tmdb.org/t/p/w200/vuza0WqY239yBXOadKlGwJsZJFE.jpg', 'Il est la vedette d’un show télévisé - mais il ne le sait pas. Jim Carrey a conquis à la fois les critiques et le public pour sa prestation inoubliable dans ce chef-d\'œuvre de Peter Weir. Il interprète Truman Burbank, un homme dont la vie entière est un show télévisé - Ses moindres faits et gestes sont filmés à son insu par un créateur/réalisateur/producteur avant-gardiste : la ville entière est un immense studio de cinéma ; ses voisins, ses collègues, ses amis et même sa femme sont des acteurs professionnels d’Hollywood. Un jour pourtant, Truman se doute de quelque chose. Sa réaction face à cette découverte vous fera rire, pleurer et vous émerveillera comme aucun film ne l’a jamais fait.', 'https://www.youtube.com/watch?v=wbCctgKSPDg', 3, 1, 41),
+(67, 'Mademoiselle', '2016', '8.1', '145', '0', '38.3', 'tt4016934', 'https://image.tmdb.org/t/p/w200/dLlH4aNHdnmf62umnInL8xPlPzw.jpg', 'Corée. Années 30, pendant la colonisation japonaise. Une jeune femme est engagée comme servante d’une riche japonaise, vivant recluse dans un immense manoir sous la coupe d’un oncle tyrannique. Mais Sookee a un secret. Avec l’aide d’un escroc se faisant passer pour un comte japonais, ils ont d’autres plans pour Hideko…', 'https://www.youtube.com/watch?v=Ig37Dz-abFc', 4, 7, 42),
+(68, 'No Country for Old Men', '2007', '8.1', '122', '4', '171.6', 'tt0477348', 'https://image.tmdb.org/t/p/w200/6d5XOczc226jECq0LIX0siKtgHR.jpg', '1980, États-Unis, à la frontière qui sépare le Texas du Mexique, les trafiquants mexicains de drogue ont depuis longtemps remplacé les voleurs de bétail. Lorsque Llewelyn Moss découvre dans une plaine des véhicules abandonnés, cernée de cadavres ensanglantés, il ne sait rien de ce qui a conduit à ce drame. Mais il comprend qu\'un échange a mal tourné et qu\'ils se sont entre-tués. Il recherche un éventuel survivant, le piste et le retrouve mort, au pied d\'un arbre avec une valise contenant deux millions de dollars qu\'il emporte. Il ne se doute pas de ce que cela va provoquer, mais il se doute que les trafiquants ne vont pas abandonner l\'argent. Moss a déclenché une réaction en chaîne que le shérif Ed Tom Bell, un homme proche de la retraite, lucide et clairvoyant, va suivre à la trace...', 'https://www.youtube.com/watch?v=y0hR8HC7xfo', 4, 1, 40),
+(69, 'There Will Be Blood', '2007', '8.1', '158', '2', '76.2', 'tt0469494', 'https://image.tmdb.org/t/p/w200/fa0RDkAlCec0STeMNAhPaF89q6U.jpg', 'Lorsque Daniel Plainview entend parler d’une petite ville de Californie où l’on dit qu’un océan de pétrole coulerait littéralement du sol, il décide d’aller tenter sa chance et part avec son fils H.W. à Little Boston. Dans cet endroit perdu où chacun lutte pour survivre et où l’unique distraction est l’église animée par le charismatique prêtre Eli Sunday, Plainview et son fils voient le sort leur sourire. Même si le pétrole comble leurs attentes et fait leur fortune, plus rien ne sera comme avant : les tensions s’intensifient, les conflits éclatent et les valeurs humaines comme l’amour, l’espoir, le sens de la communauté, les croyances, l’ambition et même les liens entre père et fils sont mis en péril par la corruption, la trahison… et le pétrole.', 'https://www.youtube.com/watch?v=w13obH4pixQ', 4, 1, 43),
+(70, 'L\'Arnaque', '1973', '8.3', '129', '7', '159.3', 'tt0070735', 'https://image.tmdb.org/t/p/w200/4VdQopZb0lx13Me3yxE5rUXMGCI.jpg', 'À Chicago, en 1936, Johnny Hooker et son acolyte Coleman volent sans le savoir le convoyeur de fonds de Doyle Lonnegan, un dangereux gangster de New York. Coleman est aussitôt abattu par le gang de ce dernier et Hooker se réfugie chez Henry Gondorff, un spécialiste de l\'arnaque. Ceux-ci décident alors de venger la mort de Coleman en montant une vaste escroquerie destinée à mettre Lonnegan sur la paille. Pour cela, Hooker fait croire au gangster qu\'il est capable d\'obtenir les résultats des courses avant qu\'ils ne soient officiellement connus.', 'https://www.youtube.com/watch?v=QUhAwqvHZnk', 1, 1, 44),
+(71, 'Le Troisième Homme', '1949', '8.0', '104', '1', '', 'tt0041959', 'https://image.tmdb.org/t/p/w600_and_h900_face/k0R968gZjXUTroDKa9nRdTjAXJW.jpg', 'Au lendemain de la Seconde Guerre mondiale. Invité par son ami Harry Lime, le romancier américain Holly Martins se rend à Vienne, divisée en quatre zones d\'occupation. Tout juste arrivé, il apprend que Lime vient de perdre la vie dans un accident de la circulation et qu\'on l\'enterre ce jour même. L\'écrivain n\'est pas au bout de ses surprises. Au cimetière, il est abordé par le major Calloway, pour qui Lime n\'était qu\'un vulgaire trafiquant, une crapule. Choqué, Martins décide de mener une enquête sur le défunt. Il fait bientôt la connaissance du mystérieux baron Kurtz, l\'un des deux témoins de l\'accident, l\'autre étant un Roumain du nom de Popescu… Palme d\'Or 1949.', NULL, 1, 8, 30);
+INSERT INTO `films` (`id_Film`, `titre`, `annee`, `classementIMDB`, `duree`, `oscarGagne`, `boxOffice`, `IdIMDB`, `affiche`, `synopsis`, `bande_annonce`, `id_prix`, `id_pays`, `id_realisateur`) VALUES
+(72, 'La Grande Évasion', '1963', '8.2', '172', '0', '11.7', 'tt0057115', 'https://image.tmdb.org/t/p/w200/gBH4H8UMFxl139HaLz6lRuvsel8.jpg', 'En Allemagne, durant la Seconde Guerre mondiale. Des officiers alliés, connus pour leur goût de l\'évasion, mais ayant toujours échoué jusqu\'ici, sont transférés dans un camp de prisonniers dirigé par von Luger. Leur capitaine, Ramsey, prévient celui-ci qu\'il est de leur devoir d\'essayer sans cesse de s\'évader, afin que l\'ennemi n\'ait point de répit. Incorrigible, Hilts tente la belle aussitôt et se retrouve au cachot.', 'https://www.youtube.com/watch?v=XhT82eKsEdc', 1, 8, 45),
+(73, 'Le Pont de la rivière Kwaï', '1957', '8.1', '161', '7', '30.6', 'tt0050212', 'https://image.tmdb.org/t/p/w200/7paXMt2e3Tr5dLmEZOGgFEn2Vo7.jpg', 'En 1943, le colonel Saïto dirige un camp de prisonniers dans la jungle birmane. Il reçoit l’ordre de construire un pont sur la rivière Kwaï et d’y faire travailler les détenus, y compris les officiers, au mépris des conventions internationales. Le colonel anglais Nicholson, capturé à Singapour avec ses troupes, refuse énergiquement de participer au chantier. Saïto pense pouvoir le faire plier en le soumettant à toutes sortes de vexations et de sévices, mais Nicholson tient bon. Son geôlier finit par céder. Nicholson accepte alors, de son plein gré, de prendre la tête des opérations pour montrer aux Japonais de quoi sont capables les soldats de Sa Majesté. Pendant ce temps, un commando américain progresse prudemment vers le site, dans le but de faire sauter l’ouvrage…', 'https://www.youtube.com/watch?v=IGHv5ro7ptk', 1, 8, 46),
+(74, 'Le Magicien d\'Oz', '1939', '8.0', '101', '2', '400.0', 'tt0032138', 'https://image.tmdb.org/t/p/w200/pfAZFD7I2hxW9HCChTuAzsdE6UX.jpg', 'Dorothy Gale est emportée par une tornade loin de sa ferme du Kansas et se retrouve au pays magique d\'Oz. Elle se lance alors dans une quête avec ses nouveaux amis pour voir le magicien qui pourra aider ses amis et l\'aider à rentrer chez elle au Kansas.', NULL, 1, 1, 47),
+(76, 'Les Sentiers de la gloire', '1957', '8.4', '88', '0', '', 'tt0050825', 'https://image.tmdb.org/t/p/w200/hGg1UCQSHlXfv2HI9bDHT2OQBam.jpg', 'En 1916, durant la Première Guerre mondiale, le général français Broulard ordonne au général Mireau de lancer une offensive suicidaire contre une position allemande imprenable, surnommée la « Fourmilière ». Au moment de l\'attaque, les soldats tombent par dizaines et leurs compagnons, épuisés, refusent d\'avancer…', 'https://www.youtube.com/watch?v=by6-2JtQVqk', 1, 1, 29),
+(77, 'Les Raisins de la colère', '1940', '8.1', '129', '2', '3.6', 'tt0032551', 'https://image.tmdb.org/t/p/w200/eUcxMVBIA0Jg8l1RGUqycrc3eIQ.jpg', 'Un jeune homme rentre à la ferme familiale en Oklahoma, après avoir purgé une peine de quatre ans de prison pour homicide involontaire. La Grande Dépression sévit alors et comme beaucoup d’autres fermiers, sa famille est chassée de son exploitation. Ensemble, ils partent à travers le pays dans l’espoir de trouver, un jour, du travail en Californie. C’est le début d’un périple éprouvant, de camps de réfugiés en bidonvilles de fortunes, dans une Amérique en proie à la misère et à l’oppression…', 'https://www.youtube.com/watch?v=7G9JgxcleMc', 1, 1, 48),
+(78, 'Mon voisin Totoro', '1988', '8.2', '86', '0', '45.2', 'tt0096283', 'https://image.tmdb.org/t/p/w200/rtGDOeG9LzoerkDGZF9dnVeLppL.jpg', 'Mei, 4 ans, et Satsuki, 10 ans, s’installent à la campagne avec leur père pour se rapprocher de l’hôpital où séjourne leur mère. Elles découvrent la nature tout autour de la maison et, surtout, l’existence d’animaux étranges et merveilleux, les Totoros, avec qui elles deviennent très amies. Un jour, alors que Satsuki et Mei attendent le retour de leur mère, elles apprennent que sa sortie de l’hôpital a été repoussée. Mei décide alors d’aller lui rendre visite seule. Satsuki et les gens du village la recherchent en vain. Désespérée, Satsuki va finalement demander de l’aide à son voisin Totoro.', 'https://www.youtube.com/watch?v=jD-6_0h4KwM', 2, 3, 20),
+(80, 'Piège de cristal', '1988', '8.2', '132', '0', '140.8', 'tt0095016', 'https://image.tmdb.org/t/p/w200/aJCpHDC6RoGz7d1Fzayl019xnxX.jpg', 'John McClane, un policier de New York, tente de sauver sa femme Holly Gennaro et un groupe d\'autres personnes prises en otage par le terroriste allemand Hans Gruber lors d\'une fête de Noël au Nakatomi Plaza de Los Angeles.', 'https://www.youtube.com/watch?v=XDg9AkYRWCc', 2, 1, 49),
+(81, 'Old Boy', '2003', '8.4', '120', '0', '17.0', 'tt0364569', 'https://image.tmdb.org/t/p/w200/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg', 'À la fin des années 80, Oh Dae-Soo, père de famille sans histoire, est enlevé un jour devant chez lui. Séquestré pendant plusieurs années dans une cellule privée, son seul lien avec l\'extérieur est une télévision. Par le biais de cette télévision, il apprend le meurtre de sa femme, meurtre dont il est le principal suspect. Au désespoir d\'être séquestré sans raison apparente succède alors chez le héros une rage intérieure vengeresse qui lui permet de survivre. Il est relâché 15 ans plus tard, toujours sans explication. Oh Dae-Soo est alors contacté par celui qui semble être le responsable de ses malheurs, qui lui propose de découvrir qui l\'a enlevé et pourquoi. Le cauchemar continue pour le héros.', NULL, 4, 7, 42),
+(82, 'Le Bateau', '1981', '8.3', '149', '0', '11.7', 'tt0082096', 'https://image.tmdb.org/t/p/w200/u8FhQPncOAkwcei2OI9orPWhV6K.jpg', 'Pendant la deuxième Guerre Mondiale, 40 000 sous-mariniers allemands envoyés par Hitler embarquent pour une mission de routine dans l\'Atlantique Nord. L\'insouciance règne à bord. Ce qu\'ils ne savent pas, c\'est que seuls 10 000 hommes retourneront chez eux vivants.', 'https://www.youtube.com/watch?v=7pzKyeIex2Y', 2, 10, 50),
+(83, 'The Thing', '1982', '8.1', '109', '0', '19.6', 'tt0084787', 'https://image.tmdb.org/t/p/w200/tzGY49kseSE9QAKk47uuDGwnSCu.jpg', 'Hiver 1982 au cœur de l’Antarctique. Une équipe de recherche composée de 12 hommes, découvre un corps enfoui sous la neige depuis plus de 100 000 ans. Décongelée, la créature retourne à la vie et témoigne très vite de sa capacité à parasiter puis assimiler toute forme de vie. Isolés du monde, ne sachant plus qui est contaminé et qui ne l\'est pas, les hommes de l\'équipe vont sombrer dans la peur et la paranoïa. Un véritable combat s’engage.', 'https://www.youtube.com/watch?v=9UpZYDdRS40', 2, 1, 51),
+(84, 'Le Septième Sceau', '1957', '8.2', '96', '0', '', 'tt0050976', 'https://image.tmdb.org/t/p/w200/wcZ21zrOsy0b52AfAF50XpTiv75.jpg', 'Au XIVe siècle, la grande peste ravage la Suède. De retour des croisades, le chevalier Antonius Blok rencontre la Mort sur son chemin. Espérant retarder l\'échéance fatidique, le temps de trouver des réponses à ses questionnements métaphysiques, il lui propose une partie d\'échecs. Sur la route, tandis que l\'écuyer qui l\'accompagne professe sa philosophie nihiliste, les deux hommes rencontrent le bateleur Jof qui chemine avec sa jeune famille au cœur du pays tourmenté et dit avoir vu la vierge Marie.', NULL, 1, 11, 52),
+(85, 'Les Fraises sauvages', '1957', '8.0', '91', '0', '', 'tt0050986', 'https://image.tmdb.org/t/p/w200/iyTD2QnySNMPUPE3IedZQipSWfz.jpg', 'Le docteur Isak Borg part à Lund pour assister à une cérémonie de jubilé en son honneur. Au cours de ce voyage, dans sa propre limousine et accompagné de sa bru, il fait le point sur sa vie et finalement se réconcilie avec lui-même.', NULL, 1, 11, 52),
+(86, 'Vivre', '1952', '8.1', '143', '0', '', 'tt0044741', 'https://image.tmdb.org/t/p/w200/dgNTS4EQDDVfkzJI5msKuHu2Ei3.jpg', 'Atteint d\'un cancer, Watanabe, chef de service du génie civil, décide de réaliser le projet qu\'il avait tout d\'abord repoussé : celui d\'assainir un terrain vague du quartier de Hureocho pour que les enfants puissent jouer dans un véritable jardin.', NULL, 1, 3, 13),
+(87, 'Sur les quais', '1954', '8.1', '108', '8', '9.6', 'tt0047296', 'https://image.tmdb.org/t/p/w200/fKjLZy9W8VxMOp5OoyWojmLVCQw.jpg', 'Un jeune docker, Terry Malloy, ancien boxeur, est manipulé par son frère, avocat du syndicat des dockers dirigé par le crapuleux Johnny Friendly. Il assiste sans intervenir au meurtre d\'un employé qui voulait dénoncer les méthodes illégales de ce dernier. Malloy se retrouve devant un cas de conscience…', 'https://www.youtube.com/watch?v=f6J1PZVcdMY', 1, 1, 53),
+(88, 'Boulevard du crépuscule', '1950', '8.4', '110', '3', '5.3', 'tt0043014', 'https://image.tmdb.org/t/p/w200/oOZIN0sbRNLKQC4RRCQnmAx1PlV.jpg', 'Norma Desmond, grande actrice du muet, vit recluse dans sa luxueuse villa de Berverly Hills en compagnie de Max von Meyerling, son majordome qui fut aussi son metteur en scène et mari. Joe Gillis, un scénariste sans le sou, pénètre par hasard dans la propriété et Norma lui propose de travailler au scénario du film qui marquera son retour à l\'écran, Salomé. Joe accepte, s\'installe chez elle, à la fois fasciné et effrayé par ses extravagances et son délire, et devient bientôt son amant. Quand son délire se transforme en paranoïa et qu\'elle débarque au milieu des studios Paramount pour convaincre Cecil B. DeMille de tourner à nouveau avec elle, Gillis commence à prendre ses distances...', 'https://www.youtube.com/watch?v=xCcv0Iojj3c', 1, 1, 32),
+(89, 'Rebecca', '1940', '8.1', '130', '2', '6.0', 'tt0032976', 'https://image.tmdb.org/t/p/w200/1qz3qUOHnVy7dL7M7G8jSErxE4b.jpg', 'Mrs. Edythe Van Hopper, respectable veuve déjà âgée, accompagnée de sa jeune demoiselle de compagnie, est en villégiature à Monte-Carlo dans l\'hôtel Côte-d\'Azur, lorsque leur chemin croise celui de Maxim de Winter, riche veuf, qui n\'a aucun mal à séduire la jeune fille et, dans la foulée, à l\'épouser et l\'emmener dans sa demeure ancestrale de Manderley, quelque part sur la côte sud-est de l\'Angleterre. Les premiers contacts avec le personnel du château, régenté par la peu amène gouvernante Mrs. Danvers, sont glaciaux. Cette dernière, en effet, attachée depuis toujours au service de la précédente Mrs. de Winter, Rebecca, et lui vouant une passion sans limite, même à titre posthume, n\'accepte pas l\'intrusion de l\'« usurpatrice ». Le souvenir de l\'épouse disparue et vénérée continue de hanter le château sombre.', NULL, 1, 8, 31),
+(90, 'Le Faucon maltais', '1941', '8.0', '101', '0', '1.8', 'tt0033870', 'https://image.tmdb.org/t/p/w200/bf4o6Uzw5wqLjdKwRuiDrN1xyvl.jpg', 'Sam Spade et Miles Archer sont deux privés. Au cours d\'une enquête, Miles est assassiné. Sam soupçonne Brigid qui les avait dirigés sur l\'enquête. Mais cette dernière, qui fascine Sam par sa beauté et son argent, lui demande de l\'aider et il accepte.', NULL, 1, 1, 54),
+(91, 'La soif du Mal', '1958', '8.0', '95', '0', '', 'tt0052311', 'https://image.tmdb.org/t/p/w200/1pvRgmfBaoMczIJBOi9gCOZ4FMC.jpg', 'À la frontière entre les États-Unis et le Mexique, une bombe explose dans la voiture de l\'homme qui tient la ville sous sa coupe. Hank Quinlan, un inspecteur américain, et Vargas, un haut fonctionnaire mexicain, vont mener l\'enquête.', NULL, 1, 1, 55),
+(93, 'L\'Exorciste', '1973', '8.0', '122', '2', '441.3', 'tt0070047', 'https://image.tmdb.org/t/p/w200/5x0CeVHJI8tcDx8tUUwYHQSNILq.jpg', 'Regan, une adolescente, présente depuis quelque temps d’étranges symptômes. Après avoir épuisé les solutions médicales, la mère de Regan consulte un prêtre-psychiatre qui est rapidement convaincu que Regan est possédée et que seul un exorcisme pourra la \"guérir\".', 'https://www.youtube.com/watch?v=kuowPVqvnRk', 1, 1, 56),
+(94, 'Shining', '1980', '8.4', '146', '0', '47.3', 'tt0081505', 'https://image.tmdb.org/t/p/w200/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg', 'Jack Torrance, gardien d’un hôtel fermé l’hiver, sa femme et son fils Danny s’apprêtent à vivre de longs mois de solitude. Danny, qui possède un don de médium, le «Shining», est effrayé à l’idée d’habiter ce lieu, théâtre marqué par de terribles événements passés…', 'https://www.youtube.com/watch?v=DL_GjZglYz8', 1, 8, 29),
+(95, 'Citizen Kane', '1941', '8.3', '119', '1', '1.6', 'tt0033467', 'https://image.tmdb.org/t/p/w200/sav0jxhqiH0bPr2vZFU0Kjt2nZL.jpg', 'À la mort du milliardaire Charles Foster Kane, un grand magnat de la presse, Thompson, un reporter, enquête sur sa vie. Les contacts qu\'il prend avec ses proches lui font découvrir un personnage gigantesque, mégalomane, égoïste et solitaire.', 'https://www.youtube.com/watch?v=MAvzRgvRXPU', 1, 1, 55),
+(96, 'Lawrence d\'Arabie', '1962', '8.3', '222', '7', '70.0', 'tt0056172', 'https://image.tmdb.org/t/p/w200/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg', 'Pendant la Première Guerre mondiale, le lieutenant britannique T.E. Lawrence reçoit l\'ordre de soutenir les Arabes dans leur lutte contre les Turcs alliés des Allemands. Le Britannique réussit à gagner la sympathie des Arabes et en particulier du prince Feisal. Une amitié particulière prend naissance entre les deux chefs volontaires.', 'https://www.youtube.com/watch?v=8v1R5IFSb5s', 1, 8, 46),
+(97, 'Le Pont de la rivière Kwaï', '1957', '8.1', '161', '7', '30.6', 'tt0050212', 'https://image.tmdb.org/t/p/w200/7paXMt2e3Tr5dLmEZOGgFEn2Vo7.jpg', 'En 1943, le colonel Saïto dirige un camp de prisonniers dans la jungle birmane. Il reçoit l’ordre de construire un pont sur la rivière Kwaï et d’y faire travailler les détenus, y compris les officiers, au mépris des conventions internationales. Le colonel anglais Nicholson, capturé à Singapour avec ses troupes, refuse énergiquement de participer au chantier. Saïto pense pouvoir le faire plier en le soumettant à toutes sortes de vexations et de sévices, mais Nicholson tient bon. Son geôlier finit par céder. Nicholson accepte alors, de son plein gré, de prendre la tête des opérations pour montrer aux Japonais de quoi sont capables les soldats de Sa Majesté. Pendant ce temps, un commando américain progresse prudemment vers le site, dans le but de faire sauter l’ouvrage…', 'https://www.youtube.com/watch?v=IGHv5ro7ptk', 1, 8, 46),
+(98, 'Assurance sur la mort', '1944', '8.0', '107', '0', '5.7', 'tt0036775', 'https://image.tmdb.org/t/p/w200/rVNYZZgfhwqVMMWlBmxOfWqnwCj.jpg', 'Walter Neff, un employé d\'une compagnie d’assurances, tombe amoureux de sa cliente et échafaude avec elle un plan pour supprimer le mari encombrant et ainsi partager avec elle l\'assurance-vie de ce dernier.', 'https://www.youtube.com/watch?v=OXNBKTJnM50', 1, 1, 32),
+(99, 'Annie Hall', '1977', '8.0', '93', '4', '38.3', 'tt0075686', 'https://image.tmdb.org/t/p/w200/gBo4G0p8iVS998aYvXS656jbsH2.jpg', 'Le névrosé Alvy Singer rencontre Annie Hall une femme excentrique dans la ville qu\'il aime, New York.', 'https://www.youtube.com/watch?v=EZk4M_TGor8', 1, 1, 57),
+(100, 'Certains l\'aiment chaud', '1959', '8.2', '121', '1', '25.0', 'tt0053291', 'https://image.tmdb.org/t/p/w200/hVIKyTK13AvOGv7ICmJjK44DTzp.jpg', 'Deux musiciens de jazz au chômage, mêlés involontairement à un règlement de comptes entre gangsters, se transforment en musiciennes pour leur échapper. Ils partent en Floride avec un orchestre féminin. Ils tombent illico amoureux d\'une ravissante et blonde créature, Alouette, qui veut épouser un milliardaire…', 'https://www.youtube.com/watch?v=WdtOQ2AAIQQ', 1, 1, 32);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `genreFilm`
+--
+
+CREATE TABLE `genreFilm` (
+  `id_Film` int(11) NOT NULL,
+  `id_Genre` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `genreFilm`
+--
+
+INSERT INTO `genreFilm` (`id_Film`, `id_Genre`) VALUES
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 2),
+(3, 3),
+(4, 1),
+(4, 2),
+(5, 1),
+(5, 2),
+(6, 1),
+(6, 4),
+(6, 5),
+(7, 1),
+(7, 6),
+(7, 7),
+(8, 1),
+(8, 4),
+(8, 5),
+(9, 3),
+(9, 8),
+(9, 9),
+(10, 3),
+(10, 4),
+(10, 8),
+(11, 1),
+(11, 4),
+(11, 5),
+(12, 1),
+(13, 1),
+(13, 10),
+(14, 3),
+(14, 8),
+(15, 1),
+(15, 2),
+(15, 6),
+(16, 1),
+(17, 1),
+(17, 2),
+(17, 11),
+(18, 1),
+(18, 3),
+(19, 1),
+(19, 2),
+(20, 1),
+(20, 10),
+(20, 12),
+(21, 1),
+(21, 2),
+(21, 9),
+(22, 1),
+(22, 5),
+(22, 13),
+(23, 2),
+(23, 9),
+(23, 11),
+(24, 1),
+(24, 2),
+(24, 3),
+(25, 4),
+(25, 13),
+(25, 14),
+(26, 1),
+(26, 7),
+(26, 15),
+(27, 1),
+(27, 2),
+(27, 5),
+(28, 1),
+(28, 9),
+(28, 12),
+(29, 1),
+(29, 4),
+(29, 8),
+(30, 1),
+(30, 2),
+(31, 1),
+(31, 10),
+(31, 12),
+(32, 1),
+(32, 4),
+(32, 14),
+(33, 4),
+(33, 8),
+(33, 12),
+(34, 3),
+(34, 8),
+(35, 1),
+(35, 12),
+(36, 16),
+(37, 8),
+(37, 17),
+(38, 1),
+(38, 6),
+(38, 18),
+(39, 1),
+(39, 2),
+(39, 9),
+(40, 1),
+(40, 3),
+(40, 4),
+(41, 1),
+(41, 4),
+(41, 15),
+(42, 12),
+(42, 19),
+(43, 1),
+(43, 12),
+(43, 19),
+(44, 2),
+(44, 9),
+(44, 11),
+(45, 1),
+(45, 2),
+(45, 11),
+(46, 1),
+(46, 2),
+(46, 11),
+(47, 11),
+(47, 20),
+(48, 3),
+(48, 4),
+(48, 11),
+(49, 1),
+(49, 10),
+(49, 11),
+(50, 1),
+(50, 10),
+(50, 12),
+(51, 1),
+(51, 2),
+(51, 11),
+(52, 1),
+(52, 2),
+(52, 8),
+(53, 8),
+(53, 9),
+(54, 1),
+(54, 2),
+(54, 9),
+(55, 16),
+(56, 1),
+(56, 10),
+(56, 12),
+(57, 1),
+(57, 2),
+(57, 9),
+(58, 5),
+(58, 10),
+(58, 12),
+(59, 1),
+(59, 5),
+(59, 15),
+(60, 1),
+(60, 6),
+(61, 1),
+(61, 12),
+(62, 1),
+(62, 6),
+(62, 21),
+(63, 4),
+(63, 5),
+(63, 13),
+(64, 1),
+(65, 2),
+(65, 12),
+(66, 1),
+(66, 8),
+(66, 12),
+(67, 1),
+(67, 10),
+(67, 11),
+(68, 1),
+(68, 2),
+(68, 9),
+(69, 1),
+(70, 1),
+(70, 2),
+(70, 12),
+(71, 11),
+(71, 20),
+(72, 1),
+(72, 4),
+(72, 7),
+(73, 1),
+(73, 4),
+(73, 15),
+(74, 4),
+(74, 5),
+(74, 13),
+(76, 1),
+(76, 15),
+(77, 1),
+(78, 5),
+(78, 13),
+(78, 14),
+(80, 3),
+(80, 9),
+(81, 1),
+(81, 3),
+(81, 11),
+(82, 1),
+(82, 4),
+(82, 9),
+(83, 8),
+(83, 9),
+(83, 17),
+(84, 1),
+(84, 5),
+(85, 1),
+(86, 1),
+(87, 1),
+(87, 2),
+(88, 1),
+(88, 20),
+(89, 1),
+(89, 10),
+(89, 11),
+(90, 2),
+(90, 11),
+(90, 20),
+(91, 1),
+(91, 2),
+(91, 20),
+(93, 17),
+(94, 1),
+(94, 11),
+(94, 17),
+(95, 1),
+(95, 11),
+(96, 1),
+(96, 4),
+(96, 6),
+(97, 1),
+(97, 4),
+(97, 15),
+(98, 1),
+(98, 2),
+(98, 20),
+(99, 10),
+(99, 12),
+(100, 10),
+(100, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `genres`
+--
+
+CREATE TABLE `genres` (
+  `id_Genre` int(11) NOT NULL,
+  `nom_Genre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `genres`
+--
+
+INSERT INTO `genres` (`id_Genre`, `nom_Genre`) VALUES
+(1, 'Drame'),
+(2, 'Crime'),
+(3, 'Action'),
+(4, 'Aventure'),
+(5, 'Fantaisie'),
+(6, 'Biographie'),
+(7, 'Histoire'),
+(8, 'Science Fiction'),
+(9, 'Thriller'),
+(10, 'Romance'),
+(11, 'Mystère'),
+(12, 'Comedie'),
+(13, 'Famille'),
+(14, 'Animation'),
+(15, 'Guerre'),
+(16, 'Western'),
+(17, 'Horreur'),
+(18, 'Musique'),
+(19, 'Satire'),
+(20, 'Film-Noir'),
+(21, 'Sport');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `jouer`
+--
+
+CREATE TABLE `jouer` (
+  `id_Film` int(11) NOT NULL,
+  `id_acteur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `jouer`
+--
+
+INSERT INTO `jouer` (`id_Film`, `id_acteur`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(3, 6),
+(4, 4),
+(4, 7),
+(5, 8),
+(5, 9),
+(6, 10),
+(6, 11),
+(7, 12),
+(7, 13),
+(8, 10),
+(8, 14),
+(9, 15),
+(9, 16),
+(10, 17),
+(10, 18),
+(11, 10),
+(11, 14),
+(12, 19),
+(12, 20),
+(13, 21),
+(13, 22),
+(14, 23),
+(14, 24),
+(15, 7),
+(15, 25),
+(16, 26),
+(16, 27),
+(17, 2),
+(17, 19),
+(18, 28),
+(18, 29),
+(19, 30),
+(19, 31),
+(20, 32),
+(20, 33),
+(21, 34),
+(21, 35),
+(22, 36),
+(22, 37),
+(23, 38),
+(23, 39),
+(24, 40),
+(24, 41),
+(25, 42),
+(25, 43),
+(26, 21),
+(26, 44),
+(27, 21),
+(27, 45),
+(28, 46),
+(28, 47),
+(29, 48),
+(29, 49),
+(30, 20),
+(30, 50),
+(31, 51),
+(31, 52),
+(32, 53),
+(32, 54),
+(33, 55),
+(33, 56),
+(34, 57),
+(34, 58),
+(35, 51),
+(35, 59),
+(36, 8),
+(36, 60),
+(37, 61),
+(37, 62),
+(38, 63),
+(38, 64),
+(39, 15),
+(39, 44),
+(40, 65),
+(40, 66),
+(41, 3),
+(41, 67),
+(42, 68),
+(42, 69),
+(43, 51),
+(43, 59),
+(44, 70),
+(44, 71),
+(45, 28),
+(45, 72),
+(46, 26),
+(46, 73),
+(47, 74),
+(47, 75),
+(48, 76),
+(48, 77),
+(49, 36),
+(49, 78),
+(50, 79),
+(50, 80),
+(51, 36),
+(51, 81),
+(52, 82),
+(52, 83),
+(53, 18),
+(53, 84),
+(54, 7),
+(54, 34),
+(55, 85),
+(55, 86),
+(56, 87),
+(56, 88),
+(57, 4),
+(57, 7),
+(58, 89),
+(58, 90),
+(59, 91),
+(59, 92),
+(60, 93),
+(60, 94),
+(61, 95),
+(61, 96),
+(62, 7),
+(62, 97),
+(63, 22),
+(63, 98),
+(64, 99),
+(65, 100),
+(65, 101),
+(66, 102),
+(66, 103),
+(67, 104),
+(67, 105),
+(68, 106),
+(68, 107),
+(69, 108),
+(69, 109),
+(70, 110),
+(70, 111),
+(71, 74),
+(71, 75),
+(72, 112),
+(72, 113),
+(73, 114),
+(73, 115),
+(74, 116),
+(74, 117),
+(76, 118),
+(76, 119),
+(77, 8),
+(77, 120),
+(78, 121),
+(78, 122),
+(80, 123),
+(80, 124),
+(81, 125),
+(81, 126),
+(82, 127),
+(82, 128),
+(83, 129),
+(83, 130),
+(84, 131),
+(84, 132),
+(85, 133),
+(85, 134),
+(86, 29),
+(86, 135),
+(87, 3),
+(87, 77),
+(88, 114),
+(88, 136),
+(89, 137),
+(89, 138),
+(90, 139),
+(90, 140),
+(91, 75),
+(91, 141),
+(93, 142),
+(93, 143),
+(94, 26),
+(94, 144),
+(95, 74),
+(95, 75),
+(96, 145),
+(96, 146),
+(97, 114),
+(97, 115),
+(98, 147),
+(98, 148),
+(99, 149),
+(99, 150),
+(100, 151),
+(100, 152);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+CREATE TABLE `panier` (
+  `id_Film` int(11) NOT NULL,
+  `id_Compte` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pays`
+--
+
+CREATE TABLE `pays` (
+  `id_pays` int(11) NOT NULL,
+  `nom_pays` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `pays`
+--
+
+INSERT INTO `pays` (`id_pays`, `nom_pays`) VALUES
+(1, 'États-Unis'),
+(2, 'Nouvelle Zélande'),
+(3, 'Japon'),
+(4, 'Brésil'),
+(5, 'Italie'),
+(6, 'France'),
+(7, 'Corée du sud'),
+(8, 'Royaume-Uni'),
+(9, 'Espagne'),
+(10, 'Allemagne'),
+(11, 'Suède');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `prix`
+--
+
+CREATE TABLE `prix` (
+  `id_prix` int(11) NOT NULL,
+  `prix` decimal(4,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `prix`
+--
+
+INSERT INTO `prix` (`id_prix`, `prix`) VALUES
+(1, 1.99),
+(2, 2.99),
+(3, 3.99),
+(4, 4.99);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `realisateurs`
+--
+
+CREATE TABLE `realisateurs` (
+  `id_realisateur` int(11) NOT NULL,
+  `nom_realisateur` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `realisateurs`
+--
+
+INSERT INTO `realisateurs` (`id_realisateur`, `nom_realisateur`) VALUES
+(1, 'Frank Darabont'),
+(2, 'Francis Ford Coppola'),
+(3, 'Christopher Nolan'),
+(4, 'Sidney Lumet'),
+(5, 'Peter Jackson'),
+(6, 'Steven Spielberg'),
+(7, 'Irvin Kershner'),
+(8, 'David Fincher'),
+(9, 'Robert Zemeckis'),
+(10, 'Lana Wachowski'),
+(11, 'Martin Scorsese'),
+(12, 'Miloš Forman'),
+(13, 'Akira Kurosawa'),
+(14, 'Fernando Meirelles'),
+(15, 'Roberto Benigni'),
+(16, 'Jonathan Demme'),
+(17, 'Frank Capra'),
+(18, 'Bryan Singer'),
+(19, 'Luc Besson'),
+(20, 'Hayao Miyazaki'),
+(21, 'Bong Joon Ho'),
+(22, 'Tony Kaye'),
+(23, 'Charlie Chaplin'),
+(24, 'Roger Allers'),
+(25, 'James Cameron'),
+(26, 'Sergio Leone'),
+(27, 'Ridley Scott'),
+(28, 'Roman Polanski'),
+(29, 'Stanley Kubrick'),
+(30, 'Carol Reed'),
+(31, 'Alfred Hitchcock'),
+(32, 'Billy Wilder'),
+(33, 'Mike Nichols'),
+(34, 'Michael Mann'),
+(35, 'Jean-Pierre Jeunet'),
+(36, 'Guillermo del Toro'),
+(37, 'John Hughes'),
+(38, 'Rob Reiner'),
+(39, 'Unknown'),
+(40, 'Joel Coen'),
+(41, 'Peter Weir'),
+(42, 'Park Chan-wook'),
+(43, 'Paul Thomas Anderson'),
+(44, 'George Roy Hill'),
+(45, 'John Sturges'),
+(46, 'David Lean'),
+(47, 'Victor Fleming'),
+(48, 'John Ford'),
+(49, 'John McTiernan'),
+(50, 'Wolfgang Petersen'),
+(51, 'John Carpenter'),
+(52, 'Ingmar Bergman'),
+(53, 'Elia Kazan'),
+(54, 'John Huston'),
+(55, 'Orson Welles'),
+(56, 'William Friedkin'),
+(57, 'Woody Allen');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
+-- Index pour la table `acteurs`
+--
+ALTER TABLE `acteurs`
+  ADD PRIMARY KEY (`id_Acteur`),
+  ADD UNIQUE KEY `nom_Acteur` (`nom_Acteur`);
+
+--
+-- Index pour la table `Commander`
+--
+ALTER TABLE `Commander`
+  ADD PRIMARY KEY (`id_Commande`,`id_Film`),
+  ADD KEY `idFilm` (`id_Film`);
+
+--
+-- Index pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD PRIMARY KEY (`id_Commande`),
+  ADD KEY `idCompte` (`id_Compte`);
+
+--
+-- Index pour la table `compte`
+--
+ALTER TABLE `compte`
+  ADD PRIMARY KEY (`id_Compte`),
+  ADD UNIQUE KEY `mail` (`mail`);
+
+--
+-- Index pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  ADD PRIMARY KEY (`id_Film`,`id_Compte`),
+  ADD KEY `idCompte` (`id_Compte`);
+
+--
 -- Index pour la table `films`
 --
 ALTER TABLE `films`
-  ADD PRIMARY KEY (`idFilm`);
+  ADD PRIMARY KEY (`id_Film`),
+  ADD KEY `fk_prix` (`id_prix`),
+  ADD KEY `fk_pays` (`id_pays`),
+  ADD KEY `fk_realisateur` (`id_realisateur`);
+
+--
+-- Index pour la table `genreFilm`
+--
+ALTER TABLE `genreFilm`
+  ADD PRIMARY KEY (`id_Film`,`id_Genre`),
+  ADD KEY `id_Genre` (`id_Genre`);
+
+--
+-- Index pour la table `genres`
+--
+ALTER TABLE `genres`
+  ADD PRIMARY KEY (`id_Genre`);
+
+--
+-- Index pour la table `jouer`
+--
+ALTER TABLE `jouer`
+  ADD PRIMARY KEY (`id_Film`,`id_acteur`),
+  ADD KEY `id_acteur` (`id_acteur`);
+
+--
+-- Index pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD PRIMARY KEY (`id_Film`,`id_Compte`),
+  ADD KEY `idCompte` (`id_Compte`);
+
+--
+-- Index pour la table `pays`
+--
+ALTER TABLE `pays`
+  ADD PRIMARY KEY (`id_pays`);
+
+--
+-- Index pour la table `prix`
+--
+ALTER TABLE `prix`
+  ADD PRIMARY KEY (`id_prix`);
+
+--
+-- Index pour la table `realisateurs`
+--
+ALTER TABLE `realisateurs`
+  ADD PRIMARY KEY (`id_realisateur`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
+-- AUTO_INCREMENT pour la table `acteurs`
+--
+ALTER TABLE `acteurs`
+  MODIFY `id_Acteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+
+--
+-- AUTO_INCREMENT pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  MODIFY `id_Commande` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `compte`
+--
+ALTER TABLE `compte`
+  MODIFY `id_Compte` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `films`
 --
 ALTER TABLE `films`
-  MODIFY `idFilm` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id_Film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT pour la table `genres`
+--
+ALTER TABLE `genres`
+  MODIFY `id_Genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT pour la table `pays`
+--
+ALTER TABLE `pays`
+  MODIFY `id_pays` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT pour la table `realisateurs`
+--
+ALTER TABLE `realisateurs`
+  MODIFY `id_realisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `Commander`
+--
+ALTER TABLE `Commander`
+  ADD CONSTRAINT `Commander_ibfk_1` FOREIGN KEY (`id_Commande`) REFERENCES `commandes` (`id_Commande`) ON DELETE CASCADE,
+  ADD CONSTRAINT `Commander_ibfk_2` FOREIGN KEY (`id_Film`) REFERENCES `films` (`id_Film`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_Compte`) REFERENCES `compte` (`id_Compte`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `favoris`
+--
+ALTER TABLE `favoris`
+  ADD CONSTRAINT `favoris_ibfk_1` FOREIGN KEY (`id_Film`) REFERENCES `films` (`id_Film`) ON DELETE CASCADE,
+  ADD CONSTRAINT `favoris_ibfk_2` FOREIGN KEY (`id_Compte`) REFERENCES `compte` (`id_Compte`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `films`
+--
+ALTER TABLE `films`
+  ADD CONSTRAINT `fk_pays` FOREIGN KEY (`id_pays`) REFERENCES `pays` (`id_pays`),
+  ADD CONSTRAINT `fk_prix` FOREIGN KEY (`id_prix`) REFERENCES `prix` (`id_prix`),
+  ADD CONSTRAINT `fk_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateurs` (`id_realisateur`);
+
+--
+-- Contraintes pour la table `genreFilm`
+--
+ALTER TABLE `genreFilm`
+  ADD CONSTRAINT `genreFilm_ibfk_1` FOREIGN KEY (`id_Film`) REFERENCES `films` (`id_Film`),
+  ADD CONSTRAINT `genreFilm_ibfk_2` FOREIGN KEY (`id_Genre`) REFERENCES `genres` (`id_Genre`);
+
+--
+-- Contraintes pour la table `jouer`
+--
+ALTER TABLE `jouer`
+  ADD CONSTRAINT `jouer_ibfk_1` FOREIGN KEY (`id_Film`) REFERENCES `films` (`id_Film`) ON DELETE CASCADE,
+  ADD CONSTRAINT `jouer_ibfk_2` FOREIGN KEY (`id_acteur`) REFERENCES `acteurs` (`id_Acteur`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD CONSTRAINT `panier_ibfk_1` FOREIGN KEY (`id_Film`) REFERENCES `films` (`id_Film`) ON DELETE CASCADE,
+  ADD CONSTRAINT `panier_ibfk_2` FOREIGN KEY (`id_Compte`) REFERENCES `compte` (`id_Compte`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,0 +1,29 @@
+{# templates/films/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Films{% endblock %}
+
+{% block body %}
+    <h1>Liste des Films</h1>
+
+    <ul>
+        {% for film in films %}
+            <li>
+                <h2>{{ film.titre }}</h2>
+                <p>Année: {{ film.annee }}</p>
+                <p>IMDB: {{ film.classementIMDB }}</p>
+                <p>Durée: {{ film.duree }}</p>
+                <p>Prix: {{ film.prix ? film.prix.prix : 'N/A' }} €</p>
+                <p>Pays: {{ film.pays ? film.pays.nomPays : 'N/A' }}</p>
+                <p>Réalisateur: {{ film.realisateur ? film.realisateur.nomRealisateur : 'N/A' }}</p>
+                <p>Synopsis: {{ film.synopsis }}</p>
+                {% if film.affiche %}
+                    <img src="{{ asset('uploads/' ~ film.affiche) }}" alt="{{ film.titre }}" style="width:150px;">
+                {% endif %}
+            </li>
+        {% else %}
+            <li>Aucun film trouvé.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

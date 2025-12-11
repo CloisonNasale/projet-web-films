@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mt-5">
+
+    <div class="row">
+        <!-- Colonne affiche -->
+        <div class="col-md-4 d-flex justify-content-center mb-3 mb-md-0">
+            {% if film.affiche %}
+                <img src="{{ asset(film.affiche) }}" class="img-fluid rounded" alt="{{ film.titre }}">
+            {% else %}
+                <img src="{{ asset('images/default.png') }}" class="img-fluid rounded" alt="Affiche par défaut">
+            {% endif %}
+        </div>
+
+        <!-- Colonne informations film -->
+        <div class="col-md-8">
+            <h1>{{ film.titre }}</h1>
+
+            <p class="text-secondary">
+                Année : <strong>{{ film.annee }}</strong>
+            </p>
+
+            <p class="text-secondary">
+                Genres :
+                {% for genre in film.genres %}
+                    <span class="badge bg-secondary">{{ genre.nomGenre }}</span>
+                {% else %}
+                    <span>Aucun genre</span>
+                {% endfor %}
+            </p>
+
+            <hr>
+
+            <!-- Synopsis -->
+            <p>{{ film.synopsis }}</p>
+
+            <!-- Liste des acteurs -->
+            <h4>Acteurs :</h4>
+            {% if acteurs|length > 0 %}
+                <p>
+                {% for acteur in acteurs %}
+                    <span class="badge bg-primary me-1 mb-1">{{ acteur.nomActeur }}</span>
+                {% endfor %}
+                </p>
+            {% else %}
+                <p>Aucun acteur pour ce film.</p>
+            {% endif %}
+
+            <!-- Bouton retour -->
+            <a href="{{ path('app_home') }}" class="btn btn-outline-light mt-4">
+                ← Retour à la liste
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

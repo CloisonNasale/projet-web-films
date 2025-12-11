@@ -1,7 +1,7 @@
 /* Cartes des films */
 .film-card {
-    width: 250px;
-    height: 370px;
+    width: 210px;
+    height: 390px;
     background-color: #222; /* fond foncé */
     display: flex;          /* utiliser flexbox pour aligner le contenu */
     flex-direction: column; /* empile image et texte verticalement */

@@ -1,86 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Films{% endblock %}
-
 {% block body %}
-<style>
-    body {
-        background-color: #111;
-        color: #fff;
-        font-family: Arial, sans-serif;
-    }
+<div class="container-fluid px-5">
 
-    .films-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 5 colonnes fixes */
-        gap:58px; /* moins d'espace entre les cartes */
-        padding: 0 200px; /* marge à gauche et à droite de la grille */
-        justify-content: start; /* commence la grille à gauche */
-    }
+    <div class="row g-3 justify-content-start">
 
-    .film-card {
-        width: 250px;       /* largeur carte */
-        height: 370px;      /* hauteur carte */
-        background-color: #222;
-        border-radius: 5px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
+        {% for film in films %}
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 d-flex justify-content-center">
+                <!-- Ici 5 colonnes sur xl et plus -->
+                <div class="card film-card text-white">
+                    {% if film.affiche %}
+                        <img src="{{ asset(film.affiche) }}" class="card-img-top" alt="{{ film.titre }}">
+                    {% else %}
+                        <img src="{{ asset('images/default.png') }}" class="card-img-top" alt="Affiche par défaut">
+                    {% endif %}
 
-    .film-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.7);
-    }
+                    <div class="card-body">
+                        <h5 class="card-title">{{ film.titre }}</h5>
+                        <p class="card-text">
+                            {{ film.annee }}
+                            {% if film.genres|length > 0 %}
+                                - {{ film.genres|first.getNomGenre() }}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
 
-    .film-card img {
-        width: 100%;
-        height: auto;
-        max-height: 300px;
-        object-fit: contain;
-        display: block;
-        border-bottom: 1px solid #333;
-        background-color: #111;
-    }
+    </div>
 
-    .film-card h3 {
-        margin: 5px;
-        font-size: 0.85em;
-        color: #ffd700;
-        text-align: center;
-    }
-
-    .film-card p {
-        margin: 2px 5px;
-        font-size: 0.75em;
-        color: #ccc;
-        text-align: center;
-    }
-
-
-</style>
-
-<h1 style="text-align:center; margin-top:20px;">Liste des Films</h1>
-
-<div class="films-grid">
-    {% for film in films %}
-        <div class="film-card">
-            {% if film.affiche %}
-                <img src="{{ asset(film.affiche) }}" alt="{{ film.titre }}">
-            {% else %}
-                <img src="{{ asset('images/default.png') }}" alt="Affiche par défaut">
-            {% endif %}
-            <h3>{{ film.titre }}</h3>
-            <p>
-                {{ film.annee }}
-                {% if film.genres|length > 0 %}
-                    - {{ film.genres|first.getNomGenre() }}
-                {% endif %}
-            </p>
-        </div>
-    {% endfor %}
 </div>
 {% endblock %}

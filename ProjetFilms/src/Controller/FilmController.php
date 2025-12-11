@@ -8,6 +8,7 @@ use App\Repository\FilmsRepository;
 
 class FilmController extends AbstractController
 {
+    #[Route('/', name: 'app_home')]
     #[Route('/films', name: 'film_list')]
     public function index(FilmsRepository $filmsRepository): Response
     {

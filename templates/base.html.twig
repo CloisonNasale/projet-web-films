@@ -5,13 +5,11 @@
     <title>{% block title %}Symfony{% endblock %}</title>
 
     <!-- BOOTSTRAP CSS -->
-    <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet"
-    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-    <!-- CSS personnalisé -->
-    <link rel="stylesheet" href="{{ asset('css/films.css') }}">
+    <!-- CSS compilé par Webpack Encore -->
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
 </head>
 
 <body class="bg-dark text-white">
@@ -20,7 +18,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">🎬 Films</a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,11 +39,14 @@
 </nav>
 
 <!-- ESPACE POUR ÉVITER QUE LE HEADER FIXE CACHE LE CONTENU -->
-<div style="height:80px;"></div>
+<div style="height:50px;"></div>
 
 <main class="container mt-4">
     {% block body %}{% endblock %}
 </main>
+
+<!-- JS compilé par Webpack Encore -->
+<script src="{{ asset('build/app.js') }}"></script>
 
 <!-- BOOTSTRAP JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

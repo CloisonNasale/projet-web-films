@@ -1,6 +1,6 @@
 /* Cartes des films */
 .film-card {
-    width: 210px;
+    width: 250px;
     height: 390px;
     background-color: #222; /* fond foncé */
     display: flex;          /* utiliser flexbox pour aligner le contenu */

@@ -1,0 +1,13 @@
+.favorite-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.favorite-btn.not-favorited i {
+    color: white !important; /* coeur vide */
+}
+
+.favorite-btn.favorited i {
+    color: red !important; /* coeur plein */
+}

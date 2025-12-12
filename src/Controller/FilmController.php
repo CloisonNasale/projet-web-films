@@ -6,13 +6,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\FilmsRepository;
 use App\Entity\Films;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class FilmController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(FilmsRepository $filmsRepository): Response
+    public function index(FilmsRepository $filmsRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $films = $filmsRepository->findAll();
+        $films = $paginator->paginate(
+            $filmsRepository->findAll(),
+            $request->query->getInt('page', 1),
+            28
+        );
 
         return $this->render('films/index.html.twig', [
             'films' => $films,

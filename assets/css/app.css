@@ -1,3 +1,51 @@
 body {
-    background-color: lightgray;
+    background-color: #130626;
+    /* Dark purple from mockup */
+    font-family: 'Inter', sans-serif;
+    /* Clean font */
+    padding-top: 100px;
+    /* Account for fixed navbar (approx 80-100px) */
+}
+
+a{
+    text-decoration: none !important;
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: rgba(13, 2, 29, 0.6); /* Couleur sombre semi-transparente */
+    backdrop-filter: blur(10px); /* Flou du fond derrière la navbar */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilité Safari */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optionnel: légère bordure pour relief */
+    position: fixed; /* Si tu veux que la navbar reste visible */
+    width: 100%;
+    z-index: 1030; /* Bootstrap navbar z-index */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: #ccc !important;
+    font-size: 1rem;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+/* Hide the border bottom that existing bootstrap class might have */
+.border-bottom {
+    border-bottom: none !important;
 }

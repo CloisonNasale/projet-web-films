@@ -4,10 +4,12 @@
     cursor: pointer;
 }
 
-.favorite-btn.not-favorited i {
-    color: white !important; /* coeur vide */
+/* Cœur vide */
+.favorite-btn.not-favorited i.bi-heart {
+    color: white !important;
 }
 
-.favorite-btn.favorited i {
-    color: red !important; /* coeur plein */
+/* Cœur rempli */
+.favorite-btn.favorited i.bi-heart {
+    color: red !important;
 }

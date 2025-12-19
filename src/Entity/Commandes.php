@@ -22,7 +22,7 @@ class Commandes
     private $compte;
 
     #[ORM\ManyToMany(targetEntity: Films::class, inversedBy: "commandes")]
-    #[ORM\JoinTable(name: "Commander")]
+    #[ORM\JoinTable(name: "Commander", joinColumns: [new ORM\JoinColumn(name: "id_Commande", referencedColumnName: "id_Commande")], inverseJoinColumns: [new ORM\JoinColumn(name: "id_Film", referencedColumnName: "id_Film")])]
     private $films;
 
     public function __construct() {

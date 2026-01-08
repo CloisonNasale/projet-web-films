@@ -2,6 +2,11 @@
 
 {% block title %}Inscription{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/register.css') }}">
+{% endblock %}
+
 {% block body %}
 <div class="register-container">
     <div class="register-card">

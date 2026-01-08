@@ -12,6 +12,12 @@
     /* No shadow by default for a clean look */
 }
 
+body {
+    background: white;
+    background-size: cover;
+    font-family: 'Outfit', sans-serif;
+}
+
 
 /* Custom spacing for the films grid */
 .films-grid {
@@ -147,4 +153,3 @@
     outline: none;
     box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
 }
-

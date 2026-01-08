@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+		<div class="profile-page-container">
+			<div class="profile-sidebar">
+				<h3 class="mb-4">Profil</h3>
+				<a href "{{ path('profil') }}" class="sidebar-link active">Profil</a>
+				<a href="{{ path('film_favoris') }}" class="sidebar-link">Mes Favoris</a>
+				<a href="#" class="sidebar-link">Mes Commandes</a>
+			</div>
+
+			<div class="profile-content">
+
+				<div class="profile-card">
+					<div class="profile-avatar-section">
+						{% if compte.pdp %}
+							<img src="{{ asset('uploads/pdp/' ~ compte.pdp) }}" alt="Photo de profil" class="profile-avatar">
+						{% else %}
+							<div class="profile-avatar d-flex align-items-center justify-content-center bg-secondary text-white" style="font-size: 4rem;">
+								<i class="bi bi-person-fill"></i>
+							</div>
+						{% endif %}
+						<a href="#" class="btn-upload mt-3">Modifier la photo de profil</a>
+					</div>
+
+					<div class="profile-info">
+						<h2>{{ compte.prenom }}
+							{{ compte.nom }}</h2>
+						<p>Adresse mail :
+							{{ compte.mail }}</p>
+
+						<div class="profile-actions">
+							<button class="btn-action btn-password">Changer de mot de passe</button>
+							<form action="{{ path('compte_supprimer') }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte ?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete-account') }}">
+								<button type="submit" class="btn-action btn-delete">Supprimer le compte</button>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

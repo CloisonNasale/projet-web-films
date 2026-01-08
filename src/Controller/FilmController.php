@@ -51,5 +51,23 @@ class FilmController extends AbstractController
             'favoris' => $compte->getFavoris(),
         ]);
     }
-    
+
+    #[Route('/profil', name: 'profil')]
+    public function profil(): Response
+    {
+        /** @var Compte $compte */
+        $compte = $this->getUser();
+
+        if (!$compte) {
+            throw $this->createAccessDeniedException();
+        }
+
+        return $this->render('films/profil.html.twig', [
+            'compte' => $compte,
+            'panier' => $compte->getPanier(),
+            'commandes' => $compte->getCommandes(),
+        ]);
+    }
+
+
 }

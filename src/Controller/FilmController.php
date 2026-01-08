@@ -8,6 +8,7 @@ use App\Repository\FilmsRepository;
 use App\Entity\Films;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Persistence\ManagerRegistry;
 
 class FilmController extends AbstractController
 {
@@ -35,4 +36,20 @@ class FilmController extends AbstractController
             'acteurs' => $acteurs,
         ]);
     }
+
+    #[Route('/favoris', name: 'film_favoris')]
+    public function favoris(): Response
+    {
+        /** @var Compte $compte */
+        $compte = $this->getUser();
+
+        if (!$compte) {
+            throw $this->createAccessDeniedException();
+        }
+
+        return $this->render('films/favoris.html.twig', [
+            'favoris' => $compte->getFavoris(),
+        ]);
+    }
+    
 }

@@ -50,20 +50,45 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: "compte")]
     private $commandes;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->favoris = new ArrayCollection();
         $this->panier = new ArrayCollection();
         $this->commandes = new ArrayCollection();
     }
 
-    public function getIdCompte(): ?int { return $this->id_Compte; }
-    public function getNom(): ?string { return $this->nom; }
-    public function setNom(string $nom): self { $this->nom = $nom; return $this; }
-    public function getPrenom(): ?string { return $this->prenom; }
-    public function setPrenom(string $prenom): self { $this->prenom = $prenom; return $this; }
-    public function getMail(): ?string { return $this->mail; }
-    public function setMail(string $mail): self { $this->mail = $mail; return $this; }
-    
+    public function getIdCompte(): ?int
+    {
+        return $this->id_Compte;
+    }
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
+        return $this;
+    }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -108,9 +133,16 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getMotdepasse(): ?string { return $this->motdepasse; }
-    public function setMotdepasse(string $motdepasse): self { $this->motdepasse = $motdepasse; return $this; }
-    
+    public function getMotdepasse(): ?string
+    {
+        return $this->motdepasse;
+    }
+    public function setMotdepasse(string $motdepasse): self
+    {
+        $this->motdepasse = $motdepasse;
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
@@ -120,11 +152,50 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getTelephone(): ?string { return $this->telephone; }
-    public function setTelephone(?string $telephone): self { $this->telephone = $telephone; return $this; }
-    public function getPdp(): ?string { return $this->pdp; }
-    public function setPdp(?string $pdp): self { $this->pdp = $pdp; return $this; }
-    public function getFavoris(): Collection { return $this->favoris; }
-    public function getPanier(): Collection { return $this->panier; }
-    public function getCommandes(): Collection { return $this->commandes; }
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+    public function setTelephone(?string $telephone): self
+    {
+        $this->telephone = $telephone;
+        return $this;
+    }
+    public function getPdp(): ?string
+    {
+        return $this->pdp;
+    }
+    public function setPdp(?string $pdp): self
+    {
+        $this->pdp = $pdp;
+        return $this;
+    }
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+    public function getPanier(): Collection
+    {
+        return $this->panier;
+    }
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addFavori(Films $film): self
+    {
+        if (!$this->favoris->contains($film)) {
+            $this->favoris->add($film);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Films $film): self
+    {
+        $this->favoris->removeElement($film);
+        return $this;
+    }
+
 }

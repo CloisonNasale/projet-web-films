@@ -11,4 +11,23 @@ class FilmsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Films::class);
     }
+
+    public function findByFilters(?int $genreId, ?string $year)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->orderBy('f.titre', 'ASC');
+
+        if ($genreId) {
+            $qb->join('f.genres', 'g')
+               ->andWhere('g.id_Genre = :genreId')
+               ->setParameter('genreId', $genreId);
+        }
+
+        if ($year) {
+            $qb->andWhere('f.annee = :year')
+               ->setParameter('year', $year);
+        }
+
+        return $qb->getQuery();
+    }
 }

@@ -2,6 +2,37 @@
 
 {% block body %}
 	<div class="container-fluid px-2">
+		<div class="filter-bar mb-4 p-3 bg-dark text-white rounded shadow-sm">
+			<form method="get" action="{{ path('app_home') }}" class="row g-3 align-items-end">
+				<div class="col-md-4">
+					<label for="genre" class="form-label small fw-bold text-uppercase">Genre</label>
+					<select name="genre" id="genre" class="form-select bg-secondary text-white border-0">
+						<option value="">Tous les genres</option>
+						{% for genre in genres %}
+							<option value="{{ genre.idGenre }}" {{ selectedGenre == genre.idGenre ? 'selected' : '' }}>
+								{{ genre.nomGenre }}
+							</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="col-md-4">
+					<label for="year" class="form-label small fw-bold text-uppercase">Année</label>
+					<select name="year" id="year" class="form-select bg-secondary text-white border-0">
+						<option value="">Toutes les années</option>
+						{% for y in years %}
+							<option value="{{ y.annee }}" {{ selectedYear == y.annee ? 'selected' : '' }}>
+								{{ y.annee }}
+							</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div class="col-md-4 d-flex gap-2">
+					<button type="submit" class="btn btn-primary flex-grow-1 fw-bold">Filtrer</button>
+					<a href="{{ path('app_home') }}" class="btn btn-outline-light">Réinitialiser</a>
+				</div>
+			</form>
+		</div>
+
 		<div class="row g-3 justify-content-start films-grid">
 			{% for film in films %}
 				<div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex justify-content-center">

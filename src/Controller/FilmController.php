@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\FilmsRepository;
 use App\Entity\Films;
+use App\Entity\Genres;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,16 +14,40 @@ use Doctrine\Persistence\ManagerRegistry;
 class FilmController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(FilmsRepository $filmsRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(FilmsRepository $filmsRepository, ManagerRegistry $doctrine, PaginatorInterface $paginator, Request $request): Response
     {
+        $genreId = $request->query->get('genre') ? $request->query->getInt('genre') : null;
+        $year = $request->query->get('year');
+
+        $query = $filmsRepository->findByFilters($genreId, $year);
+
         $films = $paginator->paginate(
-            $filmsRepository->findAll(),
+            $query,
             $request->query->getInt('page', 1),
             28
         );
 
+        // Fetch ONLY genres that are associated with at least one film
+        $genres = $doctrine->getRepository(Genres::class)->createQueryBuilder('g')
+            ->join('g.films', 'f')
+            ->orderBy('g.nom_Genre', 'ASC')
+            ->getQuery()
+            ->getResult();
+        
+        // Get unique years for the filter (already limited to Films table)
+        $years = $doctrine->getRepository(Films::class)->createQueryBuilder('f')
+            ->select('DISTINCT f.annee')
+            ->where('f.annee IS NOT NULL')
+            ->orderBy('f.annee', 'DESC')
+            ->getQuery()
+            ->getResult();
+
         return $this->render('films/index.html.twig', [
             'films' => $films,
+            'genres' => $genres,
+            'years' => $years,
+            'selectedGenre' => $genreId,
+            'selectedYear' => $year,
         ]);
     }
 

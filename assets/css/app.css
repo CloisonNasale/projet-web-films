@@ -7,21 +7,27 @@ body {
     /* Account for fixed navbar (approx 80-100px) */
 }
 
-a{
+a {
     text-decoration: none !important;
 }
 
 /* Navbar Customization */
 .navbar {
-    background-color: rgba(13, 2, 29, 0.6); /* Couleur sombre semi-transparente */
-    backdrop-filter: blur(10px); /* Flou du fond derrière la navbar */
-    -webkit-backdrop-filter: blur(10px); /* Compatibilité Safari */
+    background-color: rgba(13, 2, 29, 0.6);
+    /* Couleur sombre semi-transparente */
+    backdrop-filter: blur(10px);
+    /* Flou du fond derrière la navbar */
+    -webkit-backdrop-filter: blur(10px);
+    /* Compatibilité Safari */
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optionnel: légère bordure pour relief */
-    position: fixed; /* Si tu veux que la navbar reste visible */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Optionnel: légère bordure pour relief */
+    position: fixed;
+    /* Si tu veux que la navbar reste visible */
     width: 100%;
-    z-index: 1030; /* Bootstrap navbar z-index */
+    z-index: 1030;
+    /* Bootstrap navbar z-index */
 }
 
 .navbar-brand {

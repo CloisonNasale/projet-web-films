@@ -1,5 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {% if app.request.attributes.get('_route') in ['profil', 'film_favoris'] %}
+        {{ encore_entry_link_tags('profil') }}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {% if app.request.attributes.get('_route') in ['profil', 'film_favoris'] %}
+        {{ encore_entry_script_tags('profil') }}
+    {% endif %}
+{% endblock %}
+
 {% block body %}
 	{% if app.user %}
 		<div class="profile-page-container">
@@ -9,44 +23,46 @@
 				<a href="{{ path('film_favoris') }}" class="sidebar-link active">Mes Favoris</a>
 				<a href="#" class="sidebar-link">Mes Commandes</a>
 			</div>
-			<div class="container-fluid px-2">
-				<div class="row g-3 justify-content-start films-grid">
-					{% for film in favoris %}
-						<div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex justify-content-center">
-							<div class="card film-card text-white position-relative">
-								{% if film.affiche %}
-									<a href="{{ path('film_show', { id: film.idFilm }) }}">
-										<img src="{{ asset(film.affiche) }}" class="card-img-top" alt="{{ film.titre }}">
-									</a>
-								{% else %}
-									<img src="{{ asset('images/default.png') }}" class="card-img-top" alt="Affiche par défaut">
-								{% endif %}
-
-								<div class="card-body">
-									<h5 class="card-title">
-										<a href="{{ path('film_show', { id: film.idFilm }) }}" class="text-decoration-none text-white">
-											{{ film.titre }}
+			<div class="profile-content">
+				<div class="container-fluid px-2">
+					<div class="row g-3 justify-content-start films-grid">
+						{% for film in favoris %}
+							<div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 d-flex justify-content-center">
+								<div class="card film-card text-white position-relative">
+									{% if film.affiche %}
+										<a href="{{ path('film_show', { id: film.idFilm }) }}">
+											<img src="{{ asset(film.affiche) }}" class="card-img-top" alt="{{ film.titre }}">
 										</a>
-									</h5>
-									<p class="card-text">
-										{{ film.annee }}
-										{% if film.genres|length > 0 %}
-											-
-											{{ film.genres|first.getNomGenre() }}
-										{% endif %}
-									</p>
-								</div>
-
-								<div class="position-absolute top-0 end-0 m-2">
-									{% if film in app.user.favoris %}
-										<a class="favoris bi bi-heart-fill text-danger fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Retirer des favoris"></a>
 									{% else %}
-										<a class="favoris bi bi-heart text-white fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Ajouter aux favoris"></a>
+										<img src="{{ asset('images/default.png') }}" class="card-img-top" alt="Affiche par défaut">
 									{% endif %}
+
+									<div class="card-body">
+										<h5 class="card-title">
+											<a href="{{ path('film_show', { id: film.idFilm }) }}" class="text-decoration-none text-white">
+												{{ film.titre }}
+											</a>
+										</h5>
+										<p class="card-text">
+											{{ film.annee }}
+											{% if film.genres|length > 0 %}
+												-
+												{{ film.genres|first.getNomGenre() }}
+											{% endif %}
+										</p>
+									</div>
+
+									<div class="position-absolute top-0 end-0 m-2">
+										{% if film in app.user.favoris %}
+											<a class="favoris bi bi-heart-fill text-danger fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Retirer des favoris"></a>
+										{% else %}
+											<a class="favoris bi bi-heart text-white fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Ajouter aux favoris"></a>
+										{% endif %}
+									</div>
 								</div>
 							</div>
-						</div>
-					{% endfor %}
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		</div>

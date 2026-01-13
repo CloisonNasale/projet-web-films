@@ -1,11 +1,4 @@
 /* Global Styles for Profile Page */
-body {
-    background-color: #1a0b2e;
-    /* Deep purple background */
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-}
-
 .profile-page-container {
     display: flex;
     min-height: 80vh;

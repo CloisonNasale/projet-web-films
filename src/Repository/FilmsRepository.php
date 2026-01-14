@@ -12,7 +12,7 @@ class FilmsRepository extends ServiceEntityRepository
         parent::__construct($registry, Films::class);
     }
 
-    public function findByFilters(?int $genreId, ?string $year)
+    public function findByFilters(?int $genreId, ?string $year, ?string $search = null)
     {
         $qb = $this->createQueryBuilder('f')
             ->orderBy('f.titre', 'ASC');
@@ -26,6 +26,11 @@ class FilmsRepository extends ServiceEntityRepository
         if ($year) {
             $qb->andWhere('f.annee = :year')
                ->setParameter('year', $year);
+        }
+
+        if ($search) {
+            $qb->andWhere('f.titre LIKE :search')
+               ->setParameter('search', $search . '%');
         }
 
         return $qb->getQuery();

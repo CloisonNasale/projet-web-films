@@ -18,8 +18,9 @@ class FilmController extends AbstractController
     {
         $genreId = $request->query->get('genre') ? $request->query->getInt('genre') : null;
         $year = $request->query->get('year');
+        $search = $request->query->get('search');
 
-        $query = $filmsRepository->findByFilters($genreId, $year);
+        $query = $filmsRepository->findByFilters($genreId, $year, $search);
 
         $films = $paginator->paginate(
             $query,
@@ -27,18 +28,37 @@ class FilmController extends AbstractController
             28
         );
 
-        // Fetch ONLY genres that are associated with at least one film
-        $genres = $doctrine->getRepository(Genres::class)->createQueryBuilder('g')
-            ->join('g.films', 'f')
-            ->orderBy('g.nom_Genre', 'ASC')
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('films/_films_grid.html.twig', [
+                'films' => $films,
+            ]);
+        }
+
+        // Fetch ONLY genres that are associated with at least one film (filtered by year if selected)
+        $genresQuery = $doctrine->getRepository(Genres::class)->createQueryBuilder('g')
+            ->join('g.films', 'f');
+        
+        if ($year) {
+            $genresQuery->andWhere('f.annee = :year')
+                ->setParameter('year', $year);
+        }
+
+        $genres = $genresQuery->orderBy('g.nom_Genre', 'ASC')
             ->getQuery()
             ->getResult();
         
-        // Get unique years for the filter (already limited to Films table)
-        $years = $doctrine->getRepository(Films::class)->createQueryBuilder('f')
+        // Get unique years for the filter (filtered by genre if selected)
+        $yearsQuery = $doctrine->getRepository(Films::class)->createQueryBuilder('f')
             ->select('DISTINCT f.annee')
-            ->where('f.annee IS NOT NULL')
-            ->orderBy('f.annee', 'DESC')
+            ->where('f.annee IS NOT NULL');
+
+        if ($genreId) {
+            $yearsQuery->join('f.genres', 'g')
+                ->andWhere('g.id_Genre = :genreId')
+                ->setParameter('genreId', $genreId);
+        }
+
+        $years = $yearsQuery->orderBy('f.annee', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -48,6 +68,7 @@ class FilmController extends AbstractController
             'years' => $years,
             'selectedGenre' => $genreId,
             'selectedYear' => $year,
+            'search' => $search,
         ]);
     }
 

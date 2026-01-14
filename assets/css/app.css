@@ -184,6 +184,10 @@ a {
     /* Distinguished look */
 }
 
+.liste{
+    color:#000000 !important;
+}
+
 /* Année et genre */
 .film-card .card-text {
     font-size: 0.85rem;

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {% if app.request.attributes.get('_route') in ['profil', 'film_commandes'] %}
+        {{ encore_entry_link_tags('profil') }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+		<div class="profile-page-container">
+			<div class="profile-sidebar">
+				<h3 class="mb-4">Profil</h3>
+				<a href="{{ path('profil') }}" class="sidebar-link">Profil</a>
+				<a href="{{ path('film_favoris') }}" class="sidebar-link active">Mes Favoris</a>
+				<a href="{{ path('film_commande') }}" class="sidebar-link">Mes Commandes</a>
+			</div>
+			<div class="profile-content">
+				<div class="container-fluid px-2">
+					<div class="row g-3 justify-content-start films-grid">
+						{% for commande in commandes %}
+
+                        {% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

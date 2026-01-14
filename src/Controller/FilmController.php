@@ -94,5 +94,19 @@ class FilmController extends AbstractController
         ]);
     }
 
+        #[Route('/commandes', name: 'film_commande')]
+    public function commandes(): Response
+    {
+        /** @var Compte $compte */
+        $compte = $this->getUser();
+
+        if (!$compte) {
+            throw $this->createAccessDeniedException();
+        }
+
+        return $this->render('films/commande.html.twig', [
+            'commandes' => $compte->getCommandes(),
+        ]);
+    }
 
 }

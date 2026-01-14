@@ -7,13 +7,15 @@ use App\Entity\Compte;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class FavorisController extends AbstractController
 {
     #[Route('/favoris/toggle/{id}', name: 'favoris_toggle')]
     public function toggleFavori(
         Films $film,
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        Request $request
     ) {
         /** @var Compte $compte */
         $compte = $this->getUser();
@@ -30,6 +32,11 @@ class FavorisController extends AbstractController
 
         $em->flush();
 
-        return $this->redirectToRoute('app_home');
+        // ✅ BON OBJET
+        $referer = $request->headers->get('referer');
+
+        return $this->redirect(
+            $referer ?? $this->generateUrl('app_home')
+        );
     }
 }

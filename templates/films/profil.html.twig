@@ -5,6 +5,7 @@
     {% if app.request.attributes.get('_route') in ['profil', 'film_favoris'] %}
         {{ encore_entry_link_tags('profil') }}
     {% endif %}
+	
 {% endblock %}
 
 {% block javascripts %}

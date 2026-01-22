@@ -47,9 +47,22 @@
             </div>
 
             <!-- Panier -->
-            <a href="#" class="add-cart-btn" title="Ajouter au panier">
-                🛒
-            </a>
+            <!-- Panier -->
+            {% if app.user %}
+                {% if film in app.user.panier %}
+                    <button class="add-cart-btn" style="background-color: #198754; cursor: default;" disabled title="Déjà au panier">
+                        ✔
+                    </button>
+                {% else %}
+                    <button class="add-cart-btn btn-add-panier" data-movie-id="{{ film.idFilm }}" title="Ajouter au panier" style="border: none; cursor: pointer;">
+                        🛒
+                    </button>
+                {% endif %}
+            {% else %}
+                <a href="{{ path('app_login') }}" class="add-cart-btn" title="Connectez-ou pour ajouter au panier">
+                    🛒
+                </a>
+            {% endif %}
         </div>
 
         <!-- Colonne droite -->

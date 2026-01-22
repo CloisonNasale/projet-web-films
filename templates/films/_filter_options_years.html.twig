@@ -1,0 +1,6 @@
+<option value="">Toutes les années</option>
+{% for y in years %}
+    <option value="{{ y.annee }}" {{ selectedYear == y.annee ? 'selected' : '' }}>
+        {{ y.annee }}
+    </option>
+{% endfor %}

@@ -198,4 +198,22 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function addPanier(Films $film): self
+    {
+        if (!$this->panier->contains($film)) {
+            $this->panier->add($film);
+            $film->getComptesPanier()->add($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Films $film): self
+    {
+        if ($this->panier->removeElement($film)) {
+             $film->getComptesPanier()->removeElement($this);
+        }
+        return $this;
+    }
+
 }

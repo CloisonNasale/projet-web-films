@@ -30,6 +30,25 @@
 						{% endfor %}
 					</select>
 				</div>
+				<div class="col-12 mt-3">
+					<label class="form-label small fw-bold text-uppercase d-block mb-2">Trier par :</label>
+					<div class="btn-group" role="group" aria-label="Tri des films">
+						<input type="radio" class="btn-check" name="tri" id="sort_alpha" value="alpha" autocomplete="off" onchange="updateFilters()" {{ currentSort == 'alpha' ? 'checked' : '' }}>
+						<label class="btn btn-outline-secondary btn-sm" for="sort_alpha">
+							<i class="bi bi-sort-alpha-down"></i> Alphabétique (A-Z)
+						</label>
+
+						<input type="radio" class="btn-check" name="tri" id="sort_price" value="price_asc" autocomplete="off" onchange="updateFilters()" {{ currentSort == 'price_asc' ? 'checked' : '' }}>
+						<label class="btn btn-outline-secondary btn-sm" for="sort_price">
+							<i class="bi bi-currency-euro"></i> Prix croissant
+						</label>
+
+						<input type="radio" class="btn-check" name="tri" id="sort_rating" value="rating_desc" autocomplete="off" onchange="updateFilters()" {{ currentSort == 'rating_desc' ? 'checked' : '' }}>
+						<label class="btn btn-outline-secondary btn-sm" for="sort_rating">
+							<i class="bi bi-star-fill"></i> Mieux notés
+						</label>
+					</div>
+				</div>
 			</form>
 		</div>
 
@@ -56,9 +75,11 @@
 					'X-Requested-With': 'XMLHttpRequest'
 				}
 			})
-			.then(response => response.text())
-			.then(html => {
-				document.querySelector('.films-container').innerHTML = html;
+			.then(response => response.json())
+			.then(data => {
+				document.querySelector('.films-container').innerHTML = data.content;
+				document.getElementById('genre').innerHTML = data.genreOptions;
+				document.getElementById('year').innerHTML = data.yearOptions;
 			})
 			.catch(error => console.error('Error:', error));
 		}

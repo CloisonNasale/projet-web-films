@@ -19,20 +19,15 @@ class FilmController extends AbstractController
         $genreId = $request->query->get('genre') ? $request->query->getInt('genre') : null;
         $year = $request->query->get('year');
         $search = $request->query->get('search');
+        $sort = $request->query->get('tri', 'alpha'); // "tri" parameter to escape KnpPaginator interference
 
-        $query = $filmsRepository->findByFilters($genreId, $year, $search);
+        $query = $filmsRepository->findByFilters($genreId, $year, $search, $sort);
 
         $films = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
             28
         );
-
-        if ($request->isXmlHttpRequest()) {
-            return $this->render('films/_films_grid.html.twig', [
-                'films' => $films,
-            ]);
-        }
 
         // Fetch ONLY genres that are associated with at least one film (filtered by year if selected)
         $genresQuery = $doctrine->getRepository(Genres::class)->createQueryBuilder('g')
@@ -62,6 +57,14 @@ class FilmController extends AbstractController
             ->getQuery()
             ->getResult();
 
+        if ($request->isXmlHttpRequest()) {
+            return $this->json([
+                'content' => $this->renderView('films/_films_grid.html.twig', ['films' => $films]),
+                'genreOptions' => $this->renderView('films/_filter_options_genres.html.twig', ['genres' => $genres, 'selectedGenre' => $genreId]),
+                'yearOptions' => $this->renderView('films/_filter_options_years.html.twig', ['years' => $years, 'selectedYear' => $year]),
+            ]);
+        }
+
         return $this->render('films/index.html.twig', [
             'films' => $films,
             'genres' => $genres,
@@ -69,6 +72,7 @@ class FilmController extends AbstractController
             'selectedGenre' => $genreId,
             'selectedYear' => $year,
             'search' => $search,
+            'currentSort' => $sort,
         ]);
     }
 

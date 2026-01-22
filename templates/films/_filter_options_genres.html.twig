@@ -1,0 +1,6 @@
+<option value="">Tous les genres</option>
+{% for genre in genres %}
+    <option value="{{ genre.idGenre }}" {{ selectedGenre == genre.idGenre ? 'selected' : '' }}>
+        {{ genre.nomGenre }}
+    </option>
+{% endfor %}

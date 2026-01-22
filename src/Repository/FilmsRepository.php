@@ -12,10 +12,10 @@ class FilmsRepository extends ServiceEntityRepository
         parent::__construct($registry, Films::class);
     }
 
-    public function findByFilters(?int $genreId, ?string $year, ?string $search = null)
+    public function findByFilters(?int $genreId, ?string $year, ?string $search = null, string $sort = 'alpha')
     {
         $qb = $this->createQueryBuilder('f')
-            ->orderBy('f.titre', 'ASC');
+            ->leftJoin('f.prix', 'p'); // Join necessary for price sorting
 
         if ($genreId) {
             $qb->join('f.genres', 'g')
@@ -31,6 +31,20 @@ class FilmsRepository extends ServiceEntityRepository
         if ($search) {
             $qb->andWhere('f.titre LIKE :search')
                ->setParameter('search', $search . '%');
+        }
+
+        // Apply Sorting
+        switch ($sort) {
+            case 'price_asc':
+                $qb->orderBy('p.prix', 'ASC');
+                break;
+            case 'rating_desc':
+                $qb->orderBy('f.classementIMDB', 'DESC');
+                break;
+            case 'alpha':
+            default:
+                $qb->orderBy('f.titre', 'ASC');
+                break;
         }
 
         return $qb->getQuery();

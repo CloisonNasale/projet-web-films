@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "genres")]
+// Représente les genres cinématographiques
 class Genres
 {
     #[ORM\Id]

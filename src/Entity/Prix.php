@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "prix")]
+// Représente une catégorie de prix pour les films (peut-être format DVD/Blu-ray ou location)
 class Prix
 {
     #[ORM\Id]

@@ -1,25 +1,32 @@
 <?php
+
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\FilmsRepository;
 use App\Entity\Films;
 use App\Entity\Genres;
-use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Compte;
+use App\Repository\FilmsRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class FilmController extends AbstractController
 {
+    // Affiche la page d'accueil avec la liste des films, les filtres et la pagination
     #[Route('/', name: 'app_home')]
-    public function index(FilmsRepository $filmsRepository, ManagerRegistry $doctrine, PaginatorInterface $paginator, Request $request): Response
-    {
+    public function index(
+        FilmsRepository $filmsRepository,
+        ManagerRegistry $registry,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
         $genreId = $request->query->get('genre') ? $request->query->getInt('genre') : null;
         $year = $request->query->get('year');
         $search = $request->query->get('search');
-        $sort = $request->query->get('tri', 'alpha'); // "tri" parameter to escape KnpPaginator interference
+        $sort = $request->query->get('tri', 'alpha');
 
         $query = $filmsRepository->findByFilters($genreId, $year, $search, $sort);
 
@@ -29,8 +36,7 @@ class FilmController extends AbstractController
             28
         );
 
-        // Fetch ONLY genres that are associated with at least one film (filtered by year if selected)
-        $genresQuery = $doctrine->getRepository(Genres::class)->createQueryBuilder('g')
+        $genresQuery = $registry->getRepository(Genres::class)->createQueryBuilder('g')
             ->join('g.films', 'f');
         
         if ($year) {
@@ -42,8 +48,7 @@ class FilmController extends AbstractController
             ->getQuery()
             ->getResult();
         
-        // Get unique years for the filter (filtered by genre if selected)
-        $yearsQuery = $doctrine->getRepository(Films::class)->createQueryBuilder('f')
+        $yearsQuery = $registry->getRepository(Films::class)->createQueryBuilder('f')
             ->select('DISTINCT f.annee')
             ->where('f.annee IS NOT NULL');
 
@@ -60,8 +65,14 @@ class FilmController extends AbstractController
         if ($request->isXmlHttpRequest()) {
             return $this->json([
                 'content' => $this->renderView('films/_films_grid.html.twig', ['films' => $films]),
-                'genreOptions' => $this->renderView('films/_filter_options_genres.html.twig', ['genres' => $genres, 'selectedGenre' => $genreId]),
-                'yearOptions' => $this->renderView('films/_filter_options_years.html.twig', ['years' => $years, 'selectedYear' => $year]),
+                'genreOptions' => $this->renderView('films/_filter_options_genres.html.twig', [
+                    'genres' => $genres,
+                    'selectedGenre' => $genreId
+                ]),
+                'yearOptions' => $this->renderView('films/_filter_options_years.html.twig', [
+                    'years' => $years,
+                    'selectedYear' => $year
+                ]),
             ]);
         }
 
@@ -76,48 +87,45 @@ class FilmController extends AbstractController
         ]);
     }
 
+    // Affiche les détails d'un film spécifique
     #[Route('/film/{id}', name: 'film_show')]
     public function show(Films $film): Response
     {
-        $acteurs = $film->getActeurs(); // récupère tous les acteurs liés au film
-
         return $this->render('films/show.html.twig', [
             'film' => $film,
-            'acteurs' => $acteurs,
+            'acteurs' => $film->getActeurs(),
         ]);
     }
 
+    // Affiche la liste des films favoris de l'utilisateur
     #[Route('/favoris', name: 'film_favoris')]
     public function favoris(): Response
     {
-        /** @var Compte $compte */
-        $compte = $this->getUser();
+        $user = $this->getUser();
 
-        if (!$compte) {
+        if (!$user) {
             throw $this->createAccessDeniedException();
         }
 
         return $this->render('films/favoris.html.twig', [
-            'favoris' => $compte->getFavoris(),
+            'favoris' => $user->getFavoris(),
         ]);
     }
 
+    // Affiche le profil de l'utilisateur, son panier et ses commandes
     #[Route('/profil', name: 'profil')]
     public function profil(): Response
     {
-        /** @var Compte $compte */
-        $compte = $this->getUser();
+        $user = $this->getUser();
 
-        if (!$compte) {
+        if (!$user) {
             throw $this->createAccessDeniedException();
         }
 
         return $this->render('films/profil.html.twig', [
-            'compte' => $compte,
-            'panier' => $compte->getPanier(),
-            'commandes' => $compte->getCommandes(),
+            'compte' => $user,
+            'panier' => $user->getPanier(),
+            'commandes' => $user->getCommandes(),
         ]);
     }
-
-
 }

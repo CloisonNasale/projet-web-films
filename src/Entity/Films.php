@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "films")]
+// Représente un film avec toutes ses propriétés (titre, année, genre, etc.)
 class Films
 {
     #[ORM\Id]

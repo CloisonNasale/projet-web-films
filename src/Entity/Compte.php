@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 #[ORM\Entity]
 #[ORM\Table(name: "compte")]
 #[UniqueEntity(fields: ['mail'], message: 'Cet email est déjà utilisé.')]
+// Représente un compte utilisateur (client ou admin)
 class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -89,23 +90,15 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
+    
     public function getUserIdentifier(): string
     {
         return (string) $this->mail;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
@@ -118,9 +111,6 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
     public function getPassword(): ?string
     {
         return $this->motdepasse;
@@ -143,13 +133,9 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
+    
     public function eraseCredentials(): void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 
     public function getTelephone(): ?string

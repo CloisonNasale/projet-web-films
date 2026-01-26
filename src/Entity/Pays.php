@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "pays")]
+// Représente les pays d'origine des films
 class Pays
 {
     #[ORM\Id]

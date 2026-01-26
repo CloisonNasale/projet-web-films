@@ -60,7 +60,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* For form-row from twig if used, or just flex groups */
 .form-row {
     display: flex;
     gap: 1rem;

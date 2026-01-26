@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "commandes")]
+// Représente les commandes passées par les utilisateurs
 class Commandes
 {
     #[ORM\Id]

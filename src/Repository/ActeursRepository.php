@@ -12,11 +12,11 @@ class ActeursRepository extends ServiceEntityRepository
         parent::__construct($registry, Acteurs::class);
     }
 
-    /** Récupère les acteurs pour un film donné*/
+    // Récupère la liste des acteurs associés à un film spécifique
     public function findByFilmId(int $idFilm): array
     {
         return $this->createQueryBuilder('a')
-            ->join('a.films', 'f')  // uniquement si la relation existe
+            ->join('a.films', 'f')
             ->where('f.idFilm = :idFilm')
             ->setParameter('idFilm', $idFilm)
             ->getQuery()

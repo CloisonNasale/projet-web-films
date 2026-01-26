@@ -12,20 +12,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
-
 use Symfony\Bundle\SecurityBundle\Security;
 
 class RegistrationController extends AbstractController
 {
+    // Gère l'inscription d'un nouvel utilisateur
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, SluggerInterface $slugger, Security $security): Response
-    {
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager,
+        SluggerInterface $slugger,
+        Security $security
+    ): Response {
         $user = new Compte();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -33,7 +37,6 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            /** @var UploadedFile $pdpFile */
             $pdpFile = $form->get('pdp')->getData();
 
             if ($pdpFile) {
@@ -47,7 +50,6 @@ class RegistrationController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
                 }
 
                 $user->setPdp($newFilename);
@@ -56,7 +58,6 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // auto-login after registration
             return $security->login($user, 'form_login', 'main');
         }
 

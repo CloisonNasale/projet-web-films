@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repository;
 
 use App\Entity\Films;
@@ -12,41 +13,41 @@ class FilmsRepository extends ServiceEntityRepository
         parent::__construct($registry, Films::class);
     }
 
+    // Recherche et filtre les films selon plusieurs critères (genre, année, recherche textuelle, tri)
     public function findByFilters(?int $genreId, ?string $year, ?string $search = null, string $sort = 'alpha')
     {
-        $qb = $this->createQueryBuilder('f')
-            ->leftJoin('f.prix', 'p'); // Join necessary for price sorting
+        $queryBuilder = $this->createQueryBuilder('f')
+            ->leftJoin('f.prix', 'p'); 
 
         if ($genreId) {
-            $qb->join('f.genres', 'g')
-               ->andWhere('g.id_Genre = :genreId')
-               ->setParameter('genreId', $genreId);
+            $queryBuilder->join('f.genres', 'g')
+                ->andWhere('g.id_Genre = :genreId')
+                ->setParameter('genreId', $genreId);
         }
 
         if ($year) {
-            $qb->andWhere('f.annee = :year')
-               ->setParameter('year', $year);
+            $queryBuilder->andWhere('f.annee = :year')
+                ->setParameter('year', $year);
         }
 
         if ($search) {
-            $qb->andWhere('f.titre LIKE :search')
-               ->setParameter('search', $search . '%');
+            $queryBuilder->andWhere('f.titre LIKE :search')
+                ->setParameter('search', $search . '%');
         }
 
-        // Apply Sorting
         switch ($sort) {
             case 'price_asc':
-                $qb->orderBy('p.prix', 'ASC');
+                $queryBuilder->orderBy('p.prix', 'ASC');
                 break;
             case 'rating_desc':
-                $qb->orderBy('f.classementIMDB', 'DESC');
+                $queryBuilder->orderBy('f.classementIMDB', 'DESC');
                 break;
             case 'alpha':
             default:
-                $qb->orderBy('f.titre', 'ASC');
+                $queryBuilder->orderBy('f.titre', 'ASC');
                 break;
         }
 
-        return $qb->getQuery();
+        return $queryBuilder->getQuery();
     }
 }

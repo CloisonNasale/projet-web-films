@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "realisateurs")]
+// Représente les réalisateurs des films
 class Realisateurs
 {
     #[ORM\Id]

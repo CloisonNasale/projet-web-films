@@ -8,50 +8,58 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FavorisController extends AbstractController
 {
+    // Ajoute ou supprime un film des favoris
     #[Route('/favoris/toggle/{id}', name: 'favoris_toggle')]
-    public function toggleFavori(
-        Films $film,
-        EntityManagerInterface $em
-    ) {
-        /** @var Compte $compte */
-        $compte = $this->getUser();
+    public function toggleFavori(Films $film, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $user = $this->getUser();
 
-        if (!$compte) {
+        if (!$user) {
             throw $this->createAccessDeniedException();
         }
 
-        if ($compte->getFavoris()->contains($film)) {
-            $compte->removeFavori($film);
+        $isFavorite = $user->getFavoris()->contains($film);
+        
+        if ($isFavorite) {
+            $user->removeFavori($film);
         } else {
-            $compte->addFavori($film);
+            $user->addFavori($film);
         }
 
-        $em->flush();
+        $entityManager->flush();
+
+        // Si la requête est AJAX, retourner une réponse JSON
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                'success' => true,
+                'isFavorite' => !$isFavorite
+            ]);
+        }
 
         return $this->redirectToRoute('app_home');
     }
 
+    // Exporte la liste des favoris de l'utilisateur au format CSV
     #[Route('/favoris/export', name: 'favoris_export')]
     public function exportCsv(): Response
     {
-        /** @var Compte $user */
         $user = $this->getUser();
 
         if (!$user) {
             throw $this->createAccessDeniedException('Vous devez être connecté pour exporter vos favoris.');
         }
 
-        $favoris = $user->getFavoris(); // Récupère les films favoris
+        $favoris = $user->getFavoris();
 
-        // Commencer le CSV avec l'encodage UTF-8 BOM pour Excel
-        $csvContent = "\xEF\xBB\xBF"; // BOM
+        $csvContent = "\xEF\xBB\xBF";
         $csvContent .= "Titre,Année,Genres\n";
 
         foreach ($favoris as $film) {
-            // Récupérer tous les genres séparés par une virgule
             $genres = implode(',', $film->getGenres()->map(fn($g) => $g->getNomGenre())->toArray());
 
             $csvContent .= sprintf(
@@ -62,7 +70,6 @@ class FavorisController extends AbstractController
             );
         }
 
-        // Créer la réponse avec les headers pour téléchargement
         $response = new Response($csvContent);
         $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
         $response->headers->set('Content-Disposition', 'attachment; filename="favoris.csv"');

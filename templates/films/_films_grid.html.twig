@@ -28,9 +28,15 @@
 				{% if app.user %}
 					<div class="position-absolute top-0 end-0 m-2">
 						{% if film in app.user.favoris %}
-							<a class="favoris bi bi-heart-fill text-danger fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Retirer des favoris"></a>
+							<a class="favoris favoris-toggle bi bi-heart-fill text-danger fs-3" 
+							   href="{{ path('favoris_toggle', {id: film.idFilm}) }}" 
+							   data-film-id="{{ film.idFilm }}"
+							   title="Retirer des favoris"></a>
 						{% else %}
-							<a class="favoris bi bi-heart text-white fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Ajouter aux favoris"></a>
+							<a class="favoris favoris-toggle bi bi-heart text-white fs-3" 
+							   href="{{ path('favoris_toggle', {id: film.idFilm}) }}" 
+							   data-film-id="{{ film.idFilm }}"
+							   title="Ajouter aux favoris"></a>
 						{% endif %}
 					</div>
 				{% endif %}

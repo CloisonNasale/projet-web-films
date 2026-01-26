@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+	{# Page d'accueil affichant la liste des films avec filtres et recherche #}
 	<div class="container-fluid px-2">
 		<div class="filter-bar mb-4 p-3 bg-dark text-white rounded shadow-sm">
 			<form method="get" action="{{ path('app_home') }}" class="row g-3 align-items-end" id="filter-form">
@@ -60,13 +61,13 @@
 	<script>
 		let searchTimeout;
 
+		// Met à jour la liste des films via AJAX selon les filtres sélectionnés
 		function updateFilters() {
 			const form = document.getElementById('filter-form');
 			const url = new URL(form.action, window.location.origin);
 			const formData = new FormData(form);
 			const params = new URLSearchParams(formData);
 
-			// Update URL without reloading
 			const newUrl = `${window.location.pathname}?${params.toString()}`;
 			window.history.pushState({}, '', newUrl);
 
@@ -80,6 +81,8 @@
 				document.querySelector('.films-container').innerHTML = data.content;
 				document.getElementById('genre').innerHTML = data.genreOptions;
 				document.getElementById('year').innerHTML = data.yearOptions;
+				// Réattacher les événements favoris après le rechargement du contenu
+				attachFavorisListeners();
 			})
 			.catch(error => console.error('Error:', error));
 		}
@@ -88,7 +91,44 @@
 			clearTimeout(searchTimeout);
 			searchTimeout = setTimeout(() => {
 				updateFilters();
-			}, 300); // 300ms debounce
+			}, 300);
 		});
+
+		// Gère le toggle des favoris via AJAX
+		function attachFavorisListeners() {
+			document.querySelectorAll('.favoris-toggle').forEach(link => {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					
+					const url = this.href;
+					const filmId = this.dataset.filmId;
+					
+					fetch(url, {
+						headers: {
+							'X-Requested-With': 'XMLHttpRequest'
+						}
+					})
+					.then(response => response.json())
+					.then(data => {
+						if (data.success) {
+							// Basculer l'icône du cœur
+							if (data.isFavorite) {
+								this.classList.remove('bi-heart', 'text-white');
+								this.classList.add('bi-heart-fill', 'text-danger');
+								this.title = 'Retirer des favoris';
+							} else {
+								this.classList.remove('bi-heart-fill', 'text-danger');
+								this.classList.add('bi-heart', 'text-white');
+								this.title = 'Ajouter aux favoris';
+							}
+						}
+					})
+					.catch(error => console.error('Error:', error));
+				});
+			});
+		}
+
+		// Attacher les événements au chargement initial
+		attachFavorisListeners();
 	</script>
 {% endblock %}

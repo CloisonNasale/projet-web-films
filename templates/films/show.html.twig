@@ -16,6 +16,7 @@
 
 
 {% block body %}
+{# Page de détails d'un film (affiche, synopsis, acteurs, etc.) #}
 <div class="film-container">
 
     <div class="film-layout">
@@ -46,7 +47,6 @@
                 <strong>Prix :</strong> {{ film.prix.prix }} €
             </div>
 
-            <!-- Panier -->
             <!-- Panier -->
             {% if app.user %}
                 {% if film in app.user.panier %}

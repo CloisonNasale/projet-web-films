@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "acteurs")]
+// Représente les acteurs qui jouent dans les films
 class Acteurs
 {
     #[ORM\Id]

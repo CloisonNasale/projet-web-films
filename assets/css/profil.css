@@ -1,4 +1,3 @@
-/* Global Styles for Profile Page */
 .profile-page-container {
     display: flex;
     min-height: 80vh;
@@ -6,7 +5,7 @@
     padding-top: 2rem;
 }
 
-/* Sidebar Styles */
+/* --- Sidebar --- */
 .profile-sidebar {
     width: 270px;
     flex-shrink: 0;
@@ -41,12 +40,11 @@
     font-weight: bold;
 }
 
-/* Main Content Styles */
+/* --- Main Content --- */
 .profile-content {
     flex-grow: 1;
 }
 
-/* Profile Card */
 .profile-card {
     background: rgba(20, 10, 40, 0.6);
     background: linear-gradient(135deg, rgba(30, 20, 60, 0.8), rgba(20, 10, 40, 0.9));
@@ -84,7 +82,7 @@
     border-radius: 5px;
     font-size: 0.9rem;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
     display: inline-block;
 }
@@ -124,7 +122,6 @@
 
 .btn-password {
     background-color: #a52a2a;
-    /* Red/Brownish */
 }
 
 .btn-password:hover {
@@ -133,14 +130,12 @@
 
 .btn-delete {
     background-color: #b22222;
-    /* Red */
 }
 
 .btn-delete:hover {
     background-color: #d32f2f;
 }
 
-/* Sections for Panier/Commandes (if needed below) */
 .extra-sections {
     margin-top: 3rem;
     padding-top: 2rem;

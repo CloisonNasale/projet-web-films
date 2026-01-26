@@ -16,6 +16,7 @@
 
 {% block body %}
 	{% if app.user %}
+		{# Page listant les films favoris de l'utilisateur #}
 		<div class="profile-page-container">
 			<div class="profile-sidebar">
 				<h3 class="mb-4">Profil</h3>
@@ -60,9 +61,15 @@
 
 									<div class="position-absolute top-0 end-0 m-2">
 										{% if film in app.user.favoris %}
-											<a class="favoris bi bi-heart-fill text-danger fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Retirer des favoris"></a>
+											<a class="favoris favoris-toggle bi bi-heart-fill text-danger fs-3" 
+											   href="{{ path('favoris_toggle', {id: film.idFilm}) }}" 
+											   data-film-id="{{ film.idFilm }}"
+											   title="Retirer des favoris"></a>
 										{% else %}
-											<a class="favoris bi bi-heart text-white fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Ajouter aux favoris"></a>
+											<a class="favoris favoris-toggle bi bi-heart text-white fs-3" 
+											   href="{{ path('favoris_toggle', {id: film.idFilm}) }}" 
+											   data-film-id="{{ film.idFilm }}"
+											   title="Ajouter aux favoris"></a>
 										{% endif %}
 									</div>
 								</div>
@@ -73,4 +80,47 @@
 			</div>
 		</div>
 	{% endif %}
+
+	<script>
+		// Gère le toggle des favoris via AJAX sur la page favoris
+		document.querySelectorAll('.favoris-toggle').forEach(link => {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				const url = this.href;
+				const filmId = this.dataset.filmId;
+				const filmCard = this.closest('.col-sm-12');
+				
+				fetch(url, {
+					headers: {
+						'X-Requested-With': 'XMLHttpRequest'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						// Si on retire des favoris, on masque la carte avec une animation
+						if (!data.isFavorite) {
+							filmCard.style.transition = 'opacity 0.3s ease';
+							filmCard.style.opacity = '0';
+							setTimeout(() => {
+								filmCard.remove();
+								// Si plus de favoris, afficher un message
+								const filmsGrid = document.querySelector('.films-grid');
+								if (filmsGrid.children.length === 0) {
+									filmsGrid.innerHTML = '<div class="col-12 text-center text-white"><p>Vous n\'avez pas encore de favoris.</p></div>';
+								}
+							}, 300);
+						} else {
+							// Si on ajoute aux favoris (ne devrait pas arriver sur cette page)
+							this.classList.remove('bi-heart', 'text-white');
+							this.classList.add('bi-heart-fill', 'text-danger');
+							this.title = 'Retirer des favoris';
+						}
+					}
+				})
+				.catch(error => console.error('Error:', error));
+			});
+		});
+	</script>
 {% endblock %}

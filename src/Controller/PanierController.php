@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/panier')]
 class PanierController extends AbstractController
 {
+    // Affiche le contenu du panier de l'utilisateur
     #[Route('/', name: 'panier_index')]
     public function index(): Response
     {
-        /** @var Compte $user */
         $user = $this->getUser();
         
         if (!$user) {
@@ -29,10 +29,10 @@ class PanierController extends AbstractController
         ]);
     }
 
+    // Ajoute un film au panier
     #[Route('/add/{id}', name: 'panier_add', methods: ['POST', 'GET'])]
-    public function add(Films $film, EntityManagerInterface $em): Response
+    public function add(Films $film, EntityManagerInterface $entityManager): Response
     {
-        /** @var Compte $user */
         $user = $this->getUser();
 
         if (!$user) {
@@ -40,20 +40,18 @@ class PanierController extends AbstractController
         }
 
         $user->addPanier($film);
-        $em->flush();
+        $entityManager->flush();
 
-        // Return JSON for AJAX requests, redirect for standard requests (fallback)
-        // For this task, we assume the JS will handle the JSON response.
         return $this->json([
             'message' => 'Film ajouté au panier',
             'count' => $user->getPanier()->count()
         ]);
     }
 
+    // Supprime un film du panier
     #[Route('/remove/{id}', name: 'panier_remove')]
-    public function remove(Films $film, EntityManagerInterface $em): Response
+    public function remove(Films $film, EntityManagerInterface $entityManager): Response
     {
-        /** @var Compte $user */
         $user = $this->getUser();
 
         if (!$user) {
@@ -61,15 +59,15 @@ class PanierController extends AbstractController
         }
 
         $user->removePanier($film);
-        $em->flush();
+        $entityManager->flush();
 
         return $this->redirectToRoute('panier_index');
     }
 
+    // Valide la commande et vide le panier
     #[Route('/confirm', name: 'panier_confirm')]
-    public function confirm(EntityManagerInterface $em): Response
+    public function confirm(EntityManagerInterface $entityManager): Response
     {
-        /** @var Compte $user */
         $user = $this->getUser();
 
         if (!$user) {
@@ -83,21 +81,19 @@ class PanierController extends AbstractController
             return $this->redirectToRoute('panier_index');
         }
 
-        // Clone the list of films to avoid modification issues during iteration
-        $filmsDuPanier = $panier->toArray();
+        $cartItems = $panier->toArray();
 
-        // Create new Order (Commande/Transaction)
-        $commande = new Commandes();
-        $commande->setDateCommande(new \DateTime());
-        $commande->setCompte($user);
+        $order = new Commandes();
+        $order->setDateCommande(new \DateTime());
+        $order->setCompte($user);
 
-        foreach ($filmsDuPanier as $film) {
-            $commande->getFilms()->add($film);
-            $user->removePanier($film); // Clear cart as we move items to order
+        foreach ($cartItems as $film) {
+            $order->getFilms()->add($film);
+            $user->removePanier($film);
         }
 
-        $em->persist($commande);
-        $em->flush();
+        $entityManager->persist($order);
+        $entityManager->flush();
 
         $this->addFlash('payment_success', 'Votre paiement a bien été réalisé');
 

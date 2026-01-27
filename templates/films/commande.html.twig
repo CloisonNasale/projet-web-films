@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
 {% block stylesheets %}
 	{{ encore_entry_link_tags('app') }}
 	{% if app.request.attributes.get('_route') in ['profil', 'film_commande'] %}
 		{{ encore_entry_link_tags('profil') }}
+        <link rel="stylesheet" href="{{ 'assets/css/commande.css' }}">
 	{% endif %}
 {% endblock %}
 

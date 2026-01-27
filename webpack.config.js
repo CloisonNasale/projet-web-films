@@ -27,6 +27,8 @@ Encore
     .addEntry('profil', './assets/js/profil.js')
     .addEntry('login', './assets/js/login.js')
     .addEntry('register', './assets/js/register.js')
+    .addStyleEntry('password', './assets/css/password.css')
+
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

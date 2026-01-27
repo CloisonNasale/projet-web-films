@@ -158,3 +158,70 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+
+/* Order History Styles */
+.commande-card {
+    background: rgba(20, 10, 40, 0.6);
+    background: linear-gradient(135deg, rgba(30, 20, 60, 0.8), rgba(20, 10, 40, 0.9));
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.commande-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.commande-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.commande-header h5 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.commande-total {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.commande-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.commande-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.commande-item:last-child {
+    border-bottom: none;
+}
+
+.film-title {
+    color: #d0d0d0;
+}
+
+.film-price {
+    color: #fff;
+    font-weight: 500;
+}

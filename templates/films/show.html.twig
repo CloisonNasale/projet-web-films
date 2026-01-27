@@ -1,118 +1,131 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
-    {% if app.request.attributes.get('_route') == 'film_show' %}
-        {{ encore_entry_link_tags('show') }}
-    {% endif %}
+	{{ encore_entry_link_tags('app') }}
+	{% if app.request.attributes.get('_route') == 'film_show' %}
+		{{ encore_entry_link_tags('show') }}
+	{% endif %}
 {% endblock %}
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-    {% if app.request.attributes.get('_route') == 'film_show' %}
-        {{ encore_entry_script_tags('show') }}
-    {% endif %}
+	{{ encore_entry_script_tags('app') }}
+	{% if app.request.attributes.get('_route') == 'film_show' %}
+		{{ encore_entry_script_tags('show') }}
+	{% endif %}
 {% endblock %}
 
 
 {% block body %}
-{# Page de détails d'un film (affiche, synopsis, acteurs, etc.) #}
-<div class="film-container">
+	{# Page de détails d'un film (affiche, synopsis, acteurs, etc.) #}
+	<div class="film-container">
+		<div
+			class="film-layout">
 
-    <div class="film-layout">
+			<!-- Colonne gauche -->
+			<div class="film-left">
+				<div class="poster-wrapper">
 
-        <!-- Colonne gauche -->
-        <div class="film-left">
-            <div class="poster-wrapper">
+					{% if film.affiche %}
+						<img src="{{ asset(film.affiche) }}" alt="{{ film.titre }}" class="film-poster">
+					{% else %}
+						<img src="{{ asset('images/default.png') }}" alt="Affiche par défaut" class="film-poster">
+					{% endif %}
 
-                {% if film.affiche %}
-                    <img src="{{ asset(film.affiche) }}" alt="{{ film.titre }}" class="film-poster">
-                {% else %}
-                    <img src="{{ asset('images/default.png') }}" alt="Affiche par défaut" class="film-poster">
-                {% endif %}
+					<!-- Note -->
+					<div class="film-rating">
+						★
+						{{ film.classementIMDB }}
+					</div>
 
-                <!-- Note -->
-                <div class="film-rating">
-                    ★ {{ film.classementIMDB }}
-                </div>
+					{% if app.user %}
+						<div class="position-absolute top-0 end-0 m-2">
+							{% if film in app.user.favoris %}
+								<a class="favoris bi bi-heart-fill text-danger fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Retirer des favoris"></a>
+							{% else %}
+								<a class="favoris bi bi-heart text-white fs-3" href="{{ path('favoris_toggle', {id: film.idFilm}) }}" title="Ajouter aux favoris"></a>
+							{% endif %}
+						</div>
+					{% endif %}
+				</div>
 
-                <!-- Favoris -->
-                <button class="favorite-btn" title="Ajouter aux favoris">
-                    ♥
-                </button>
-            </div>
+				<!-- Prix -->
+				{% if "now"|date("N") == 3 %}
+					<div class="film-price">
+						<strong>Prix :</strong>
+						{{ (film.prix.prix * 0.8)|round(2, "floor")}}
+						€ (-20%)
+					</div>
+				{% else %}
+					<div class="film-price">
+						<strong>Prix :</strong>
+						{{ film.prix.prix }}
+						€
+					</div>
+				{% endif %}
 
-            <!-- Prix -->
-            <div class="film-price">
-                <strong>Prix :</strong> {{ film.prix.prix }} €
-            </div>
+				<!-- Panier -->
+				{% if app.user %}
+					{% if film in app.user.panier %}
+						<button class="add-cart-btn" style="background-color: #198754; cursor: default;" disabled title="Déjà au panier">
+							✔
+						</button>
+					{% else %}
+						<button class="add-cart-btn btn-add-panier" data-movie-id="{{ film.idFilm }}" title="Ajouter au panier" style="border: none; cursor: pointer;">
+							🛒
+						</button>
+					{% endif %}
+				{% else %}
+					<a href="{{ path('app_login') }}" class="add-cart-btn" title="Connectez-ou pour ajouter au panier">
+						🛒
+					</a>
+				{% endif %}
+			</div>
 
-            <!-- Panier -->
-            {% if app.user %}
-                {% if film in app.user.panier %}
-                    <button class="add-cart-btn" style="background-color: #198754; cursor: default;" disabled title="Déjà au panier">
-                        ✔
-                    </button>
-                {% else %}
-                    <button class="add-cart-btn btn-add-panier" data-movie-id="{{ film.idFilm }}" title="Ajouter au panier" style="border: none; cursor: pointer;">
-                        🛒
-                    </button>
-                {% endif %}
-            {% else %}
-                <a href="{{ path('app_login') }}" class="add-cart-btn" title="Connectez-ou pour ajouter au panier">
-                    🛒
-                </a>
-            {% endif %}
-        </div>
+			<!-- Colonne droite -->
+			<div class="film-right">
 
-        <!-- Colonne droite -->
-        <div class="film-right">
+				<h1 class="film-title">
+					{{ film.titre }}
+					<a href="{{ path('app_home') }}" class="back-btn">←</a>
+				</h1>
 
-            <h1 class="film-title">
-                {{ film.titre }}
-                <a href="{{ path('app_home') }}" class="back-btn">←</a>
-            </h1>
+				<p class="film-meta">
+					<strong>Année :</strong>
+					{{ film.annee }}
+				</p>
 
-            <p class="film-meta">
-                <strong>Année :</strong> {{ film.annee }}
-            </p>
+				<div class="film-genres">
+					<strong>Genres :</strong>
+					{% for genre in film.genres %}
+						<span class="genre-badge">{{ genre.nomGenre }}</span>
+					{% else %}
+						<span>Aucun genre</span>
+					{% endfor %}
+				</div>
 
-            <div class="film-genres">
-                <strong>Genres :</strong>
-                {% for genre in film.genres %}
-                    <span class="genre-badge">{{ genre.nomGenre }}</span>
-                {% else %}
-                    <span>Aucun genre</span>
-                {% endfor %}
-            </div>
+				<h4>Description :</h4>
+				<p class="film-description">{{ film.synopsis }}</p>
 
-            <h4>Description :</h4>
-            <p class="film-description">{{ film.synopsis }}</p>
+				<h4>Acteurs :</h4>
+				{% if acteurs|length > 0 %}
+					<div class="actors-list">
+						{% for acteur in acteurs %}
+							<span class="actor-badge">{{ acteur.nomActeur }}</span>
+						{% endfor %}
+					</div>
+				{% else %}
+					<p>Aucun acteur pour ce film.</p>
+				{% endif %}
 
-            <h4>Acteurs :</h4>
-            {% if acteurs|length > 0 %}
-                <div class="actors-list">
-                    {% for acteur in acteurs %}
-                        <span class="actor-badge">{{ acteur.nomActeur }}</span>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <p>Aucun acteur pour ce film.</p>
-            {% endif %}
+				{% if film.bandeAnnonce %}
+					<h4>Bande annonce :</h4>
+					<div class="video-wrapper">
+						<iframe src="https://www.youtube.com/embed/{{ film.bandeAnnonce|replace({'https://www.youtube.com/watch?v=':''}) }}" title="Bande annonce {{ film.titre }}" allowfullscreen></iframe>
+					</div>
+				{% endif %}
 
-            {% if film.bandeAnnonce %}
-                <h4>Bande annonce :</h4>
-                <div class="video-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/{{ film.bandeAnnonce|replace({'https://www.youtube.com/watch?v=':''}) }}"
-                        title="Bande annonce {{ film.titre }}"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            {% endif %}
+			</div>
+		</div>
 
-        </div>
-    </div>
-
-</div>
+	</div>
 {% endblock %}

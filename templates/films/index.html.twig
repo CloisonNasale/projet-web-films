@@ -14,7 +14,7 @@
 					<select name="genre" id="genre" class="form-select bg-secondary text-white border-0" onchange="updateFilters()">
 						<option value="">Tous les genres</option>
 						{% for genre in genres %}
-							<option value="{{ genre.idGenre }}" {{ selectedGenre == genre.idGenre ? 'selected' : '' }}>
+							<option class="liste" value="{{ genre.idGenre }}" {{ selectedGenre == genre.idGenre ? 'selected' : '' }}>
 								{{ genre.nomGenre }}
 							</option>
 						{% endfor %}
@@ -25,7 +25,7 @@
 					<select name="year" id="year" class="form-select bg-secondary text-white border-0" onchange="updateFilters()">
 						<option value="">Toutes les années</option>
 						{% for y in years %}
-							<option value="{{ y.annee }}" {{ selectedYear == y.annee ? 'selected' : '' }}>
+							<option value="{{ y.annee }}" class="liste" {{ selectedYear == y.annee ? 'selected' : '' }}>
 								{{ y.annee }}
 							</option>
 						{% endfor %}
@@ -36,17 +36,20 @@
 					<div class="btn-group" role="group" aria-label="Tri des films">
 						<input type="radio" class="btn-check" name="tri" id="sort_alpha" value="alpha" autocomplete="off" onchange="updateFilters()" {{ currentSort == 'alpha' ? 'checked' : '' }}>
 						<label class="btn btn-outline-secondary btn-sm" for="sort_alpha">
-							<i class="bi bi-sort-alpha-down"></i> Alphabétique (A-Z)
+							<i class="bi bi-sort-alpha-down"></i>
+							Alphabétique (A-Z)
 						</label>
 
 						<input type="radio" class="btn-check" name="tri" id="sort_price" value="price_asc" autocomplete="off" onchange="updateFilters()" {{ currentSort == 'price_asc' ? 'checked' : '' }}>
 						<label class="btn btn-outline-secondary btn-sm" for="sort_price">
-							<i class="bi bi-currency-euro"></i> Prix croissant
+							<i class="bi bi-currency-euro"></i>
+							Prix croissant
 						</label>
 
 						<input type="radio" class="btn-check" name="tri" id="sort_rating" value="rating_desc" autocomplete="off" onchange="updateFilters()" {{ currentSort == 'rating_desc' ? 'checked' : '' }}>
 						<label class="btn btn-outline-secondary btn-sm" for="sort_rating">
-							<i class="bi bi-star-fill"></i> Mieux notés
+							<i class="bi bi-star-fill"></i>
+							Mieux notés
 						</label>
 					</div>
 				</div>
@@ -61,74 +64,71 @@
 	<script>
 		let searchTimeout;
 
-		// Met à jour la liste des films via AJAX selon les filtres sélectionnés
-		function updateFilters() {
-			const form = document.getElementById('filter-form');
-			const url = new URL(form.action, window.location.origin);
-			const formData = new FormData(form);
-			const params = new URLSearchParams(formData);
+// Met à jour la liste des films via AJAX selon les filtres sélectionnés
+function updateFilters() {
+const form = document.getElementById('filter-form');
+const url = new URL(form.action, window.location.origin);
+const formData = new FormData(form);
+const params = new URLSearchParams(formData);
 
-			const newUrl = `${window.location.pathname}?${params.toString()}`;
-			window.history.pushState({}, '', newUrl);
+const newUrl = `${
+window.location.pathname
+}?${
+params.toString()
+}`;
+window.history.pushState({}, '', newUrl);
 
-			fetch(newUrl, {
-				headers: {
-					'X-Requested-With': 'XMLHttpRequest'
-				}
-			})
-			.then(response => response.json())
-			.then(data => {
-				document.querySelector('.films-container').innerHTML = data.content;
-				document.getElementById('genre').innerHTML = data.genreOptions;
-				document.getElementById('year').innerHTML = data.yearOptions;
-				// Réattacher les événements favoris après le rechargement du contenu
-				attachFavorisListeners();
-			})
-			.catch(error => console.error('Error:', error));
-		}
+fetch(newUrl, {
+headers: {
+'X-Requested-With': 'XMLHttpRequest'
+}
+}).then(response => response.json()).then(data => {
+document.querySelector('.films-container').innerHTML = data.content;
+document.getElementById('genre').innerHTML = data.genreOptions;
+document.getElementById('year').innerHTML = data.yearOptions;
+// Réattacher les événements favoris après le rechargement du contenu
+attachFavorisListeners();
+}).catch(error => console.error('Error:', error));
+}
 
-		document.getElementById('search').addEventListener('input', (e) => {
-			clearTimeout(searchTimeout);
-			searchTimeout = setTimeout(() => {
-				updateFilters();
-			}, 300);
-		});
+document.getElementById('search').addEventListener('input', (e) => {
+clearTimeout(searchTimeout);
+searchTimeout = setTimeout(() => {
+updateFilters();
+}, 300);
+});
 
-		// Gère le toggle des favoris via AJAX
-		function attachFavorisListeners() {
-			document.querySelectorAll('.favoris-toggle').forEach(link => {
-				link.addEventListener('click', function(e) {
-					e.preventDefault();
-					
-					const url = this.href;
-					const filmId = this.dataset.filmId;
-					
-					fetch(url, {
-						headers: {
-							'X-Requested-With': 'XMLHttpRequest'
-						}
-					})
-					.then(response => response.json())
-					.then(data => {
-						if (data.success) {
-							// Basculer l'icône du cœur
-							if (data.isFavorite) {
-								this.classList.remove('bi-heart', 'text-white');
-								this.classList.add('bi-heart-fill', 'text-danger');
-								this.title = 'Retirer des favoris';
-							} else {
-								this.classList.remove('bi-heart-fill', 'text-danger');
-								this.classList.add('bi-heart', 'text-white');
-								this.title = 'Ajouter aux favoris';
-							}
-						}
-					})
-					.catch(error => console.error('Error:', error));
-				});
-			});
-		}
+// Gère le toggle des favoris via AJAX
+function attachFavorisListeners() {
+document.querySelectorAll('.favoris-toggle').forEach(link => {
+link.addEventListener('click', function (e) {
+e.preventDefault();
 
-		// Attacher les événements au chargement initial
-		attachFavorisListeners();
+const url = this.href;
+const filmId = this.dataset.filmId;
+
+fetch(url, {
+headers: {
+'X-Requested-With': 'XMLHttpRequest'
+}
+}).then(response => response.json()).then(data => {
+if (data.success) { // Basculer l'icône du cœur
+if (data.isFavorite) {
+this.classList.remove('bi-heart', 'text-white');
+this.classList.add('bi-heart-fill', 'text-danger');
+this.title = 'Retirer des favoris';
+} else {
+this.classList.remove('bi-heart-fill', 'text-danger');
+this.classList.add('bi-heart', 'text-white');
+this.title = 'Ajouter aux favoris';
+}
+}
+}).catch(error => console.error('Error:', error));
+});
+});
+}
+
+// Attacher les événements au chargement initial
+attachFavorisListeners();
 	</script>
 {% endblock %}

@@ -10,7 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
 class FavorisController extends AbstractController
 {
     // Ajoute ou supprime un film des favoris
@@ -24,7 +23,7 @@ class FavorisController extends AbstractController
         }
 
         $isFavorite = $user->getFavoris()->contains($film);
-        
+
         if ($isFavorite) {
             $user->removeFavori($film);
         } else {
@@ -41,7 +40,12 @@ class FavorisController extends AbstractController
             ]);
         }
 
-        return $this->redirectToRoute('app_home');
+        // ✅ BON OBJET
+        $referer = $request->headers->get('referer');
+
+        return $this->redirect(
+            $referer ?? $this->generateUrl('app_home')
+        );
     }
 
     // Exporte la liste des favoris de l'utilisateur au format CSV

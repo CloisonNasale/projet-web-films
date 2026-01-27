@@ -38,7 +38,7 @@ class FilmController extends AbstractController
 
         $genresQuery = $registry->getRepository(Genres::class)->createQueryBuilder('g')
             ->join('g.films', 'f');
-        
+
         if ($year) {
             $genresQuery->andWhere('f.annee = :year')
                 ->setParameter('year', $year);
@@ -47,7 +47,7 @@ class FilmController extends AbstractController
         $genres = $genresQuery->orderBy('g.nom_Genre', 'ASC')
             ->getQuery()
             ->getResult();
-        
+
         $yearsQuery = $registry->getRepository(Films::class)->createQueryBuilder('f')
             ->select('DISTINCT f.annee')
             ->where('f.annee IS NOT NULL');
@@ -126,6 +126,21 @@ class FilmController extends AbstractController
             'compte' => $user,
             'panier' => $user->getPanier(),
             'commandes' => $user->getCommandes(),
+        ]);
+    }
+
+    #[Route('/commandes', name: 'film_commande')]
+    public function commandes(): Response
+    {
+        /** @var Compte $compte */
+        $compte = $this->getUser();
+
+        if (!$compte) {
+            throw $this->createAccessDeniedException();
+        }
+
+        return $this->render('films/commande.html.twig', [
+            'commandes' => $compte->getCommandes(),
         ]);
     }
 }

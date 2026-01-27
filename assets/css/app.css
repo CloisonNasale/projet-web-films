@@ -159,6 +159,11 @@ a {
     text-transform: uppercase;
 }
 
+.liste{
+    color:#000000 !important;
+}
+
+/* Année et genre */
 .film-card .card-text {
     font-size: 0.85rem;
     color: #b0a0cc;

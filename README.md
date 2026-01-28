@@ -56,16 +56,16 @@ Avant de commencer, assurez-vous d'avoir installé :
    php bin/console doctrine:database:create
    ```
 
-3. **Exécuter les migrations**
+3. **Génére un fichier de migration Doctrine**
+    ```bash
+    php bin/console make:migration
+    ```
+
+4. **Exécuter les migrations**
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
-
-4. **Charger les données (Si disponibles)**
-   Si des fixtures sont présentes pour tester l'application :
-   ```bash
-   php bin/console doctrine:fixtures:load
-   ```
+5. **Il ne vous reste maintenant plus qu'à importer le fichier .sql du répertoire pour ajouter les données dans la BDD**
 
 ## 🏁 Lancement de l'application
 

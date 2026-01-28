@@ -49,6 +49,7 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
     private $panier;
 
     #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: "compte")]
+    #[ORM\OrderBy(['date_Commande' => 'DESC'])]
     private $commandes;
 
     public function __construct()

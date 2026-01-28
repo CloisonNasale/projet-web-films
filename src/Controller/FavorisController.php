@@ -32,7 +32,6 @@ class FavorisController extends AbstractController
 
         $entityManager->flush();
 
-        // Si la requête est AJAX, retourner une réponse JSON
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([
                 'success' => true,
@@ -40,7 +39,6 @@ class FavorisController extends AbstractController
             ]);
         }
 
-        // ✅ BON OBJET
         $referer = $request->headers->get('referer');
 
         return $this->redirect(

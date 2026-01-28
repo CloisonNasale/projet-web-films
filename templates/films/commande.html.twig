@@ -30,7 +30,7 @@
 							{% set total = 0 %}
 							{% for film in commande.films %}
 								{% if film.prix %}
-									{% set total = total + film.prix.prix %}
+									{% set total = total + film.prix.getPrixPourDate(commande.dateCommande) %}
 								{% endif %}
 							{% endfor %}
 							
@@ -48,7 +48,7 @@
 											<span class="film-title">{{ film.titre }}</span>
 											<span class="film-price">
 												{% if film.prix %}
-													{{ film.prix.prix }} €
+													{{ film.prix.getPrixPourDate(commande.dateCommande) }} €
 												{% else %}
 													N/A
 												{% endif %}

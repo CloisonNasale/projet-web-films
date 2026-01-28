@@ -41,17 +41,13 @@
 						<td>{{ film.annee }}</td>
 						<td>
 							{% if film.prix %}
-								{% if "now"|date("N") == 3 %}
-									<div class="film-price">
-										{{ (film.prix.prix * 0.8)|round(2, "floor")}}
-										€ (-20%)
-									</div>
-								{% else %}
-									<div class="film-price">
-										{{ film.prix.prix }}
-										€
-									</div>
-								{% endif %}
+								<div class="film-price">
+									<strong>Prix :</strong>
+									{{ film.prix.getPrixActuel() }}
+									€
+									{% if "now"|date("N") == 3 %}(-20%)
+									{% endif %}
+								</div>
 							{% else %}
 								-
 							{% endif %}

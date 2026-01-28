@@ -46,7 +46,7 @@ Avant de commencer, assurez-vous d'avoir installé :
 ## 🗄️ Configuration de la base de données
 
 1. **Configurer les variables d'environnement**
-   Copiez le fichier `.env` en `.env.local` et modifiez la ligne `DATABASE_URL` avec vos identifiants :
+   Ouvrez le fichier `.env` et modifiez la ligne `DATABASE_URL` avec vos identifiants :
    ```text
    DATABASE_URL="mysql://[IDENTIFIANT]:[MOTDEPASSE]@127.0.0.1:3306/projet_web_film?serverVersion=8.0"
    ```

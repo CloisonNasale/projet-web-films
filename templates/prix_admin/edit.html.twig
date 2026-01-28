@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}Edit Prix{% endblock %}
+
+{% block body %}
+    <h1>Modifier le prix</h1>
+
+    {{ include('prix_admin/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_prix_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+
+    {{ include('prix_admin/_delete_form.html.twig') }}
+{% endblock %}

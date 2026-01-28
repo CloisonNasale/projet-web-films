@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un film{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block body %}
+    <h1>Modifier un film</h1>
+
+    {{ include('films_admin/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_films_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+
+    {{ include('films_admin/_delete_form.html.twig') }}
+{% endblock %}

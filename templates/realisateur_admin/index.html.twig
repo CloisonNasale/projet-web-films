@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}Realisateurs index{% endblock %}
+
+{% block body %}
+    <h1>Liste des Réalisateurs</h1>
+
+    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for realisateur in realisateurs %}
+            <tr>
+                <td>{{ realisateur.idRealisateur }}</td>
+                <td>{{ realisateur.nomRealisateur }}</td>
+                <td>
+                <td class="actions">
+                    <a href="{{ path('app_realisateur_admin_edit', {'id': realisateur.idrealisateur}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-center">Aucun réalisateur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+
+    <a href="{{ path('app_realisateur_admin_new') }}" class="btn btn-primary mt-3">Ajouter un réalisateur</a>
+{% endblock %}

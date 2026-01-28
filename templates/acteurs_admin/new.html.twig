@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}Ajout d'un Acteur{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un acteur</h1>
+
+    {{ include('acteurs_admin/_form.html.twig') }}
+
+    <a href="{{ path('app_acteurs_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+{% endblock %}

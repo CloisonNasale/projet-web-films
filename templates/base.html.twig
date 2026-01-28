@@ -33,13 +33,21 @@
 					<ul class="navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">
+								<i class="bi bi-camera-reels"></i>
 								Films
 							</a>
 						</li>
 						{% if app.user %}
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('panier_index') }}">
-									<i class="bi bi-cart"></i> Panier
+								<a class="nav-link {% if app.request.attributes.get('_route') == 'app_gestion_donnees' %}active{% endif %}" href="{{ path('app_gestion_donnees') }}">
+									<i class="bi bi-box-seam"></i>
+									Gestion des données
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link {% if app.request.attributes.get('_route') == 'panier_index' %}active{% endif %}" href="{{ path('panier_index') }}" href="{{ path('panier_index') }}">
+									<i class="bi bi-cart"></i>
+									Panier
 									<span class="badge rounded-pill bg-danger" id="cart-count">
 										{{ app.user.panier|length }}
 									</span>
@@ -95,7 +103,8 @@
 						<div class="modal-content bg-dark text-white border-success">
 							<div class="modal-header border-success">
 								<h5 class="modal-title text-success" id="paymentSuccessModalLabel">
-									<i class="bi bi-check-circle-fill"></i> Paiement Validé
+									<i class="bi bi-check-circle-fill"></i>
+									Paiement Validé
 								</h5>
 								<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
@@ -109,10 +118,10 @@
 					</div>
 				</div>
 				<script>
-					document.addEventListener('DOMContentLoaded', function() {
-						var myModal = new bootstrap.Modal(document.getElementById('paymentSuccessModal'), {});
-						myModal.show();
-					});
+					document.addEventListener('DOMContentLoaded', function () {
+var myModal = new bootstrap.Modal(document.getElementById('paymentSuccessModal'), {});
+myModal.show();
+});
 				</script>
 			{% endfor %}
 

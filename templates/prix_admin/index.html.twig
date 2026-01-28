@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}Prix index{% endblock %}
+
+{% block body %}
+    <h1>Liste des Prix</h1>
+
+    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prix in prixes %}
+            <tr>
+                <td>{{ prix.idPrix }}</td>
+                <td>{{ prix.prix }}</td>
+                <td>
+                <td class="actions">
+                    <a href="{{ path('app_prix_admin_edit', {'id': prix.idPrix}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-center">Aucun prix trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+
+    <a href="{{ path('app_prix_admin_new') }}" class="btn btn-primary mt-3">Ajouter un prix</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un film{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un film</h1>
+
+    {{ include('films_admin/_form.html.twig') }}
+
+    <a href="{{ path('app_films_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}New Pays{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un pays</h1>
+
+    {{ include('pays_admin/_form.html.twig') }}
+
+    <a href="{{ path('app_pays_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+{% endblock %}

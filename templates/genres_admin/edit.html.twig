@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}Modifier un genre{% endblock %}
+
+{% block body %}
+    <h1>Modifier le genre</h1>
+
+    {{ include('genres_admin/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_genres_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+
+    {{ include('genres_admin/_delete_form.html.twig') }}
+{% endblock %}

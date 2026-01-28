@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}Acteurs index{% endblock %}
+
+{% block body %}
+    <h1>Liste des Acteurs</h1>
+
+    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for acteur in acteurs %}
+            <tr>
+                <td>{{ acteur.idActeur }}</td>
+                <td>{{ acteur.nomActeur }}</td>
+                <td>
+                <td class="actions">
+                    <a href="{{ path('app_acteurs_admin_edit', {'id': acteur.idActeur}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-center">Aucun acteur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </div>
+
+    <a href="{{ path('app_acteurs_admin_new') }}" class="btn btn-primary mt-3">Ajouter un acteur</a>
+{% endblock %}

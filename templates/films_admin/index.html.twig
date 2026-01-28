@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Films index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des Films</h1>
+
+    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Année</th>
+                <th>Classement IMDB</th>
+                <th>Durée</th>
+                <th>Oscar Gagné</th>
+                <th>Box Office</th>
+                <th>Id IMDB</th>
+                <th>Affiche</th>
+                <th>Synopsis</th>
+                <th>Bande Annonce</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.idFilm }}</td>
+                <td>{{ film.titre }}</td>
+                <td>{{ film.annee }}</td>
+                <td>{{ film.classementIMDB }}</td>
+                <td>{{ film.duree }}</td>
+                <td>{{ film.oscarGagne }}</td>
+                <td>{{ film.boxOffice }}</td>
+                <td>{{ film.IdIMDB }}</td>
+                <td>{{ film.affiche }}</td>
+                <td>{{ film.synopsis }}</td>
+                <td>{{ film.bandeAnnonce }}</td>
+                <td class="actions">
+                    <a href="{{ path('app_films_admin_edit', {'id': film.idFilm}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12" class="text-center">Aucun film trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </div>
+
+    <a href="{{ path('app_films_admin_new') }}" class="btn btn-primary mt-3">Ajouter un film</a>
+{% endblock %}

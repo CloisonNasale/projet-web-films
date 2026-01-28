@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}New Realisateurs{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un réalisateur</h1>
+
+    {{ include('realisateur_admin/_form.html.twig') }}
+
+    <a href="{{ path('app_realisateur_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+{% endblock %}

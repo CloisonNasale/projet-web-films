@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block title %}New Prix{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un prix</h1>
+
+    {{ include('prix_admin/_form.html.twig') }}
+
+    <a href="{{ path('app_prix_admin_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+{% endblock %}

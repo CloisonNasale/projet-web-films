@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Données{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('crud') }}
+{% endblock %}
+
+{% block body %}
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fw-bold">Gestion des Données</h1>
+            <p class="lead text-secondary">Accédez à la gestion des différentes entités du site</p>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Films -->
+        <div class="col">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <a href="{{ path('app_films_admin_index') }}" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-film me-2"></i>GÉRER LES FILMS
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acteurs -->
+        <div class="col">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <a href="{{ path('app_acteurs_admin_index') }}" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-person-video2 me-2"></i>GÉRER LES ACTEURS
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Réalisateurs -->
+        <div class="col">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <a href="{{ path('app_realisateur_admin_index') }}" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-camera-reels me-2"></i>GÉRER LES RÉALISATEURS
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Genres -->
+        <div class="col">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <a href="{{ path('app_genres_admin_index') }}" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-tags me-2"></i>GÉRER LES GENRES
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pays -->
+        <div class="col">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <a href="{{ path('app_pays_admin_index') }}" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-globe me-2"></i>GÉRER LES PAYS
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prix -->
+        <div class="col">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <a href="{{ path('app_prix_admin_index') }}" class="btn btn-outline-light w-100 py-3">
+                        <i class="bi bi-trophy me-2"></i>GÉRER LES PRIX
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

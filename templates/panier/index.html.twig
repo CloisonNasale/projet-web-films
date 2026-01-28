@@ -1,64 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Panier{% endblock %}
+{% block title %}Mon Panier
+{% endblock %}
 
 {% block body %}
-    {# Page du panier affichant les films sélectionnés pour la location #}
-    <h1>Mon Panier</h1>
+	{# Page du panier affichant les films sélectionnés pour la location #}
+	<h1>Mon Panier</h1>
 
-    {% for message in app.flashes('warning') %}
-        <div class="alert alert-warning">
-            {{ message }}
-        </div>
-    {% endfor %}
+	{% for message in app.flashes('warning') %}
+		<div class="alert alert-warning">
+			{{ message }}
+		</div>
+	{% endfor %}
 
-    {% if panier is empty %}
-        <p>Votre panier est vide.</p>
-        <a href="{{ path('app_home') }}" class="btn btn-primary">Retour à l'accueil</a>
-    {% else %}
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Affiche</th>
-                    <th>Titre</th>
-                    <th>Année</th>
-                    <th>Prix</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for film in panier %}
-                    <tr>
-                        <td>
-                            {% if film.affiche %}
-                                <img src="{{ film.affiche }}" alt="{{ film.titre }}" style="height: 50px;">
-                            {% else %}
-                                <span class="text-muted">Pas d'image</span>
-                            {% endif %}
-                        </td>
-                        <td>{{ film.titre }}</td>
-                        <td>{{ film.annee }}</td>
-                        <td>
-                            {% if film.prix %}
-                                {{ film.prix.prix }} €
-                            {% else %}
-                                -
-                            {% endif %}
-                        </td>
-                        <td>
-                            <a href="{{ path('panier_remove', {'id': film.getIdFilm()}) }}" class="btn btn-danger btn-sm">
-                                <i class="bi bi-trash"></i> Retirer
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+	{% if panier is empty %}
+		<p>Votre panier est vide.</p>
+		<a href="{{ path('app_home') }}" class="btn btn-primary">Retour à l'accueil</a>
+	{% else %}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Affiche</th>
+					<th>Titre</th>
+					<th>Année</th>
+					<th>Prix</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for film in panier %}
+					<tr>
+						<td>
+							{% if film.affiche %}
+								<img src="{{ film.affiche }}" alt="{{ film.titre }}" style="height: 50px;">
+							{% else %}
+								<span class="text-muted">Pas d'image</span>
+							{% endif %}
+						</td>
+						<td>{{ film.titre }}</td>
+						<td>{{ film.annee }}</td>
+						<td>
+							{% if film.prix %}
+								{% if "now"|date("N") == 3 %}
+									<div class="film-price">
+										{{ (film.prix.prix * 0.8)|round(2, "floor")}}
+										€ (-20%)
+									</div>
+								{% else %}
+									<div class="film-price">
+										{{ film.prix.prix }}
+										€
+									</div>
+								{% endif %}
+							{% else %}
+								-
+							{% endif %}
+						</td>
+						<td>
+							<a href="{{ path('panier_remove', {'id': film.getIdFilm()}) }}" class="btn btn-danger btn-sm">
+								<i class="bi bi-trash"></i>
+								Retirer
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-        <div class="d-flex justify-content-end mt-4">
-            <a href="{{ path('panier_confirm') }}" class="btn btn-success btn-lg">
-                <i class="bi bi-check-circle"></i> Confirmer la location
-            </a>
-        </div>
-    {% endif %}
+		<div class="d-flex justify-content-end mt-4">
+			<a href="{{ path('panier_confirm') }}" class="btn btn-success btn-lg">
+				<i class="bi bi-check-circle"></i>
+				Confirmer la location
+			</a>
+		</div>
+	{% endif %}
 {% endblock %}

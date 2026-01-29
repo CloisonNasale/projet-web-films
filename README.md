@@ -82,7 +82,7 @@ L'application sera accessible sur [http://localhost:8000](http://localhost:8000)
 
 ## 👤 Accès Administration
 
-Pour accéder à la console de gestion des données (`/gestion-donnees`), vous devez être connecté avec un compte utilisateur.
+Pour accéder à la console de gestion des données (`/gestion-donnees`), vous devez être connecté avec un compte utilisateur ou vous en créez un.
 
 ---
 Développé dans le cadre du projet web.

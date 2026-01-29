@@ -12,9 +12,9 @@
 				<div class="col-md-4">
 					<label for="genre" class="form-label small fw-bold text-uppercase">Genre</label>
 					<select name="genre" id="genre" class="form-select bg-secondary text-white border-0" onchange="updateFilters()">
-						<option value="">Tous les genres</option>
+						<option value="" style="color : #000;">Tous les genres</option>
 						{% for genre in genres %}
-							<option class="liste" value="{{ genre.idGenre }}" {{ selectedGenre == genre.idGenre ? 'selected' : '' }}>
+							<option class="liste" style="color : #000;" value="{{ genre.idGenre }}" {{ selectedGenre == genre.idGenre ? 'selected' : '' }}>
 								{{ genre.nomGenre }}
 							</option>
 						{% endfor %}
@@ -23,7 +23,7 @@
 				<div class="col-md-4">
 					<label for="year" class="form-label small fw-bold text-uppercase">Année</label>
 					<select name="year" id="year" class="form-select bg-secondary text-white border-0" onchange="updateFilters()">
-						<option value="">Toutes les années</option>
+						<option value="" style="color : #000;">Toutes les années</option>
 						{% for y in years %}
 							<option value="{{ y.annee }}" class="liste" {{ selectedYear == y.annee ? 'selected' : '' }}>
 								{{ y.annee }}

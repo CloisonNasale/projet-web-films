@@ -65,7 +65,7 @@ Avant de commencer, assurez-vous d'avoir installé :
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
-5. **Il ne vous reste maintenant plus qu'à importer le fichier .sql du répertoire pour ajouter les données dans la BDD**
+5. **Il ne vous reste maintenant plus qu'à importer le fichier film-bdd.sql du répertoire pour ajouter les données dans la BDD**
 
 ## 🏁 Lancement de l'application
 

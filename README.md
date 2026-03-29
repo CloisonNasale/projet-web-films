@@ -44,27 +44,27 @@ Avant de commencer, assure-toi d'avoir installé :
 
 ## Configuration de la base de données
 
-1. **Configurer les variables d'environnement**
+1. **Configurer les variables d'environnement**\
    Ouvre le fichier `.env` et modifie la ligne `DATABASE_URL` avec tes identifiants :
    ```text
    DATABASE_URL="mysql://[USER]:[PASSWORD]@127.0.0.1:3306/projet_web_film?serverVersion=8.0"
    ```
 
-2. **Créer la base de données**
+3. **Créer la base de données**
    ```bash
    php bin/console doctrine:database:create
    ```
 
-3. **Génèrer un fichier de migration Doctrine**
+4. **Génèrer un fichier de migration Doctrine**
     ```bash
     php bin/console make:migration
     ```
 
-4. **Exécuter les migrations**
+5. **Exécuter les migrations**
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
-5. **Importe le fichier film-bdd.sql présent à la racine pour remplir la base de données.**
+6. **Importe le fichier film-bdd.sql présent à la racine pour remplir la base de données.**
 
 ## Lancement de l'application
 
@@ -82,6 +82,7 @@ L'application sera accessible sur [http://localhost:8000](http://localhost:8000)
 ## Accès Administration
 
 Pour accéder à la console de gestion des données (`/gestion-donnees`), tu dois être connecté avec un compte utilisateur ou en créer un.
+<img width="1920" height="921" alt="page-admin" src="https://github.com/user-attachments/assets/8a524c73-8161-4759-a785-6e108c6ce23a" />
 
 ---
 Développé dans le cadre des études.

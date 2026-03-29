@@ -1,25 +1,24 @@
-# Projet Web Films - Symfony
+# Projet Web SGBD de films
 
-Une application web moderne de gestion et de consultation de films, développée avec le framework Symfony.
+Une application web de gestion et de consultation de films, développée avec le framework PHP Symfony.
 
-## 🚀 Fonctionnalités principales
+## Fonctionnalités principales
 
-- **Gestion des Films** : Catalogue complet avec recherche, filtrage par genre et année.
-- **Espace Utilisateur** : Inscription, connexion, gestion du profil et des favoris.
-- **Système de Location** : Simulation de panier et de paiement pour la location de films.
-- **Administration** : Interface complète pour la gestion des films, acteurs, réalisateurs, genres, pays et prix (CRUD).
-- **Design Moderne** : Interface responsive et épurée utilisant Bootstrap et des styles personnalisés.
+- **Gestion des films** : Catalogue complet avec recherche, filtrage par genre et année.
+- **Espace utilisateur** : Inscription, connexion, gestion du profil et des favoris.
+- **Système de location** : Simulation de panier et de paiement pour la location de films.
+- **Administration** : Interface complète pour la gestion des films, acteurs, réalisateurs, genres, pays et prix.
 
-## 🛠️ Pré-requis
+## Pré-requis
 
-Avant de commencer, assurez-vous d'avoir installé :
-- **PHP 8.2** ou supérieur
+Avant de commencer, assure-toi d'avoir installé :
+- **PHP 8.2** (ou supérieur)
 - **Composer**
 - **Node.js & npm** (ou Yarn)
 - **MySQL** ou **MariaDB**
 - **Symfony CLI** (optionnel mais recommandé)
 
-## 📥 Installation
+## Installation
 
 1. **Cloner le projet**
    ```bash
@@ -43,12 +42,12 @@ Avant de commencer, assurez-vous d'avoir installé :
    # ou pour la production : npm run build
    ```
 
-## 🗄️ Configuration de la base de données
+## Configuration de la base de données
 
 1. **Configurer les variables d'environnement**
-   Ouvrez le fichier `.env` et modifiez la ligne `DATABASE_URL` avec vos identifiants :
+   Ouvre le fichier `.env` et modifie la ligne `DATABASE_URL` avec tes identifiants :
    ```text
-   DATABASE_URL="mysql://[IDENTIFIANT]:[MOTDEPASSE]@127.0.0.1:3306/projet_web_film?serverVersion=8.0"
+   DATABASE_URL="mysql://[USER]:[PASSWORD]@127.0.0.1:3306/projet_web_film?serverVersion=8.0"
    ```
 
 2. **Créer la base de données**
@@ -56,7 +55,7 @@ Avant de commencer, assurez-vous d'avoir installé :
    php bin/console doctrine:database:create
    ```
 
-3. **Génére un fichier de migration Doctrine**
+3. **Génèrer un fichier de migration Doctrine**
     ```bash
     php bin/console make:migration
     ```
@@ -65,11 +64,11 @@ Avant de commencer, assurez-vous d'avoir installé :
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
-5. **Il ne vous reste maintenant plus qu'à importer le fichier film-bdd.sql du répertoire pour ajouter les données dans la BDD**
+5. **Importe le fichier film-bdd.sql présent à la racine pour remplir la base de données.**
 
-## 🏁 Lancement de l'application
+## Lancement de l'application
 
-Démarrez le serveur local Symfony :
+Démarre le serveur local Symfony :
 ```bash
 symfony serve
 ```
@@ -80,9 +79,9 @@ php -S localhost:8000 -t public
 
 L'application sera accessible sur [http://localhost:8000](http://localhost:8000).
 
-## 👤 Accès Administration
+## Accès Administration
 
-Pour accéder à la console de gestion des données (`/gestion-donnees`), vous devez être connecté avec un compte utilisateur ou vous en créez un.
+Pour accéder à la console de gestion des données (`/gestion-donnees`), tu dois être connecté avec un compte utilisateur ou en créer un.
 
 ---
-Développé dans le cadre du projet web.
+Développé dans le cadre des études.

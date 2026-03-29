@@ -22,7 +22,7 @@ Avant de commencer, assure-toi d'avoir installé :
 
 1. **Cloner le projet**
    ```bash
-   git clone [URL_DU_DEPOT]
+   git clone https://github.com/CloisonNasale/projet-web-films.git
    cd Projet_Web_Films
    ```
 
